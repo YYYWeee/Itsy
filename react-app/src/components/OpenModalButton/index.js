@@ -15,8 +15,25 @@ function OpenModalButton({
     if (onButtonClick) onButtonClick();
   };
 
+  console.log(buttonText);
+  let btnClassName;
+  if (buttonText === "Log In") {
+    btnClassName = "login cursor";
+  } else if (buttonText === "Save") {
+    btnClassName = "save cursor";
+  } else if (buttonText === "Sign Up" || buttonText === "Delete") {
+    btnClassName = "signup cursor";
+  } else {
+    btnClassName = "edit cursor";
+  }
+
+  // return (
+  //   <button onClick={onClick}>{buttonText}</button>
+  // );
   return (
-    <button onClick={onClick}>{buttonText}</button>
+    <button onClick={onClick} className={btnClassName}>
+      {buttonText}
+    </button>
   );
 }
 

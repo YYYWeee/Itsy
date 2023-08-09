@@ -1,0 +1,65 @@
+.log-wrap {
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.log-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 80%;
+}
+
+.log-btn {
+  width: 15rem;
+}
+
+.demo-btn {
+  border-radius: 20px;
+  background-color: black;
+  /* color: rgb(225, 22, 22);
+  border: rgb(225, 22, 22) solid 2px; */
+  color: white;
+  border:  solid 2px;
+
+  width: 11rem;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  align-self: center;
+  /* box-shadow: 2px 2px gray; */
+}
+
+.demo-btn:hover {
+  filter: brightness(95%);
+}
+
+.on-itsy {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+  align-self: center;
+}
+
+.on-itsy > button {
+  background-color: transparent;
+  border: none;
+  margin-left: 4px;
+  padding: 0;
+}
+
+.on-itsy > button:hover {
+  background-color: transparent;
+  border: none;
+}
+
+.not-on {
+  color: #111;
+  opacity: 1;
+  margin-right: 0;
+}
