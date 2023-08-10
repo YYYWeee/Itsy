@@ -108,7 +108,7 @@ function ProfileButton({ user }) {
   };
 
   const handleMarket = async (e) => {
-    history.push(`/your/shop`);
+    history.push(`/shop`);
   }
 
   const handleClickUser = async (e) => {
@@ -126,7 +126,7 @@ function ProfileButton({ user }) {
 
   useEffect(() => {
     if (!showMenu) return;
-    console.log(ulRef1.current);
+    // console.log(ulRef1.current);
 
     // const closeMenu = (e) => {
     //   if (!ulRef1.current.contains(e.target)) {
@@ -143,11 +143,11 @@ function ProfileButton({ user }) {
     <>
       {user ? (
         <div className="header-right-container when-log-in">
-          <div className='market' onClick={() => history.push(`/your/shop`)}>
-            <i class="fa-solid fa-shop"></i>
+          <div className='market' onClick={() => history.push(`/shop`)}>
+            <i className="fa-solid fa-shop"></i>
           </div>
           <div className="shoppingcart" onClick={() => history.push('/cart')}>
-            <i class="fa-solid fa-cart-shopping"></i>
+            <i className="fa-solid fa-cart-shopping"></i>
           </div>
           <button
             // onClick={handleClickUser}

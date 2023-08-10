@@ -31,6 +31,7 @@ class Shop(db.Model):
             'name': self.name,
             'owner_id': self.owner_id,
             'description':self.description,
+            'shop_img':self.shop_img,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
