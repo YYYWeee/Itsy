@@ -45,5 +45,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'shop': self.shop[0].id if self.shop else None,
         }
