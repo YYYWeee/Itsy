@@ -36,7 +36,7 @@ class Product(db.Model):
             'id': self.id,
             'title': self.title,
             'price': self.price,
-            'descriiption': self.descriiption,
+            'description': self.description,
             'shop_id': self.shop_id,
             'img_1': self.img_2,
             'img_2': self.img_2,

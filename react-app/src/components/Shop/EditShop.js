@@ -13,7 +13,7 @@ function EditShop({ shop, setShowUpdateForm2 }) {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState(false);
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef1 = useRef();
@@ -21,7 +21,7 @@ function EditShop({ shop, setShowUpdateForm2 }) {
 
   const sessionUser = useSelector((state) => state.session.user);
   const targetShop = useSelector((state) =>
-    state.shops.singleShop ? state.shops.singleShop : {}
+    state.shops.singleShop.shop ? state.shops.singleShop.shop : {}
   );
 
 
@@ -34,27 +34,47 @@ function EditShop({ shop, setShowUpdateForm2 }) {
   const [showUpdateForm, setShowUpdateForm] = useState(true);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
 
   const [modal, setModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
     let payload = {
       name: name,
       description: description,
     };
-    await dispatch(updateShopThunk(payload))
+    // await dispatch(updateShopThunk(payload))
+    // await dispatch(fetchUserShopThunk())
+    // -----------------------------test
+    const data = await dispatch(updateShopThunk(payload))
+      .then(res => {
+        if (res) {
+          setErrors(true)
+          setHasSubmitted(false);
+          setShowUpdateForm(true);
+          setShowUpdateForm2(true);
+        }
+      })
     await dispatch(fetchUserShopThunk())
 
-    setShowUpdateForm(false);
-    setShowUpdateForm2(false);
-    history.push(`/shop`);
+    setName("");
+    setHasSubmitted(true);
+
+
+    // -----------------------------test
+    if (hasSubmitted) {
+      setShowUpdateForm(false);
+      setShowUpdateForm2(false);
+      history.push(`/shop`);
+    }
 
   }
   const handleCancel = async (e) => {
     setShowUpdateForm2(false);
   };
-
 
 
   const handleDelete = async (e) => {
@@ -63,13 +83,12 @@ function EditShop({ shop, setShowUpdateForm2 }) {
     history.push(`/shop`);
   };
 
-
-
   return (
     <>
       {showUpdateForm && (
         <div>
           <div className="form-page">
+            {errors && <div className='error-section'>Looks like this name is already taken.</div>}
             <div className="update-form-container-including-title">
               <h1 className="edit-this-pin">Edit this Shop</h1>
               <div className="update-form-container">
@@ -77,10 +96,10 @@ function EditShop({ shop, setShowUpdateForm2 }) {
                   <div className="big-container">
                     <div className="left-container">
                       <div className="title-area error">
-                        <label>Title</label>
+                        <label>Name</label>
                         <input
                           type="text"
-                          name="title"
+                          name="name"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           required

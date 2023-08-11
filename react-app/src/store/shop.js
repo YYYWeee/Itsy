@@ -1,7 +1,7 @@
 /** Action Type Constants: */
 export const LOAD_USER_SHOP = "shops/LOAD_USER_SHOP";
 export const GET_ALL_SHOPS = 'shops/GET_ALL_SHOPS';
-
+const CREATE_ITEM = 'shops/CREATE_ITEM';
 
 /**  Action Creators: */
 export const loadUserShopAction = (shop) => ({
@@ -14,6 +14,16 @@ export const fetchAllShops = (shops) => ({
   payload: shops,
 });
 
+export const createItem = (item) => ({
+  type: CREATE_ITEM,
+  payload: item,
+});
+
+
+
+
+
+// **********************************************************************
 /** Thunk: */
 export const fetchUserShopThunk = () => async (dispatch) => {
   const res = await fetch("/api/shop");
@@ -62,13 +72,25 @@ export const fetchUserShopThunk = () => async (dispatch) => {
 
 // }
 
+export const createItemThunk = (item) => async (dispatch) => {
+  const response = await fetch(`/api/items`, {
+    method: "POST",
+    body: item,
+  });
+  if (response.ok) {
+    const newItem = await response.json()
+    dispatch(createItem(newItem))
+    return newItem
+  } else {
+    console.log("There was an error adding your new item!");
+  }
+}
 
-
-
+// **********************************************************************
 const initialState = { allShops: {}, singleShop: {} };
 
 const shopsReducer = (state = initialState, action) => {
-
+  let newState;
   switch (action.type) {
     case LOAD_USER_SHOP:
       return { ...state, singleShop: { ...action.shop } };
@@ -83,6 +105,16 @@ const shopsReducer = (state = initialState, action) => {
         ...state,
         allShops: shopsState,
         singleShop: {},
+      };
+
+    case CREATE_ITEM:
+      const newProduct = action.payload;
+      return {
+        ...state,
+        singleShop: {
+          ...state.singleShop,
+          products: [...state.singleShop.products, newProduct],
+        },
       };
 
 

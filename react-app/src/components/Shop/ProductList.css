@@ -1,0 +1,19 @@
+.preview-image {
+  max-width: 25%;
+  height: auto;
+  object-fit: cover;
+}
+
+
+.price{
+  /* position: absolute; */
+  bottom: 6px;
+  left: 8px;
+  background-color: white;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 420;
+  padding: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid rgb(0, 0, 0, 0.2)
+}

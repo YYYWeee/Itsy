@@ -6,10 +6,12 @@ import { authenticate } from "./store/session";
 
 import Shop from './components/Shop';
 import CreateShopForm from "./components/Shop/CreateShopForm";
+import CreateProductForm from  "./components/Shop/CreateProductForm";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+// import MainProductList from "./components/MainProductList";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +26,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-              <LandingPage />
+            <LandingPage />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
@@ -36,8 +38,20 @@ function App() {
             <Shop />
           </Route>
           <Route exact path="/shop/new">
-              <CreateShopForm />
-            </Route>
+            <CreateShopForm />
+          </Route>
+          {/* <Route exact path="/listiings">
+            <MainProductList />
+          </Route> */}
+
+
+          {/* <Route exact path="/listing/:itemId">
+            <ItemDetail />
+          </Route> */}
+
+          <Route exact path="/items/new">
+            <CreateProductForm />
+          </Route>
         </Switch>
       )}
     </>

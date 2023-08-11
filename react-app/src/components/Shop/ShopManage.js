@@ -14,7 +14,8 @@ const ShopManage = () => {
   const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   const user = useSelector(state => state.session.user)
-  const shop = useSelector((state) => state.shops.singleShop);
+  const shop = useSelector((state) => state.shops.singleShop.shop);
+  const items = useSelector((state) => state.shops.singleShop.products); //array
 
   useEffect(() => {
     dispatch(fetchUserShopThunk());

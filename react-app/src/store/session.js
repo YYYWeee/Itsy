@@ -6,6 +6,7 @@ const CREATE_SHOP = 'session/CREATE_SHOP'
 const DELETE_SHOP = 'session/DELETE_SHOP'
 
 
+
 /**  Action Creators: */
 const setUser = (user) => ({
   type: SET_USER,
@@ -32,9 +33,8 @@ const deleteShop = () => ({
 })
 
 
-
-
 /** Thunk: */
+// **********************************************************************
 export const authenticate = () => async (dispatch) => {
   const response = await fetch("/api/auth/", {
     headers: {
@@ -50,7 +50,7 @@ export const authenticate = () => async (dispatch) => {
     dispatch(setUser(data));
   }
 };
-
+// **********************************************************************
 export const login = (user) => async (dispatch) => {
   console.log("inside login thunk");
   const { email, password } = user;
@@ -80,7 +80,7 @@ export const login = (user) => async (dispatch) => {
   }
 };
 
-
+// **********************************************************************
 export const logout = () => async (dispatch) => {
   const response = await fetch("/api/auth/logout", {
     headers: {
@@ -93,7 +93,7 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-
+// **********************************************************************
 export const signUp = (user) => async (dispatch) => {
   const { email, username, first_name, last_name, password } = user;
   console.log("i am in signup thunk");
@@ -128,7 +128,7 @@ export const signUp = (user) => async (dispatch) => {
     return ["An error occurred. Please try again."];
   }
 };
-
+// **********************************************************************
 export const fetchAllUsersThunk = () => async (dispatch) => {
   const res = await fetch('/api/users');
   if (res.ok) {
@@ -140,7 +140,7 @@ export const fetchAllUsersThunk = () => async (dispatch) => {
     return errors;
   }
 }
-
+// **********************************************************************
 // create new shop
 export const createNewShopThunk = (shop) => async dispatch => {
   console.log('in thunk')
@@ -150,7 +150,6 @@ export const createNewShopThunk = (shop) => async dispatch => {
   });
   if (response.ok) {
     const newShop = await response.json()
-    console.log('!!!!!!!!!!!!!',newShop.id)
     dispatch(setShop(newShop.id))
     return newShop
   } else {
@@ -158,8 +157,8 @@ export const createNewShopThunk = (shop) => async dispatch => {
     return 'invalidName'
   }
 }
-
-export const updateShopThunk = (updateShop ) => async (dispatch) => {
+// **********************************************************************
+export const updateShopThunk = (updateShop) => async (dispatch) => {
   const response = await fetch(`/api/shop`, {
     method: "PUT",
     headers: {
@@ -167,13 +166,19 @@ export const updateShopThunk = (updateShop ) => async (dispatch) => {
     },
     body: JSON.stringify(updateShop),
   });
-  let updatedShop = await response.json();
-  console.log('@@@@@@@@@@@@@@@@@@@@@@',updatedShop)
-  dispatch(setShop(updatedShop.id))
-  return updatedShop;
+
+  if (response.ok) {
+    const updatedShop = await response.json()
+
+    dispatch(setShop(updatedShop.id))
+    return updatedShop
+  } else {
+    console.log("There was an error updating your shop!");
+    return 'invalidName'
+  }
 
 }
-
+// **********************************************************************
 
 export const deleteShopThunk = () => async (dispatch) => {
   const response = await fetch(`/api/shop`, {
@@ -186,7 +191,24 @@ export const deleteShopThunk = () => async (dispatch) => {
   }
 }
 
+// **********************************************************************
+// export const createItemThunk = (item) => async (dispatch) => {
+//   const response = await fetch(`/api/items`, {
+//     method: "POST",
+//     body: item,
+//   });
+//   if (response.ok) {
+//     const newItem = await response.json()
+//     dispatch(createItem(newItem))
+//     return newItem
+//   } else {
+//     console.log("There was an error adding your new item!");
 
+//   }
+// }
+
+
+// **********************************************************************
 const initialState = { user: null, allUsers: [] };
 
 export default function reducer(state = initialState, action) {
@@ -201,8 +223,8 @@ export default function reducer(state = initialState, action) {
     case CREATE_SHOP:
       return { user: { ...state.user, shop: action.shopId } }
 
-      case DELETE_SHOP:
-      return { user: { ...state.user, shop: null}}
+    case DELETE_SHOP:
+      return { user: { ...state.user, shop: null } }
 
     default:
       return state;
