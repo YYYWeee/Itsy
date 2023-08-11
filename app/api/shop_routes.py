@@ -15,30 +15,39 @@ from sqlalchemy.sql import func
 shop_routes = Blueprint('shops', __name__)
 
 
-# @shop_routes.route('')
-# def get_all_shops():
-#     """
-#     Query for all shops and returns them in a list of shop dictionaries
-#     """
-#     shops = Shop.query.all()
-#     print('!!!!!!!!!!!!!in backend!!!!!!!!!!',shops)
-#     return {"allShops": [shop.to_dict() for shop in shops]}
-
 
 #*************************************************************************#
 @shop_routes.route('/<int:shopId>')
 def get_one_shop(shopId):
     """
-    Query for single pins and returns it
+    Query for single shop and returns it
     """
     shop = Shop.query.get(shopId)
     if not shop:
        return jsonify({"message": "Shop not found"}), 404
     response = shop.to_dict()
+    return response
 
 
 #*************************************************************************#
 # Query for shop that is own by current user
+# not include the items in the shop (old)
+
+# @shop_routes.route('')
+# @login_required
+# def get_your_shop():
+#     target_shop = Shop.query.filter_by(owner_id=current_user.id).first()
+
+#     if not target_shop:
+#         return jsonify({"message": "No shop"}), 404
+
+#     response = target_shop.to_dict()
+#     return response
+
+###############################test@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# Query for shop that is own by current user
+# also add all the items in the shop
+# important
 @shop_routes.route('')
 @login_required
 def get_your_shop():
@@ -47,9 +56,13 @@ def get_your_shop():
     if not target_shop:
         return jsonify({"message": "No shop"}), 404
 
-    response = target_shop.to_dict()
-    print('######################################',response)
+    products = Product.query.filter_by(shop_id=target_shop.id).all()
+    response = {
+        "shop": target_shop.to_dict(),
+        "products": [product.to_dict() for product in products]
+    }
     return response
+
 
 #*************************************************************************#
 # Create a new shop
@@ -112,3 +125,17 @@ def delete_shop():
     db.session.delete(target_shop)
     db.session.commit()
     return {"id": target_shop.id}
+
+#*************************************************************************#
+
+# # get all items of specific shop
+# @shop_routes.route('/<int:shopId>', methods=['GET'])
+# def get_all_items_by_shop(shopId):
+#     shop =Shop.query.get(shopId)
+#     if not shop:
+#         return {'errors': ['No shop found']}
+
+#     else:
+#         productList = Product.query.filter(Product.shop_id ==shop.id).all()
+#         response= [product.to_dict() for product in productList]
+#         return response
