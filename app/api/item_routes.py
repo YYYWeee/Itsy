@@ -65,6 +65,7 @@ def new_item():
 @item_routes.route('/<int:itemId>', methods=["PUT"])
 @login_required
 def edit_item(itemId):
+    print('In the backend!!!!!!!!!')
     form = EditProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     target_item = Product.query.get(itemId)

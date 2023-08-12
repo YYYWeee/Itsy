@@ -8,7 +8,7 @@ import OpenModalButton from "../OpenModalButton";
 import DeleteShopModal from "./DeleteShopModal";
 import "./EditShop.css";
 
-function EditShop({ shop, setShowUpdateForm2 }) {
+function EditShop({ shop, setShowUpdateForm3 }) {
 
 
   const history = useHistory();
@@ -66,15 +66,15 @@ function EditShop({ shop, setShowUpdateForm2 }) {
       if (data == 'invalidName') {
         setErrors(true)
         setHasSubmitted(false);
+        setShowUpdateForm3(true);
         setShowUpdateForm(true);
-        setShowUpdateForm2(true);
 
       } else {
         await dispatch(fetchUserShopThunk())
         console.log('%%%%%%%%%%%%%%%%%%%', errors)
         setHasSubmitted(true);
+        setShowUpdateForm3(false);
         setShowUpdateForm(false);
-        setShowUpdateForm2(false);
         history.push(`/shop`);
 
       }
@@ -82,7 +82,7 @@ function EditShop({ shop, setShowUpdateForm2 }) {
   }
 
   const handleCancel = async (e) => {
-    setShowUpdateForm2(false);
+    setShowUpdateForm3(false);
   };
 
   const handleDelete = async (e) => {

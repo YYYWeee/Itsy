@@ -48,7 +48,7 @@ button {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 1000px;
-  height: 1000px;
+  height: 300px;
   gap: 1rem;
   text-align: center;
   margin: 1rem auto;
