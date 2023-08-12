@@ -7,6 +7,7 @@ from .auth_routes import validation_errors_to_error_messages
 
 from app.models import db, Shop, Product, User
 from app.forms.create_product_form import ProductForm
+from app.forms.edit_product_form import EditProductForm
 from sqlalchemy import and_, case
 from sqlalchemy.sql import func
 
@@ -58,5 +59,48 @@ def new_item():
     print(form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
+
+#*************************************************************************#
+#update a product
+@item_routes.route('/<int:itemId>', methods=["PUT"])
+@login_required
+def edit_item(itemId):
+    form = EditProductForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    target_item = Product.query.get(itemId)
+
+    if form.validate_on_submit():
+        image_file = form.data["image"]
+        image_file2 = form.data["image2"]
+        image_file3 = form.data["image3"]
+
+        image_file.filename = get_unique_filename(image_file.filename)
+        image_file2.filename = get_unique_filename(image_file2.filename)
+        image_file3.filename = get_unique_filename(image_file3.filename)
+
+        upload = upload_file_to_s3(image_file)
+        upload2 = upload_file_to_s3(image_file2)
+        upload3 = upload_file_to_s3(image_file3)
+
+        target_item.name = form.data['title']
+        target_item.description = form.data['price']
+        target_item.description = form.data['description']
+        target_item.img_1 = upload["url"]
+        target_item.img_2 = upload2["url"]
+        target_item.img_3 = upload3["url"]
+
+        db.session.commit()
+        response = target_item.to_dict()
+    return response
+
+#*************************************************************************#
+# delete a product
+@item_routes.route('<int:itemId>', methods=["DELETE"])
+@login_required
+def delete_item(itemId):
+    targetItem = Product.query.get(itemId)
+    db.session.delete(targetItem)
+    db.session.commit()
+    return {"id": targetItem.id}
 
 #*************************************************************************#

@@ -235,7 +235,7 @@ textarea[name="altText"]::placeholder {
 
 
 .error-section{
-  font-size: 14px;
+  font-size: 16px;
   color: rgb(230, 17, 17);
   margin-bottom: 20px;
   text-align: end;

@@ -15,3 +15,16 @@
   padding: 14px;
   cursor: pointer;
 }
+
+.img-container{
+  text-align: center;
+}
+.shop-img{
+  border-radius: 10px;
+}
+
+ .shop-container-info{
+  display: flex;
+  flex-direction: column;
+
+}

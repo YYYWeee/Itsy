@@ -16,7 +16,6 @@ function EditShop({ shop, setShowUpdateForm2 }) {
   const [errors, setErrors] = useState(false);
   const [errors2, setErrors2] = useState(false);
   const [lengthError, setLengthError] = useState(false)
-  const [descriptionError, setDescriptionError] = useState(false)
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef1 = useRef();
@@ -47,37 +46,31 @@ function EditShop({ shop, setShowUpdateForm2 }) {
     if (e.target.value.length <= 20 && /^[a-zA-Z0-9]*$/.test(e.target.value)) setName(e.target.value)
   }
 
-  const handleDescription = e => {
-    if (e.target.value.length <= 500) setDescription(e.target.value)
-  }
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!lengthError) {
+    setHasSubmitted(true);
+    let payload = {
+      name: name,
+      description: description,
+    };
+
+    const data = await dispatch(updateShopThunk(payload))
+
+    if (data == 'invalidName') {
+      setErrors(true)
+      setHasSubmitted(false);
+      setShowUpdateForm(true);
+      setShowUpdateForm2(true);
+
+    } else {
+      await dispatch(fetchUserShopThunk())
+      console.log('%%%%%%%%%%%%%%%%%%%', errors)
       setHasSubmitted(true);
-      let payload = {
-        name: name,
-        description: description,
-      };
+      setShowUpdateForm(false);
+      setShowUpdateForm2(false);
+      history.push(`/shop`);
 
-      const data = await dispatch(updateShopThunk(payload))
-
-      if (data == 'invalidName') {
-        setErrors(true)
-        setHasSubmitted(false);
-        setShowUpdateForm(true);
-        setShowUpdateForm2(true);
-
-      } else {
-        await dispatch(fetchUserShopThunk())
-        console.log('%%%%%%%%%%%%%%%%%%%', errors)
-        setHasSubmitted(true);
-        setShowUpdateForm(false);
-        setShowUpdateForm2(false);
-        history.push(`/shop`);
-
-      }
     }
   }
 
@@ -90,14 +83,6 @@ function EditShop({ shop, setShowUpdateForm2 }) {
     await dispatch(fetchUserShopThunk());
     history.push(`/shop`);
   };
-
-  useEffect(() => {
-    setLengthError(name.length < 4)
-  }, [name])
-
-  useEffect(() => {
-    setDescriptionError(description.length < 20)
-  }, [description])
 
 
   return (
@@ -125,7 +110,6 @@ function EditShop({ shop, setShowUpdateForm2 }) {
 
                       </div>
                       {errors && <div className='error-section'><i class="fa-solid fa-triangle-exclamation fa-xl"></i>Looks like this name is already taken.</div>}
-                      {lengthError && <div className='error-section'><i class="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
                       <div className="description-area">
                         <label>Description </label>
                         <textarea
@@ -133,12 +117,10 @@ function EditShop({ shop, setShowUpdateForm2 }) {
                           className="text-input-box"
                           name="description"
                           value={description}
-                          // onChange={(e) => setDescription(e.target.value)}
-                          onChange={handleDescription}
+                          onChange={(e) => setDescription(e.target.value)}
                           placeholder="Description "
                         />
                       </div>
-                      {descriptionError && <div className='error-section'><i class="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
                     </div>
                     <div className="right-container">
                       <div className="pic-container">

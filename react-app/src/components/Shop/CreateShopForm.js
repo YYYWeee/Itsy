@@ -21,8 +21,30 @@ function CreateShopForm({ setShowCreateForm2 }) {
   const [noPicture, setNoPicture] = useState(false);
   const uploadInput = useRef();
   const user_shop = useSelector(state => state.session.user.shop)
+  const [lengthError, setLengthError] = useState(false)
+  const [descriptionError, setDescriptionError] = useState(false)
+
+  useEffect(() => {
+    setLengthError(name.length < 4)
+  }, [name])
+  useEffect(() => {
+    setDescriptionError(description.length < 20)
+  }, [description])
+
 
   if (user_shop) return <Redirect to="/shop" />;
+
+  const handleName = e => {
+    if (e.target.value.length <= 20 && /^[a-zA-Z0-9]*$/.test(e.target.value)) setName(e.target.value)
+  }
+
+  const handleDescription = e => {
+    if (e.target.value.length <= 500) setDescription(e.target.value)
+  }
+
+
+
+
 
 
   const handlePhoto = async ({ currentTarget }) => {
@@ -42,54 +64,43 @@ function CreateShopForm({ setShowCreateForm2 }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setHasSubmitted(true);
+    if (!lengthError && !descriptionError) {
+      setHasSubmitted(true);
 
-    if (image == null) {
-      setNoPicture(true);
-      return;
+      if (image == null) {
+        setNoPicture(true);
+        return;
+      }
+      let formData = new FormData();
+
+      formData.append("image", image);
+      formData.append("name", name);
+      formData.append("description", description);
+
+      const formDataObject = {};
+      for (let [key, value] of formData.entries()) {
+        formDataObject[key] = value;
+      }
+      console.log("formData in create shop form", formDataObject);
+
+
+      const data = await dispatch(createNewShopThunk(formData))
+      // console.log('data!!!!!', data)
+
+      if (data['errors']) {
+        console.log('here')
+        setErrors(true)
+      } else {
+        setName("");
+        setHasSubmitted(false);
+        history.push(`/shop`);
+      }
     }
-    let formData = new FormData();
-
-    formData.append("image", image);
-    formData.append("name", name);
-    formData.append("description", description);
-
-    const formDataObject = {};
-    for (let [key, value] of formData.entries()) {
-      formDataObject[key] = value;
-    }
-    console.log("formData in create shop form", formDataObject);
-
-
-    const data = await dispatch(createNewShopThunk(formData))
-      .then(res => {
-        if (res) {
-          setErrors(true)
-          console.log('data@@@@@@@@', res)
-          console.log('errors@@@@@@', errors)
-          setHasSubmitted(false);
-        }
-      })
-
-
-    setName("");
-    // setDescription("");
-    // setImage("");
-    setHasSubmitted(false);
-
-    // history.push(`/`)
-    // if (errors == false) {
-    //   history.push(`/shop`);
-    // }
   }
-
 
   return (
     <>
       <div className="form-page">
-        {errors && <div className='error-section'>Looks like this name is already taken.</div>}
-
-
         <form onSubmit={(e) => handleSubmit(e)} encType="multipart/form-data">
           <div className="form-container">
             <div
@@ -114,8 +125,8 @@ function CreateShopForm({ setShowCreateForm2 }) {
                   <i className="fa-solid fa-upload"></i>
                   <div>
                     {!noPicture
-                      ? "Click to upload."
-                      : "Shop image is required."}
+                      ? "Click to upload. The recommended size for shop icons is 500 x 500px"
+                      : "Shop Profile image is required."}
                   </div>
                 </div>
               )}
@@ -124,12 +135,12 @@ function CreateShopForm({ setShowCreateForm2 }) {
 
             <div className="rightContainer">
               <div className="saveButton-container">
-                <button type="submit" className="saveButton">
+                <button type="submit" className="saveButton" disabled={descriptionError}>
                   Save
                 </button>
               </div>
               <div>
-                <div>Name your shop</div>
+                <div><h1>Name your shop</h1></div>
                 <div>Don't sweat it! You can just draft a name now and change it later. We find sellers often draw inspiration from what they sell, their style, pretty much anything goes</div>
               </div>
               <input
@@ -137,16 +148,22 @@ function CreateShopForm({ setShowCreateForm2 }) {
                 type="text"
                 value={name}
                 placeholder="Enter your shop name"
-                onChange={(e) => setName(e.target.value)}
+                // onChange={(e) => setName(e.target.value)}
+                onChange={handleName}
                 required
               ></input>
-              <input
+              {errors && <div className='error-section'>Looks like this name is already taken.</div>}
+              {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
+              <textarea
                 className="description"
                 value={description}
                 placeholder="Description"
-                onChange={(e) => setDescription(e.target.value)}
-              ></input>
-              {/* {isInUseName && <div className='error-section'>Looks like this name is already taken.</div>} */}
+                // onChange={(e) => setDescription(e.target.value)}
+                onChange={handleDescription}
+              />
+
+              {/* </input> */}
+              {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
             </div>
           </div>
         </form>

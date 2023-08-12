@@ -39,39 +39,6 @@ export const fetchUserShopThunk = () => async (dispatch) => {
   }
 };
 
-// export const fetchAllShopsThunk = () => async (dispatch) => {
-//   const res = await fetch('/api/shop/');
-//   console.log('res',res)
-//   if (res.ok) {
-//     const shops = await res.json();
-//     dispatch(fetchAllShops(shops));
-//     return shops;
-//   } else {
-//     const errors = await res.json();
-//     console.log(errors);
-//     return errors;
-//   }
-// };
-
-// export const createNewShopThunk = (shop) => async (dispatch) => {
-//   console.log('in the thunk!!!!!!!!!!!!!!!!!!')
-//   const response = await fetch(`/api/shop`, {
-//     method: "POST",
-//     body: shop,
-//   });
-//   console.log("RESPONSE FROM SERVER", response);
-//   if (response.ok) {
-//     const newShop = await response.json();
-//     console.log("NEW SHOP DATA", newShop);
-
-//     dispatch(loadUserShopAction());
-//     return newShop;
-//   } else {
-//     console.log("There was an error creating your shop!");
-//   }
-
-// }
-
 export const createItemThunk = (item) => async (dispatch) => {
   const response = await fetch(`/api/items`, {
     method: "POST",
@@ -86,7 +53,7 @@ export const createItemThunk = (item) => async (dispatch) => {
   }
 }
 
-// **********************************************************************
+// ************************Reducer**********************************************
 const initialState = { allShops: {}, singleShop: {} };
 
 const shopsReducer = (state = initialState, action) => {
@@ -113,7 +80,7 @@ const shopsReducer = (state = initialState, action) => {
         ...state,
         singleShop: {
           ...state.singleShop,
-          products: [...state.singleShop.products, newProduct],
+          // products: [...state.singleShop.products, newProduct],
         },
       };
 

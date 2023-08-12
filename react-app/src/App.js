@@ -11,6 +11,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+import ItemDetail from "./components/Shop/ItemDetail";
 // import MainProductList from "./components/MainProductList";
 
 function App() {
@@ -45,10 +46,9 @@ function App() {
           </Route> */}
 
 
-          {/* <Route exact path="/listing/:itemId">
+          <Route exact path="/listings/:itemId">
             <ItemDetail />
-          </Route> */}
-
+          </Route>
           <Route exact path="/items/new">
             <CreateProductForm />
           </Route>
