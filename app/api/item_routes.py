@@ -83,7 +83,7 @@ def edit_item(itemId):
     print('backend@@@@@@@@@@',target_item)
     print('backend@@@@@@@@@@',form.data)
     # backend@@@@@@@@@@ {'title': None, 'price': None, 'description': None, 'image': None, 'image2': None, 'image3': None, 'csrf_token': 'IjVhZDMwMDBmYTA5ZWJmNmJlZTE3ODc2ZTYwNzMwZGM3NjQ0NjcwOWMi.ZNhp8A.L798mcn9BWiYOTSx2IRMOpUuioY'}
-
+    print('here@@@@@@@@@@',form.data['name'])
 
     if form.validate_on_submit():
         print('pass!!!!!')

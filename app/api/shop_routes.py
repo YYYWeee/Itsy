@@ -87,7 +87,7 @@ def edit_shop():
     form = EditShopForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     target_shop = Shop.query.filter_by(owner_id=current_user.id).first()
-    print('Form Data:@@@@@@@@@@@@', form)
+    print('###@@@@@@@@@@@@@@@@@@@@@@@here##',form.data['name'])
 
     if form.validate_on_submit():
         target_shop.name = form.data['name']

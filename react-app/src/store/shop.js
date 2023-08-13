@@ -66,15 +66,15 @@ export const createItemThunk = (item) => async (dispatch) => {
 
 
 export const updateItemThunk = (updateItem, id) => async (dispatch) => {
-  const response = await fetch(`/api/items/${id}`, {
+  // console.log('RRRRRRRRRRRRRRRR',updateItem)   //FormData {} empty is right!!!!
+  const response = await fetch(`/api/items/${id}`, {    //-->problem
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(updateItem),
-
   });
-  console.log('!!!!!!!!!!!in the update item thunk!!!!!!!!')
+  console.log('!!!!!!!!!!!in the update item thunk!!!!!!!!',response)  //nothing here
   let updatedItem = await response.json();
   console.log("updated Item", updatedItem);
 

@@ -211,7 +211,7 @@ function EditItem() {
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
-      console.log("formData in update item form  &&&&&&&&&&&&&", formDataObject);
+      console.log("formData in update item form  &&&&&&&&&&&&&", formDataObject);  //collect correct info
 
       const data = await dispatch(updateItemThunk(formData, itemId))
 
