@@ -30,21 +30,7 @@ def get_one_shop(shopId):
 
 
 #*************************************************************************#
-# Query for shop that is own by current user
-# not include the items in the shop (old)
 
-# @shop_routes.route('')
-# @login_required
-# def get_your_shop():
-#     target_shop = Shop.query.filter_by(owner_id=current_user.id).first()
-
-#     if not target_shop:
-#         return jsonify({"message": "No shop"}), 404
-
-#     response = target_shop.to_dict()
-#     return response
-
-###############################test@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # Query for shop that is own by current user
 # also add all the items in the shop
 # important
@@ -100,10 +86,10 @@ def new_shop():
 def edit_shop():
     form = EditShopForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("in update route backend@@@@@@@@@@@@@@@@@@@@@@@", form.data)
     target_shop = Shop.query.filter_by(owner_id=current_user.id).first()
+    print('Form Data:@@@@@@@@@@@@', form)
+
     if form.validate_on_submit():
-        print("we pass validation!!!!!!!!!!!!!!!!!!!")
         target_shop.name = form.data['name']
         target_shop.description = form.data['description']
 

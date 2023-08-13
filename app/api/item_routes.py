@@ -21,6 +21,17 @@ item_routes = Blueprint('items', __name__)
 def get_all_items():
     items = Product.query.all()
     return {'items': [item.to_dict() for item in items]}
+#*************************************************************************#
+# get one item/product
+
+@item_routes.route('/<int:itemId>')
+def get_one_item(itemId):
+    item = Product.query.get(itemId)
+    if not item:
+        return jsonify({"message": "item not found"}), 404
+    response = item.to_dict()
+    print('response!!!!!!',response)
+    return response
 
 #*************************************************************************#
 # create a product
@@ -69,9 +80,13 @@ def edit_item(itemId):
     form = EditProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     target_item = Product.query.get(itemId)
-    print('backend@@@@@@',target_item)
+    print('backend@@@@@@@@@@',target_item)
+    print('backend@@@@@@@@@@',form.data)
+    # backend@@@@@@@@@@ {'title': None, 'price': None, 'description': None, 'image': None, 'image2': None, 'image3': None, 'csrf_token': 'IjVhZDMwMDBmYTA5ZWJmNmJlZTE3ODc2ZTYwNzMwZGM3NjQ0NjcwOWMi.ZNhp8A.L798mcn9BWiYOTSx2IRMOpUuioY'}
+
 
     if form.validate_on_submit():
+        print('pass!!!!!')
         image_file = form.data["image"]
         image_file2 = form.data["image2"]
         image_file3 = form.data["image3"]
@@ -84,12 +99,13 @@ def edit_item(itemId):
         upload2 = upload_file_to_s3(image_file2)
         upload3 = upload_file_to_s3(image_file3)
 
-        target_item.name = form.data['title']
-        target_item.description = form.data['price']
+        target_item.title = form.data['title']
+        target_item.price = form.data['price']
         target_item.description = form.data['description']
         target_item.img_1 = upload["url"]
         target_item.img_2 = upload2["url"]
         target_item.img_3 = upload3["url"]
+
 
         db.session.commit()
         response = target_item.to_dict()

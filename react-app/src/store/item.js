@@ -1,38 +1,46 @@
 /** Action Type Constants: */
 
-// const CREATE_ITEM = 'item/CREATE_ITEM';
-
+export const LOAD_ONE_ITEM = "items/LOAD_ONE_ITEM";
 
 /**  Action Creators: */
 
-// export const createItem = (item) => ({
-//   type: CREATE_ITEM,
-//   payload: item,
-// });
-
+export const loadOneItemAction = (item) => ({
+  type: LOAD_ONE_ITEM,
+  item,
+});
 
 /** Thunk: */
-// export const createItemThunk = (item) => async (dispatch) => {
-//   const response = await fetch(`/api/items`, {
-//     method: "POST",
-//     body: item,
-//   });
-//   if (response.ok) {
-//     const newShop = await response.json()
-//     // dispatch(setShop(newShop.id))
-//     return newShop
-//   } else {
-//     // console.log("There was an error creating your shop!");
-//     return 'invalidName'
-//   }
-// }
 
 
+export const fetchOneItemThunk = (itemId) => async (dispatch) => {
+  console.log('in the thunk !!!!!!!')
+  const res = await fetch(`/api/items/${itemId}`);
+  if (res.ok) {
+    const data = await res.json();
+    console.log('@@@@@@@@  Target Product @@@@@@@@@@@@@@@@@@@@@', data)
+    dispatch(loadOneItemAction(data));
+    return data
+  } else {
+    const errors = await res.json();
+    return errors;
+  }
+};
 
+
+/** Reducer: */
 const initialState = { allItems: {}, singleItem: {} };
 
 const itemsReducer = (state = initialState, action) => {
+  console.log('in reducer')
 
+  switch (action.type) {
+    case LOAD_ONE_ITEM:
+      return { ...state, singleItem: { ...action.item } };
+
+
+    default:
+      return state;
+  }
 
 
 }

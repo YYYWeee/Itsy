@@ -16,7 +16,7 @@ function ProductList() {
   const [targetId, setTargetId] = useState('');
 
 
-  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  // const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   if (!items) return null;
 
@@ -26,14 +26,59 @@ function ProductList() {
   };
 
   const handleUpdate = (itemId) => {
-    setShowUpdateForm(true);
-    setTargetId(itemId)
-
+    // setShowUpdateForm(true);
+    // setTargetId(itemId)
+    history.push(`/item/${itemId}/edit`);
   };
 
-  return showUpdateForm === true ?
-    (<EditItem itemId={targetId} setShowUpdateForm3={showUpdateForm} />
-    ) : (
+  // return showUpdateForm === true ?
+  //   (<EditItem itemId={targetId} setShowUpdateForm3={showUpdateForm} />
+  //   ) : (
+  //     <div className="page-container">
+  //       <div className="top-container">
+  //         <h1> Product list</h1 >
+  //         <div className="create-item-btn">
+  //           <button onClick={handleAddProduct}>Add product</button>
+  //         </div>
+  //       </div >
+
+  //       {items.length ?
+  //           (<div className="items-container">
+  //             {items.map((item) => {
+  //               return (
+  //                 <>
+  //                   <div className="single-product-container" key={item.id}>
+  //                     <img
+  //                       className="preview-image"
+  //                       src={item.img_1}
+  //                       alt={item.img_1}
+  //                       onClick={() => history.push(`/listings/${item.id}`)}
+  //                     />
+
+  //                     <div className="price">${item.price}</div>
+  //                     <div>
+  //                       <button
+  //                         className="update-btn"
+  //                         onClick={() => handleUpdate(item.id)}
+  //                       >
+  //                         <i className="fa-solid fa-pen-to-square fa-lg"></i>
+  //                       </button>
+  //                     </div>
+  //                   </div>
+  //                 </>
+  //               );
+  //             }
+  //             )}
+  //           </div>) : (
+  //             <div>
+  //               <div><h2>Your don't have any items in your shop</h2></div>
+  //             </div>
+  //           )
+  //       }
+  //     </div >
+  //   )
+  return (
+    <>
       <div className="page-container">
         <div className="top-container">
           <h1> Product list</h1 >
@@ -43,40 +88,41 @@ function ProductList() {
         </div >
 
         {items.length ?
-            (<div className="items-container">
-              {items.map((item) => {
-                return (
-                  <>
-                    <div className="single-product-container" key={item.id}>
-                      <img
-                        className="preview-image"
-                        src={item.img_1}
-                        alt={item.img_1}
-                        onClick={() => history.push(`/listings/${item.id}`)}
-                      />
+          (<div className="items-container">
+            {items.map((item) => {
+              return (
+                <>
+                  <div className="single-product-container" key={item.id}>
+                    <img
+                      className="preview-image"
+                      src={item.img_1}
+                      alt={item.img_1}
+                      onClick={() => history.push(`/listings/${item.id}`)}
+                    />
 
-                      <div className="price">${item.price}</div>
-                      <div>
-                        <button
-                          className="update-btn"
-                          onClick={() => handleUpdate(item.id)}
-                        >
-                          <i className="fa-solid fa-pen-to-square fa-lg"></i>
-                        </button>
-                      </div>
+                    <div className="price">${item.price}</div>
+                    <div>
+                      <button
+                        className="update-btn"
+                        onClick={() => handleUpdate(item.id)}
+                      >
+                        <i className="fa-solid fa-pen-to-square fa-lg"></i>
+                      </button>
                     </div>
-                  </>
-                );
-              }
-              )}
-            </div>) : (
-              <div>
-                <div><h2>Your don't have any items in your shop</h2></div>
-              </div>
-            )
+                  </div>
+                </>
+              );
+            }
+            )}
+          </div>) : (
+            <div>
+              <div><h2>Your don't have any items in your shop</h2></div>
+            </div>
+          )
         }
       </div >
-    )
+    </>
+  )
 }
 
 export default ProductList;

@@ -174,12 +174,11 @@ function CreateProductForm() {
       formData.append("price", price);
 
 
-
-
       const formDataObject = {};
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
+      console.log('formData!!!',formData)
       console.log("formData in create product form", formDataObject);
 
 
