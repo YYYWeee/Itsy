@@ -7,7 +7,7 @@ import { fetchUserShopThunk } from "../../store/shop"
 
 
 
-function EditItem({ itemId, setShowUpdateForm2 }) {
+function EditItem({ itemId, setShowUpdateForm3 }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState(false);
@@ -32,20 +32,9 @@ function EditItem({ itemId, setShowUpdateForm2 }) {
       targetItem = item
     }
   });
-  console.log('I want to edit this item!!!!!!!!!!!', targetItem)
+  // console.log('I want to edit this item!!!!!!!!!!!', targetItem)
 
-  useEffect(() => {
-    setTitle(targetItem.title)
-    setPrice(targetItem.price)
-    setDescription(targetItem.description)
-    setImage(targetItem.image_1)
-    setImage2(targetItem.image_2)
-    setImage3(targetItem.image_3)
-
-  }, [targetItem]);
-
-
-  const [showUpdateForm, setShowUpdateForm] = useState(true);
+  const [showUpdateForm5, setShowUpdateForm5] = useState(true);
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -73,6 +62,30 @@ function EditItem({ itemId, setShowUpdateForm2 }) {
   const uploadInput3 = useRef();
 
   const [modal, setModal] = useState(false);
+
+
+  useEffect(() => {
+    setTitle(targetItem.title)
+    setPrice(targetItem.price)
+    setDescription(targetItem.description)
+
+    setImage(targetItem.img_1)
+    setImage2(targetItem.img_2)
+    setImage3(targetItem.img_3)
+
+    setPhoto(targetItem.img_1)
+    setPhoto2(targetItem.img_2)
+    setPhoto3(targetItem.img_3)
+
+    setPhotoUrl(targetItem.img_1)
+    setPhotoUrl2(targetItem.img_2)
+    setPhotoUrl3(targetItem.img_3)
+
+    setNoPicture(false)
+    setNoPicture2(false)
+    setNoPicture3(false)
+
+  }, [targetItem]);
 
   useEffect(() => {
     setLengthError(title.length < 4)
@@ -138,7 +151,7 @@ function EditItem({ itemId, setShowUpdateForm2 }) {
 
   useEffect(() => {
     const errorsArray = [];
-    console.log('!!!!!!!!', isNaN(price))
+    // console.log('!!!!!!!!', isNaN(price))
     if (!price) {
       errorsArray.push("Price is required")
     } else if (isNaN(price)) {
@@ -146,7 +159,6 @@ function EditItem({ itemId, setShowUpdateForm2 }) {
     } else if (price * 1 <= 0) {
       errorsArray.push('Price should be greater than 0')
     }
-
     setErrors(errorsArray);
   }, [price])
 
@@ -195,24 +207,25 @@ function EditItem({ itemId, setShowUpdateForm2 }) {
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
-      console.log("formData in update item form", formDataObject);
+      console.log("formData in update item form&&&&&&&&&&&&&", formDataObject);
 
-      const data = await dispatch(updateItemThunk(formData,targetItem['id']))
-        .then(res => {
-          if (res) {
-            setHasSubmitted(false);
-          }
-        })
-      await dispatch(fetchUserShopThunk())
-      setHasSubmitted(true);
-      setShowUpdateForm(false);
-      setShowUpdateForm2(false);
-      history.push(`/shop`);
+      const data = await dispatch(updateItemThunk(formData, targetItem.id))
+      if (data) {
+        setHasSubmitted(false);
+        setShowUpdateForm3(true);
+        setShowUpdateForm5(true);
+      } else {
+        await dispatch(fetchUserShopThunk())
+        setHasSubmitted(true);
+        setShowUpdateForm3(false);
+        setShowUpdateForm5(false);
+        history.push(`/shop`);
+      }
     }
   }
 
   const handleCancel = async (e) => {
-    setShowUpdateForm2(false);
+    setShowUpdateForm3(false);
   };
 
   const handleDelete = async (e) => {
@@ -225,155 +238,157 @@ function EditItem({ itemId, setShowUpdateForm2 }) {
 
   return (
     <>
-      <div className="form-page">
-        <form onSubmit={(e) => handleSubmit(e)} encType="multipart/form-data">
-          <div className="form-container">
-            <div className="image-container">
+      {showUpdateForm5 && (
+        <div className="form-page">
+          <form onSubmit={(e) => handleSubmit(e)} encType="multipart/form-data">
+            <div className="form-container">
+              <div className="image-container">
 
-              {/* first image */}
-              <div
-                id="first-image-Container"
-                className={noPicture ? "no-picture cursor" : "cursor"}
-                onClick={() => uploadInput.current.click()}
-              >
-                <input
-                  className="uploadButton"
-                  id="image"
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg, image/gif"
-                  onChange={handlePhoto}
-                  ref={uploadInput}
-                  style={{ display: "none" }}
-                />
-                {preview || (
-                  <div
-                    id="upload-sign-box-text"
-                    className={noPicture ? "no-picture" : ""}
-                  >
-                    <i className="fa-solid fa-upload"></i>
-                    <div>
-                      {!noPicture
-                        ? "Click to upload."
-                        : "Product image is required."}
+                {/* first image */}
+                <div
+                  id="first-image-Container"
+                  className={noPicture ? "no-picture cursor" : "cursor"}
+                  onClick={() => uploadInput.current.click()}
+                >
+                  <input
+                    className="uploadButton"
+                    id="image"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg, image/gif"
+                    onChange={handlePhoto}
+                    ref={uploadInput}
+                    style={{ display: "none" }}
+                  />
+                  {preview || (
+                    <div
+                      id="upload-sign-box-text"
+                      className={noPicture ? "no-picture" : ""}
+                    >
+                      <i className="fa-solid fa-upload"></i>
+                      <div>
+                        {!noPicture
+                          ? "Click to upload."
+                          : "Product image is required."}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-              {/* first image end */}
+                  )}
+                </div>
+                {/* first image end */}
 
-              {/* second image */}
+                {/* second image */}
 
-              <div
-                id="second-image-Container"
-                className={noPicture2 ? "no-picture2 cursor" : "cursor"}
-                onClick={() => uploadInput2.current.click()}
-              >
-                <input
-                  className="uploadButton"
-                  id="image2"
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg, image/gif"
-                  onChange={handlePhoto2}
-                  ref={uploadInput2}
-                  style={{ display: "none" }}
-                />
-                {preview2 || (
-                  <div
-                    id="upload-sign-box-text"
-                    className={noPicture2 ? "no-picture2" : ""}
-                  >
-                    <i className="fa-solid fa-upload"></i>
-                    <div>
-                      {!noPicture2
-                        ? "Click to upload."
-                        : "Product image is required."}
+                <div
+                  id="second-image-Container"
+                  className={noPicture2 ? "no-picture2 cursor" : "cursor"}
+                  onClick={() => uploadInput2.current.click()}
+                >
+                  <input
+                    className="uploadButton"
+                    id="image2"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg, image/gif"
+                    onChange={handlePhoto2}
+                    ref={uploadInput2}
+                    style={{ display: "none" }}
+                  />
+                  {preview2 || (
+                    <div
+                      id="upload-sign-box-text"
+                      className={noPicture2 ? "no-picture2" : ""}
+                    >
+                      <i className="fa-solid fa-upload"></i>
+                      <div>
+                        {!noPicture2
+                          ? "Click to upload."
+                          : "Product image is required."}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
 
-              {/* second image end */}
+                {/* second image end */}
 
-              {/* third image  */}
-              <div
-                id="third-image-Container"
-                className={noPicture3 ? "no-picture3 cursor" : "cursor"}
-                onClick={() => uploadInput3.current.click()}
-              >
-                <input
-                  className="uploadButton"
-                  id="image"
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg, image/gif"
-                  onChange={handlePhoto3}
-                  ref={uploadInput3}
-                  style={{ display: "none" }}
-                />
-                {preview3 || (
-                  <div
-                    id="upload-sign-box-text"
-                    className={noPicture3 ? "no-picture3" : ""}
-                  >
-                    <i className="fa-solid fa-upload"></i>
-                    <div>
-                      {!noPicture3
-                        ? "Click to upload."
-                        : "Product image is required."}
+                {/* third image  */}
+                <div
+                  id="third-image-Container"
+                  className={noPicture3 ? "no-picture3 cursor" : "cursor"}
+                  onClick={() => uploadInput3.current.click()}
+                >
+                  <input
+                    className="uploadButton"
+                    id="image"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg, image/gif"
+                    onChange={handlePhoto3}
+                    ref={uploadInput3}
+                    style={{ display: "none" }}
+                  />
+                  {preview3 || (
+                    <div
+                      id="upload-sign-box-text"
+                      className={noPicture3 ? "no-picture3" : ""}
+                    >
+                      <i className="fa-solid fa-upload"></i>
+                      <div>
+                        {!noPicture3
+                          ? "Click to upload."
+                          : "Product image is required."}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
+                {/* third image end */}
               </div>
-              {/* third image end */}
+              <div className="product-detail-Container">
+                <div className="saveButton-container">
+                  <button type="submit" className="saveButton" disabled={errors.length > 0}>
+                    Save
+                  </button>
+                </div>
+                <div>
+                  <h1>Update your listing</h1>
+                  <div>Add some photos and details about your item. </div>
+                  <div>Fill out what you can for now—you'll be able to edit this later.</div>
+                </div>
+
+                <input
+                  className="name"
+                  type="text"
+                  value={title}
+                  placeholder="Title"
+                  // onChange={(e) => setTitle(e.target.value)}
+                  onChange={handleTitle}
+                  required
+                ></input>
+                {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
+                <textarea
+                  className="description"
+                  value={description}
+                  placeholder="Description"
+                  // onChange={(e) => setDescription(e.target.value)}
+                  onChange={handleDescription}
+                />
+                {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
+                <input
+                  className="price"
+                  value={price}
+                  placeholder="Price"
+                  style={{ textAlign: 'right' }}
+                  // onChange={(e) => setPrice(e.target.value)}
+                  onChange={handlePrice}
+
+                ></input>
+                <p className='errors'>{errors && errors.filter((validation) =>
+                  validation.includes("required"))}</p>
+                <p className='errors'>{errors && errors.filter((validation) =>
+                  validation.includes("Invalid"))}</p>
+                <p className='errors'>{errors && errors.filter((validation) =>
+                  validation.includes("greater"))}</p>
+              </div>
             </div>
-            <div className="product-detail-Container">
-              <div className="saveButton-container">
-                <button type="submit" className="saveButton" disabled={errors.length > 0}>
-                  Save
-                </button>
-              </div>
-              <div>
-                <h1>Update your listing</h1>
-                <div>Add some photos and details about your item. </div>
-                <div>Fill out what you can for now—you'll be able to edit this later.</div>
-              </div>
-
-              <input
-                className="name"
-                type="text"
-                value={title}
-                placeholder="Title"
-                // onChange={(e) => setTitle(e.target.value)}
-                onChange={handleTitle}
-                required
-              ></input>
-              {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
-              <textarea
-                className="description"
-                value={description}
-                placeholder="Description"
-                // onChange={(e) => setDescription(e.target.value)}
-                onChange={handleDescription}
-              />
-              {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
-              <input
-                className="price"
-                value={price}
-                placeholder="Price"
-                style={{ textAlign: 'right' }}
-                // onChange={(e) => setPrice(e.target.value)}
-                onChange={handlePrice}
-
-              ></input>
-              <p className='errors'>{errors && errors.filter((validation) =>
-                validation.includes("required"))}</p>
-              <p className='errors'>{errors && errors.filter((validation) =>
-                validation.includes("Invalid"))}</p>
-              <p className='errors'>{errors && errors.filter((validation) =>
-                validation.includes("greater"))}</p>
-            </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      )}
     </>
   )
 

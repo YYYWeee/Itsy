@@ -32,8 +32,8 @@ function ProductList() {
   };
 
   return showUpdateForm === true ?
-    (<EditItem itemId={targetId} setShowUpdateForm2={showUpdateForm} />) :
-    (
+    (<EditItem itemId={targetId} setShowUpdateForm3={showUpdateForm} />
+    ) : (
       <div className="page-container">
         <div className="top-container">
           <h1> Product list</h1 >
@@ -42,8 +42,7 @@ function ProductList() {
           </div>
         </div >
 
-        {
-          items.length ?
+        {items.length ?
             (<div className="items-container">
               {items.map((item) => {
                 return (

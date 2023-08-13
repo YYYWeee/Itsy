@@ -69,6 +69,7 @@ def edit_item(itemId):
     form = EditProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     target_item = Product.query.get(itemId)
+    print('backend@@@@@@',target_item)
 
     if form.validate_on_submit():
         image_file = form.data["image"]
@@ -92,7 +93,10 @@ def edit_item(itemId):
 
         db.session.commit()
         response = target_item.to_dict()
-    return response
+        return response
+    if form.errors:
+        print(form.errors)
+        return form.errors
 
 #*************************************************************************#
 # delete a product

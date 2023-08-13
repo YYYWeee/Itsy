@@ -76,7 +76,7 @@ export const updateItemThunk = (updateItem, id) => async (dispatch) => {
   });
   let updatedItem = await response.json();
   console.log("updated Item", updatedItem);
-  dispatch(LOAD_USER_SHOP());
+  dispatch(loadUserShopAction());
   return updatedItem;
 };
 
