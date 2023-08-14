@@ -211,17 +211,10 @@ function EditItem() {
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
-      console.log("formData in update item form  &&&&&&&&&&&&&", formDataObject);  //collect correct info
+      console.log("formData in update item form ~~~~~~~~~~~~~", formDataObject);  //collect correct info
 
       const data = await dispatch(updateItemThunk(formData, itemId))
 
-      // if (data) {
-      //   setHasSubmitted(false);
-      // } else {
-      //   await dispatch(fetchUserShopThunk())
-      //   setHasSubmitted(true);
-      //   history.push(`/shop`);
-      // }
       history.push(`/shop`);
     }
   }

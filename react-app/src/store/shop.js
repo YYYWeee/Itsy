@@ -66,17 +66,24 @@ export const createItemThunk = (item) => async (dispatch) => {
 
 
 export const updateItemThunk = (updateItem, id) => async (dispatch) => {
-  // console.log('RRRRRRRRRRRRRRRR',updateItem)   //FormData {} empty is right!!!!
-  const response = await fetch(`/api/items/${id}`, {    //-->problem
+  const formDataObject = {};
+  for (let [key, value] of updateItem.entries()) {
+    formDataObject[key] = value;
+  }
+  console.log("~~~~~~~~~~~~~~formData thunks ~~~~~~~~~~~~~", formDataObject);
+
+  const response = await fetch(`/api/items/${id}`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(updateItem),
+    // headers: {
+      // "Content-Type": "application/json",
+      // "Content-Type": "multipart/form-data",
+    // },
+    // body: JSON.stringify(updateItem),
+    body: updateItem,
   });
-  console.log('!!!!!!!!!!!in the update item thunk!!!!!!!!',response)  //nothing here
+  console.log('!!!!!!!!!!!in the update item thunk!!!!!!!!', response)
   let updatedItem = await response.json();
-  console.log("updated Item", updatedItem);
+  console.log("updated Item in thunk", updatedItem);
 
   dispatch(loadUserShopAction());
   return updatedItem;

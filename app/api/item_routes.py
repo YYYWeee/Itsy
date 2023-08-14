@@ -40,8 +40,11 @@ def get_one_item(itemId):
 def new_item():
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('hihihiihiiiihiiiii',form.data)
+
 
     if form.validate_on_submit():
+        # print('!!!!!!!!!!!!!!!!!!!!!!!!!!!',form.data["image"])  #<FileStorage: '6.jpg' ('image/jpeg')>
         print('Pass validation')
         image_file = form.data["image"]
         image_file2 = form.data["image2"]
@@ -76,35 +79,48 @@ def new_item():
 @item_routes.route('/<int:itemId>', methods=["PUT"])
 @login_required
 def edit_item(itemId):
-    print('In the backend!!!!!!!!!')
     form = EditProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     target_item = Product.query.get(itemId)
-    print('backend@@@@@@@@@@',target_item)
-    print('backend@@@@@@@@@@',form.data)
-    # backend@@@@@@@@@@ {'title': None, 'price': None, 'description': None, 'image': None, 'image2': None, 'image3': None, 'csrf_token': 'IjVhZDMwMDBmYTA5ZWJmNmJlZTE3ODc2ZTYwNzMwZGM3NjQ0NjcwOWMi.ZNhp8A.L798mcn9BWiYOTSx2IRMOpUuioY'}
-    print('here@@@@@@@@@@',form.data['name'])
+    print('backend@@@@@@@@@@',form.data) # image is not able to send to backend (if I dont re-upload the first pic)
+    print('1-!!!!!!!!!!!!!!!!!!!!',form.data['image'])
+    print('2-!!!!!!!!!!!!!!!!!!!!',form.data['image2'])
+    print('3-!!!!!!!!!!!!!!!!!!!!',form.data['image3'])
+
+
 
     if form.validate_on_submit():
         print('pass!!!!!')
-        image_file = form.data["image"]
-        image_file2 = form.data["image2"]
-        image_file3 = form.data["image3"]
+        if(form.data["image"]):
+            image_file = form.data["image"]
+            image_file.filename = get_unique_filename(image_file.filename)
+            upload = upload_file_to_s3(image_file)
+            target_item.img_1 = upload["url"]
+        # else:
+        #     target_item.img_1 = form.data["image"]
+        if(type(form.data["image"])== __file__):
+            print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ a file')
 
-        image_file.filename = get_unique_filename(image_file.filename)
-        image_file2.filename = get_unique_filename(image_file2.filename)
-        image_file3.filename = get_unique_filename(image_file3.filename)
 
-        upload = upload_file_to_s3(image_file)
-        upload2 = upload_file_to_s3(image_file2)
-        upload3 = upload_file_to_s3(image_file3)
+        if(form.data["image2"]):
+            image_file2 = form.data["image2"]
+            image_file2.filename = get_unique_filename(image_file2.filename)
+            upload2 = upload_file_to_s3(image_file2)
+            target_item.img_2 = upload2["url"]
+        # else:
+        #     target_item.img_2 = form.data["image2"]
+
+        if(form.data["image3"]):
+            image_file3 = form.data["image3"]
+            image_file3.filename = get_unique_filename(image_file3.filename)
+            upload3 = upload_file_to_s3(image_file3)
+            target_item.img_3 = upload3["url"]
+        # else:
+        #     target_item.img_3 = form.data["image3"]
 
         target_item.title = form.data['title']
         target_item.price = form.data['price']
         target_item.description = form.data['description']
-        target_item.img_1 = upload["url"]
-        target_item.img_2 = upload2["url"]
-        target_item.img_3 = upload3["url"]
 
 
         db.session.commit()
@@ -113,7 +129,6 @@ def edit_item(itemId):
     if form.errors:
         print(form.errors)
         return form.errors
-
 #*************************************************************************#
 # delete a product
 @item_routes.route('<int:itemId>', methods=["DELETE"])

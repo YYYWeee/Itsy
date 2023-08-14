@@ -5,8 +5,8 @@ def seed_shops():
     shops = [{
         'name':'beEsom',
         'owner_id':1,
-        'description':'Its finally Spring. 2022 was probably the hardest year of my life. My partner of 26yrs passed away in June. I didnt know if I had it in me to reopen this shop. But I\’m so glad I did. My fantastic customers kept me going, kept me busy and to be honest, they kept me alive. I really appreciate each and everyone of you. Thank you. I will be closed for vacation this year in early May for a week and in late August for a week.Let’s keep these honeybees busy!',
-        'shop_img':'https://i.etsystatic.com/isbl/cf8d73/59376913/isbl_3360x840.59376913_fjiurflm.jpg?version=0'
+        'description':'Hello friends! Welcome to beEsom. All of our designs are made with love and care, and printed with eco-friendly ink on the best quality cotton tees. Orders will be processed and shipped within 2-7 business days.',
+        'shop_img':'https://i.etsystatic.com/isbl/9e28d8/65058667/isbl_3360x840.65058667_a2n0sv0i.jpg?version=0'
     },
     {
         'name':'CaitlynMinimalist',
