@@ -3,7 +3,6 @@ from sqlalchemy.sql import text
 
 def seed_products():
     products = [
-        # total 15 item
         {
         'title':'Wildflowers | Beeswax Candle | 100% Pure Beeswax & Floral Pure Essential Oils - Geranium, Lavender, Ylang Ylang, Clary Sage | Handmade',
         'price':28,
@@ -498,6 +497,114 @@ def seed_products():
         'img_1':'https://i.etsystatic.com/19051317/r/il/f57648/5097874250/il_794xN.5097874250_lo6u.jpg',
         'img_2':'https://i.etsystatic.com/19051317/r/il/c0d3e5/5137844963/il_794xN.5137844963_c04q.jpg',
         'img_3':'https://i.etsystatic.com/19051317/r/il/102a09/5137165181/il_794xN.5137165181_6q0w.jpg'
+        },
+        {
+        'title':'Beeswax Candles | 100% Pure Organic Beeswax and Pure Essential Oils | Non-Toxic, Sustainable & Clean Burning | Natural Wood Wick Candles',
+        'price':25,
+        'description':'Our 100% pure organic 12oz beeswax candles contain maximum, 2 high-quality ingredients only. Ingredients consist of: Pure organic beeswax from a local beekeeping farm + 100% pure essential oils. Keep your house smelling great, while making sure you aren’t burning any toxins/chemicals in your home. The candle jar is recycled glass that can be reused or popped in your household recycle bin. Choose from a variety of 100% pure essential oils for fragranced candles or keep it simple with our naturally scented beeswax candle. They come in gorgeous glass jars, with multiple color options, to match any decor style. optional add on: wooden pine lid.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/38181615/r/il/7be2fd/4968317632/il_1588xN.4968317632_iijc.jpg',
+        'img_2':'https://i.etsystatic.com/38181615/r/il/2de350/4562742232/il_1588xN.4562742232_aems.jpg',
+        'img_3':'https://i.etsystatic.com/38181615/r/il/11d6d8/4610987435/il_1588xN.4610987435_3pr7.jpg'
+        },
+         {
+        'title':'Handmade Soy Wax Candle Campfire Nights | Cabin Vibes Scented Candle 4 oz or 8 oz in Amber Jars | Cozy Evening Rustic Candle | Seattle, WA',
+        'price':12,
+        'description':'{Handmade Soy Wax Candle Campfire Nights | Cabin Vibes Scented Candle 4 oz or 8 oz in Amber Jars | Cozy Evening Rustic Candle | Seattle, WA} Experience the enchanting atmosphere of Campfire Nights with our meticulously handcrafted soy wax candle. Created in the vibrant city of Seattle, WA, this exquisite candle captures the essence of a captivating campfire under the starlit sky. Immerse yourself in the soothing glow and comforting aroma, as our thoughtfully curated blend of scents transports you to the tranquility of a night spent by the fire.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/20459845/r/il/2cfd65/4984473538/il_794xN.4984473538_aebi.jpg',
+        'img_2':'https://i.etsystatic.com/20459845/r/il/7993a8/5031900927/il_794xN.5031900927_4xgb.jpg',
+        'img_3':'https://i.etsystatic.com/20459845/r/il/6f45d5/4983675752/il_794xN.4983675752_rfv0.jpg'
+        },
+         {
+        'title':'Merino wool blanket, hand made blanket, hand knitted, 100% merino wool premium quality, home decor, Knitted blanket, Arm Knit Blanket',
+        'price':125,
+        'description':'Merinowoolstudio is new on etsy.com, but not new to merino wool world. We have been making merino wool blankets, merino wool hats, mittens and scarves for over 5 years. Our yarn is premium quality, carefully selected the best merino wool and we carefully select the best colours.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/16830345/r/il/b95582/1986647089/il_794xN.1986647089_i03f.jpg',
+        'img_2':'https://i.etsystatic.com/16830345/r/il/f90640/1985605247/il_794xN.1985605247_nglx.jpg',
+        'img_3':'https://i.etsystatic.com/16830345/r/il/0c4c18/1985604805/il_794xN.1985604805_arhw.jpg'
+        },
+        {
+        'title':'Tindår Tipi | 3-pack',
+        'price':16,
+        'description':'Introducing the Tindår Tipi. An easy-to-assemble, dry kindling structure, boasting an impressive 3-minute burn time. Our laser-cut, Baltic birch, 4-panel design allows for the perfect balance of airflow & combustion ensuring a blazing hot foundation for your next fire build.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/18745647/r/il/50747e/3746821288/il_794xN.3746821288_pew5.jpg',
+        'img_2':'https://i.etsystatic.com/18745647/r/il/68c611/3746822894/il_794xN.3746822894_renv.jpg',
+        'img_3':'https://i.etsystatic.com/18745647/r/il/e2fe21/4997205530/il_794xN.4997205530_d1l9.jpg'
+        },
+        {
+        'title':'Tea Towel - Give Me Jesus - Made in the USA, housewarming gift, wedding favor, kitchen decor, anniversary present, calligraphy design',
+        'price':12,
+        'description':'Our tea towels are the perfect accessory for any kitchen! May these tea towels serve as a pretty daily reminder of the love, joy and truth in your life.High quality  organic cotton fabric Measures 28in long and 20in wide Design area is about 6 inches Machine wash cold, allow to air dry.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/7243684/r/il/112894/3424017473/il_794xN.3424017473_gyd4.jpg',
+        'img_2':'https://i.etsystatic.com/7243684/r/il/f94fad/2088991078/il_794xN.2088991078_raf5.jpg',
+        'img_3':'https://i.etsystatic.com/7243684/r/il/7ed6cb/3424033997/il_794xN.3424033997_24de.jpg'
+        },
+        {
+        'title':'Linen Tablecloth Custom Table Cloth Tablecloths Gift for her Table Linens Wedding Tableclo',
+        'price':39,
+        'description':'If you are looking for how to decorate your living room or kitchen tables, a stonewashed linen tablecloth is one of the best options you can find in the market, linen is extremely soft and has a rustic look that creates a cozy feeling while you sitting dawn near the table with your friends and family to share meals, but also celebrating most important days in your life wedding, birthdays, anniversaries, thanksgiving day\'s, Christmas etc. Or just gift for her :) Look no more you came to the right place!',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/20442851/r/il/095529/4293733972/il_794xN.4293733972_ldr1.jpg',
+        'img_2':'https://i.etsystatic.com/20442851/r/il/16376e/4341121753/il_794xN.4341121753_5eoa.jpg',
+        'img_3':'https://i.etsystatic.com/20442851/r/il/562587/4341121905/il_794xN.4341121905_8350.jpg'
+        },
+        {
+        'title':'Matte Grid Bowl',
+        'price':68,
+        'description':'These new bowls are a go to for breakfast, a snack, or a soup starter. The hold in your hand shape makes the perfect bowl to curl up with on a chilly day. Mix and match to create a color story that fits your lifestyle. Stack them on your open shelving to freshen your kitchen decor. The bowl was pinched from porcelain clay. Each bowl is dipped in a colored clay, with a grid pattern revealing the white porcelain with a matte finish. The interior is coated in clear glaze. Suitable for the everyday.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/5433432/r/il/8887ea/2846019923/il_794xN.2846019923_ovt1.jpg',
+        'img_2':'https://i.etsystatic.com/5433432/r/il/b8102f/2798358208/il_794xN.2798358208_51hw.jpg',
+        'img_3':'https://i.etsystatic.com/5433432/r/il/1b2c37/2846028883/il_794xN.2846028883_de09.jpg'
+        },
+        {
+        'title':'Matte Grid Vase',
+        'price':118,
+        'description':'Add this modern vase to your new home collection. The matte finish pairs well with dried flowers. Each vase is dipped in colored clay with a grid pattern revealing the white porcelain. The interior is coated in clear glaze.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/5433432/r/il/7fc3a7/3636075127/il_794xN.3636075127_dhmb.jpg',
+        'img_2':'https://i.etsystatic.com/5433432/r/il/c862ea/2861012181/il_794xN.2861012181_85d2.jpg',
+        'img_3':'https://i.etsystatic.com/5433432/r/il/30ab54/2813337448/il_794xN.2813337448_2fvc.jpg'
+        },
+        {
+        'title':'Pinstripe Planter - Rust',
+        'price':198,
+        'description':'The pinstripe planters are the newest edition to the EBC collection. The simple and unique design is the perfect addition to a modern home. Rust is a large planter in the bunch, short and wide. Mix and match the varieties of sizes and colors to create your own story. The pinchy texture radiates through the matte exterior. The inside is coated in a clear glaze. No drainage hole to keep maintenance easy and your surfaces dry. Plants not included.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/5433432/r/il/df4dec/2322754897/il_794xN.2322754897_8gas.jpg',
+        'img_2':'https://i.etsystatic.com/5433432/r/il/6659b4/2322754707/il_794xN.2322754707_abf1.jpg',
+        'img_3':'https://i.etsystatic.com/5433432/r/il/c0ef8a/2264571990/il_794xN.2264571990_62z0.jpg'
+        },
+        {
+        'title':'Arch Vase',
+        'price':98,
+        'description':'Looking for a special vase to display those fresh cut flowers? This will make a lovely addition to your home. It\'s a one of a kind, cast with porcelain clay, hand painted with a colored clay exterior. The inside is lined with clear glaze.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/5433432/r/il/290e9c/2308150135/il_794xN.2308150135_r721.jpg',
+        'img_2':'https://i.etsystatic.com/5433432/r/il/8eee19/2308150333/il_794xN.2308150333_6dsi.jpg',
+        'img_3':'https://i.etsystatic.com/5433432/r/il/fe0742/2260545612/il_794xN.2260545612_1lxy.jpg'
+        },
+        {
+        'title':'Pinched Hanging Planter - Summer Sweet',
+        'price':78,
+        'description':'Add some plant life to your home with this textured pinched planter. Hang it from a hook on a wall, window, or ceiling. Mix and match color and sizes to create a plant medley. The planter is glazed with a satin matte glaze, comes affixed with a brass ring and strung with waxed cotton cord. No drainage unless requested. Plants not included.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/5433432/r/il/145a1a/1981265714/il_794xN.1981265714_fvac.jpg',
+        'img_2':'https://i.etsystatic.com/5433432/r/il/0bb17b/1981265630/il_794xN.1981265630_8kr7.jpg',
+        'img_3':'https://i.etsystatic.com/5433432/r/il/4b26b6/1981265760/il_794xN.1981265760_h7xc.jpg'
+        },
+        {
+        'title':'Pinch Bowl - Summer Sweet',
+        'price':24,
+        'description':'Collect one or all five. These sweet little pinch bowls are quite useful around the home. Keep a stack in your kitchen for salt, garnishes, or rings when you have dish duty. Leave one in the bathroom for hair ties, or on your night stand to keep your earrings safe while sleeping. The bowls reveal texture from the pinching process and come in a variety of styles. The listing is for one summer sweet bowl.',
+        'shop_id':2,
+        'img_1':'https://i.etsystatic.com/5433432/r/il/ef397b/1707638900/il_794xN.1707638900_l047.jpg',
+        'img_2':'https://i.etsystatic.com/5433432/r/il/319665/1707639246/il_794xN.1707639246_88b9.jpg',
+        'img_3':'https://i.etsystatic.com/5433432/r/il/cc0300/1707639062/il_794xN.1707639062_7lpw.jpg'
         }
         ]
 

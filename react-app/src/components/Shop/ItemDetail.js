@@ -24,7 +24,7 @@ function ItemDetail() {
     <>
 
       <div className="item-container">
-        <div className="image-container">
+        <div className="image-container-item-detail-page">
           <div className="item-sub-images">
             <div className="small-img-container">
               <img className='small-img' src={targetItem.img_2} alt='product image' />
