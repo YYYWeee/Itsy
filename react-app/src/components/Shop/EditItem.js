@@ -1,11 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useRef, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { updateItemThunk } from "../../store/shop";
 import { deleteItemThunk } from "../../store/shop";
 import { fetchUserShopThunk } from "../../store/shop"
 import { useParams } from "react-router-dom";
 import { fetchOneItemThunk } from "../../store/item";
+import OpenModalButton from "../OpenModalButton";
+import DeleteItemModal from "./DeleteItemModal";
+
 
 function EditItem() {
   const history = useHistory();
@@ -15,6 +19,13 @@ function EditItem() {
   const [lengthError, setLengthError] = useState(false)
   const [descriptionError, setDescriptionError] = useState(false)
 
+  // const [showDeleteForm, setShowDeleteForm] = useState(false);
+
+
+
+  const [showMenu, setShowMenu] = useState(false);
+  const ulRef1 = useRef();
+  const closeMenu = () => setShowMenu(false);
   const { itemId } = useParams();
 
 
@@ -37,6 +48,10 @@ function EditItem() {
   );
   // console.log('I want to edit this item!!!!!!!!!!!', targetItem)
   // console.log('testing', targetItem.title)
+
+
+
+
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -99,11 +114,11 @@ function EditItem() {
 
 
   const handleTitle = e => {
-    if (e.target.value.length <= 20 && /^[a-zA-Z0-9]*$/.test(e.target.value)) setTitle(e.target.value)
+    if (e.target.value.length <= 20) setTitle(e.target.value)
   }
 
   const handleDescription = e => {
-    if (e.target.value.length <= 500) setDescription(e.target.value)
+    if (e.target.value.length <= 1000) setDescription(e.target.value)
   }
   const handlePrice = e => {
     if (e.target.value < 100000 && /^[0-9]*$/.test(e.target.value)) setPrice(e.target.value)
@@ -214,24 +229,22 @@ function EditItem() {
       console.log("formData in update item form ~~~~~~~~~~~~~", formDataObject);  //collect correct info
 
       const data = await dispatch(updateItemThunk(formData, itemId))
+      console.log('here!!!!!!!!!!!!!!', data)
+      // if (data.id) {
+      //   history.push(`/shop`);
+      // }
 
-      history.push(`/shop`);
+      // history.push(`/shop`);
     }
   }
 
   const handleCancel = async (e) => {
-    // setShowUpdateForm3(false);
     history.push(`/shop`);
   };
 
-  const handleDelete = async (e) => {
-    await dispatch(deleteItemThunk());
-    await dispatch(fetchUserShopThunk());
+  const handleBack = async (e) => {
     history.push(`/shop`);
   };
-
-
-
   return (
     <>
 
@@ -336,11 +349,6 @@ function EditItem() {
               {/* third image end */}
             </div>
             <div className="product-detail-Container">
-              <div className="saveButton-container">
-                <button type="submit" className="saveButton" disabled={errors.length > 0}>
-                  Save
-                </button>
-              </div>
               <div>
                 <h1>Update your listing</h1>
                 <div>Add some photos and details about your item. </div>
@@ -356,7 +364,7 @@ function EditItem() {
                 onChange={handleTitle}
                 required
               ></input>
-              {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
+              {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-200 characters</div>}
               <textarea
                 className="description"
                 value={description}
@@ -364,7 +372,7 @@ function EditItem() {
                 // onChange={(e) => setDescription(e.target.value)}
                 onChange={handleDescription}
               />
-              {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
+              {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-1000 characters</div>}
               <input
                 className="price"
                 value={price}
@@ -381,9 +389,44 @@ function EditItem() {
               <p className='errors'>{errors && errors.filter((validation) =>
                 validation.includes("greater"))}</p>
             </div>
+
+
+
+            <div className="button-container">
+              {/* delete button */}
+              <div className="left-btn" ref={ulRef1}>
+                <OpenModalButton
+                  buttonText="Delete"
+                  onItemClick={closeMenu}
+                  modalComponent={<DeleteItemModal item={targetItem} />}
+                />
+              </div>
+              {/* delete button */}
+              <div className="right-btn">
+                  <button type="submit" className="saveButton" disabled={errors.length > 0}>
+                    Save
+                  </button>
+                {/* </div> */}
+                {/* <div className="cancel-btn-container"> */}
+                  <button
+                    className="cancel-button"
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </button>
+                {/* </div> */}
+                {/* <div className="backButton-container"> */}
+                  <button type="submit" className="backButton" onClick={handleBack}>
+                    Go Back
+                  </button>
+                {/* </div> */}
+              </div>
+            </div>
           </div>
         </form>
+
       </div>
+
 
     </>
   )

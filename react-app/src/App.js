@@ -13,7 +13,7 @@ import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import ItemDetail from "./components/Shop/ItemDetail";
 import EditItem from "./components/Shop/EditItem";
-// import MainProductList from "./components/MainProductList";
+import MainProductList from "./components/Shop/MainProductList";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,9 +42,11 @@ function App() {
           <Route exact path="/shop/new">
             <CreateShopForm />
           </Route>
-          {/* <Route exact path="/listiings">
+
+          <Route exact path="/listings">
             <MainProductList />
-          </Route> */}
+          </Route>
+
           <Route exact path="/item/:itemId/edit">
             <EditItem />
           </Route>

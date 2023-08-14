@@ -58,7 +58,10 @@ h1{
 
 }
 
-
+.button-container {
+  display: flex;
+  flex-direction: row;
+}
 
 
 
@@ -77,6 +80,7 @@ h1{
   padding: 10px 15px;
   border: none;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .saveButton:hover {
