@@ -1,11 +1,11 @@
 .preview-image {
-  max-width: 25%;
-  height: auto;
+  max-width: 95%;
+  height: 150px;
   object-fit: cover;
 }
 
 
-.price{
+.price {
   /* position: absolute; */
   bottom: 6px;
   left: 8px;
@@ -15,5 +15,41 @@
   font-weight: 420;
   padding: 0.5rem;
   font-family: 'Roboto', sans-serif;
-  border: 1px solid rgb(0, 0, 0, 0.2)
+  border: 1px solid rgb(0, 0, 0, 0.2);
+  width: 50px;
+}
+
+
+button {
+  background-color: black;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 15px;
+  border: none;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+
+.create-item-btn:active {
+  box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.single-product-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.items-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 1000px;
+  height: 300px;
+  gap: 1rem;
+  text-align: center;
+  margin: 1rem auto;
 }

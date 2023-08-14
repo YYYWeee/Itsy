@@ -39,18 +39,19 @@ const ShopManage = () => {
           className="shop-img"
         ></img>
       </div>
-      <div className="shop-container">
+      <div className="shop-container-info">
         <div>
           <h1>{user.username}'s shop</h1>
         </div>
-        <div>{shop?.name}</div>
-        <div>{shop?.description}</div>
-        <button
-          className="update-btn"
-          onClick={() => handleUpdate(shop)}
-        >
-          <i className="fa-solid fa-pen-to-square fa-lg"></i>
-        </button>
+        <div className="shop-detail-info">
+          <div><h2>{shop?.name}<button
+            className="update-btn"
+            onClick={() => handleUpdate(shop)}
+          >
+            <i className="fa-solid fa-pen-to-square fa-lg"></i>
+          </button></h2></div>
+          <div><h4>{shop?.description}</h4></div>
+        </div>
       </div>
       <div className="items-container">
         {shop && <ProductList targetShop={shop} />}

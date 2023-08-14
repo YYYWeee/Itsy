@@ -6,11 +6,13 @@ import { authenticate } from "./store/session";
 
 import Shop from './components/Shop';
 import CreateShopForm from "./components/Shop/CreateShopForm";
-import CreateProductForm from  "./components/Shop/CreateProductForm";
+import CreateProductForm from "./components/Shop/CreateProductForm";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+import ItemDetail from "./components/Shop/ItemDetail";
+import EditItem from "./components/Shop/EditItem";
 // import MainProductList from "./components/MainProductList";
 
 function App() {
@@ -43,12 +45,12 @@ function App() {
           {/* <Route exact path="/listiings">
             <MainProductList />
           </Route> */}
-
-
-          {/* <Route exact path="/listing/:itemId">
+          <Route exact path="/item/:itemId/edit">
+            <EditItem />
+          </Route>
+          <Route exact path="/listings/:itemId">
             <ItemDetail />
-          </Route> */}
-
+          </Route>
           <Route exact path="/items/new">
             <CreateProductForm />
           </Route>

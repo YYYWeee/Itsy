@@ -1,18 +1,42 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import { createItemThunk } from "../../store/shop";
+import { updateItemThunk } from "../../store/shop";
+import { deleteItemThunk } from "../../store/shop";
+import { fetchUserShopThunk } from "../../store/shop"
+import { useParams } from "react-router-dom";
+import { fetchOneItemThunk } from "../../store/item";
 
-import "./CreateProductForm.css";
-
-function CreateProductForm() {
+function EditItem() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.session.user);
+  const [errors, setErrors] = useState(false);
 
   const [lengthError, setLengthError] = useState(false)
   const [descriptionError, setDescriptionError] = useState(false)
+
+  const { itemId } = useParams();
+
+
+  useEffect(() => {
+    const res = dispatch(fetchOneItemThunk(itemId));
+    window.scroll(0, 0);
+  }, []);
+
+  const sessionUser = useSelector((state) => state.session.user);
+  const targetShop = useSelector((state) =>
+    state.shops.singleShop.shop ? state.shops.singleShop.shop : {}
+  );
+
+  const items = useSelector((state) =>
+    state.shops.singleShop.products ? state.shops.singleShop.products : {}
+  );
+
+  const targetItem = useSelector((state) =>
+    state.items.singleItem ? state.items.singleItem : {}
+  );
+  // console.log('I want to edit this item!!!!!!!!!!!', targetItem)
+  // console.log('testing', targetItem.title)
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -20,8 +44,6 @@ function CreateProductForm() {
   const [image, setImage] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
-
-  const [errors, setErrors] = useState([]);
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -41,19 +63,40 @@ function CreateProductForm() {
   const uploadInput2 = useRef();
   const uploadInput3 = useRef();
 
+  const [modal, setModal] = useState(false);
+
 
   useEffect(() => {
-    setLengthError(title.length < 4)
-  }, [title])
+    setTitle(targetItem.title)
+    setPrice(targetItem.price)
+    setDescription(targetItem.description)
+
+    setImage(targetItem.img_1)
+    setImage2(targetItem.img_2)
+    setImage3(targetItem.img_3)
+
+    setPhoto(targetItem.img_1)
+    setPhoto2(targetItem.img_2)
+    setPhoto3(targetItem.img_3)
+
+    setPhotoUrl(targetItem.img_1)
+    setPhotoUrl2(targetItem.img_2)
+    setPhotoUrl3(targetItem.img_3)
+
+    setNoPicture(false)
+    setNoPicture2(false)
+    setNoPicture3(false)
+
+  }, [targetItem]);
+
   useEffect(() => {
-    setDescriptionError(description.length < 20)
+    setLengthError(title?.length < 4)
+  }, [title])
+
+  useEffect(() => {
+    setDescriptionError(description?.length < 20)
   }, [description])
 
-
-
-  const targetShop = useSelector((state) =>
-    state.shops.singleShop.shop ? state.shops.singleShop.shop : {}
-  );
 
   const handleTitle = e => {
     if (e.target.value.length <= 20 && /^[a-zA-Z0-9]*$/.test(e.target.value)) setTitle(e.target.value)
@@ -63,7 +106,7 @@ function CreateProductForm() {
     if (e.target.value.length <= 500) setDescription(e.target.value)
   }
   const handlePrice = e => {
-    if (e.target.value <100000  && /^[0-9]*$/.test(e.target.value)) setPrice(e.target.value)
+    if (e.target.value < 100000 && /^[0-9]*$/.test(e.target.value)) setPrice(e.target.value)
   }
 
   const handlePhoto = async ({ currentTarget }) => {
@@ -109,14 +152,9 @@ function CreateProductForm() {
   let preview3 = null;
   if (photoUrl3) preview3 = <img src={photoUrl3} id="preview-product3-img" alt="" />;
 
-
   useEffect(() => {
     const errorsArray = [];
-    // = parseInt(price);
-    // alert(typeof vResult) //Number
-
-
-    console.log('!!!!!!!!', isNaN(price))
+    // console.log('!!!!!!!!', isNaN(price))
     if (!price) {
       errorsArray.push("Price is required")
     } else if (isNaN(price)) {
@@ -124,7 +162,6 @@ function CreateProductForm() {
     } else if (price * 1 <= 0) {
       errorsArray.push('Price should be greater than 0')
     }
-
     setErrors(errorsArray);
   }, [price])
 
@@ -133,7 +170,6 @@ function CreateProductForm() {
     e.preventDefault();
     if (!lengthError && !descriptionError) {
       setHasSubmitted(true);
-
       if (image == null && image2 == null && image3 == null) {
         setNoPicture(true);
         setNoPicture2(true);
@@ -162,10 +198,7 @@ function CreateProductForm() {
         return
       }
 
-
-
       let formData = new FormData();
-
       formData.append("image", image);
       formData.append("image2", image2);
       formData.append("image3", image3);
@@ -178,28 +211,30 @@ function CreateProductForm() {
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
-      console.log('formData!!!',formData)
-      console.log("formData in create product form", formDataObject);
+      console.log("formData in update item form ~~~~~~~~~~~~~", formDataObject);  //collect correct info
 
+      const data = await dispatch(updateItemThunk(formData, itemId))
 
-      const data = await dispatch(createItemThunk(formData))
-        .then(res => {
-          if (res) {
-            // setErrors(true)
-            setHasSubmitted(false);
-          }
-        })
-
-
-      setTitle("");
-      setPrice("");
-      setDescription("");
-      setHasSubmitted(false);
       history.push(`/shop`);
     }
   }
+
+  const handleCancel = async (e) => {
+    // setShowUpdateForm3(false);
+    history.push(`/shop`);
+  };
+
+  const handleDelete = async (e) => {
+    await dispatch(deleteItemThunk());
+    await dispatch(fetchUserShopThunk());
+    history.push(`/shop`);
+  };
+
+
+
   return (
     <>
+
       <div className="form-page">
         <form onSubmit={(e) => handleSubmit(e)} encType="multipart/form-data">
           <div className="form-container">
@@ -307,7 +342,7 @@ function CreateProductForm() {
                 </button>
               </div>
               <div>
-                <h1>Create a listing</h1>
+                <h1>Update your listing</h1>
                 <div>Add some photos and details about your item. </div>
                 <div>Fill out what you can for now—you'll be able to edit this later.</div>
               </div>
@@ -339,19 +374,25 @@ function CreateProductForm() {
                 onChange={handlePrice}
 
               ></input>
-              <p className='errors'>{errors.filter((validation) =>
+              <p className='errors'>{errors && errors.filter((validation) =>
                 validation.includes("required"))}</p>
-              <p className='errors'>{errors.filter((validation) =>
+              <p className='errors'>{errors && errors.filter((validation) =>
                 validation.includes("Invalid"))}</p>
-              <p className='errors'>{errors.filter((validation) =>
+              <p className='errors'>{errors && errors.filter((validation) =>
                 validation.includes("greater"))}</p>
             </div>
           </div>
         </form>
       </div>
+
     </>
   )
+
+
+
+
+
+
+
 }
-
-
-export default CreateProductForm;
+export default EditItem;

@@ -153,7 +153,7 @@ export const createNewShopThunk = (shop) => async dispatch => {
     dispatch(setShop(newShop.id))
     return newShop
   } else {
-    // console.log("There was an error creating your shop!");
+    console.log("There was an error creating your shop!");
     return 'invalidName'
   }
 }

@@ -19,8 +19,9 @@ const CreateShop = () => {
 
   return (
     <>
-      <h1>You don't have a shop yet...</h1>
+
       <div className="btn-container">
+        <h1>You don't have a shop yet...</h1>
         <button onClick={handleCreateShop}>Create Shop</button>
       </div>
 

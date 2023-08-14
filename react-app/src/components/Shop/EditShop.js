@@ -9,11 +9,12 @@ import DeleteShopModal from "./DeleteShopModal";
 import "./EditShop.css";
 
 function EditShop({ shop, setShowUpdateForm2 }) {
-
-
   const history = useHistory();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState(false);
+  const [errors2, setErrors2] = useState(false);
+  const [lengthError, setLengthError] = useState(false)
+  const [descriptionError, setDescriptionError] = useState(false)
 
   const [showMenu, setShowMenu] = useState(false);
   const ulRef1 = useRef();
@@ -39,43 +40,48 @@ function EditShop({ shop, setShowUpdateForm2 }) {
 
   const [modal, setModal] = useState(false);
 
+
+  const handleName = e => {
+    if (e.target.value.length <= 20 && /^[a-zA-Z0-9]*$/.test(e.target.value)) setName(e.target.value)
+  }
+
+  const handleDescription = e => {
+    if (e.target.value.length <= 500) setDescription(e.target.value)
+  }
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setHasSubmitted(true);
-    let payload = {
-      name: name,
-      description: description,
-    };
-    // await dispatch(updateShopThunk(payload))
-    // await dispatch(fetchUserShopThunk())
-    // -----------------------------test
-    const data = await dispatch(updateShopThunk(payload))
-      .then(res => {
-        if (res) {
-          setErrors(true)
-          setHasSubmitted(false);
-          setShowUpdateForm(true);
-          setShowUpdateForm2(true);
-        }
-      })
-    await dispatch(fetchUserShopThunk())
+    if (!lengthError) {
+      setHasSubmitted(true);
+      let payload = {
+        name: name,
+        description: description,
+      };
 
-    setName("");
-    setHasSubmitted(true);
+      const data = await dispatch(updateShopThunk(payload))
 
+      if (data == 'invalidName') {
+        setErrors(true)
+        setHasSubmitted(false);
+        setShowUpdateForm(true);
+        setShowUpdateForm2(true);
 
-    // -----------------------------test
-    if (hasSubmitted) {
-      setShowUpdateForm(false);
-      setShowUpdateForm2(false);
-      history.push(`/shop`);
+      } else {
+        await dispatch(fetchUserShopThunk())
+        console.log('%%%%%%%%%%%%%%%%%%%', errors)
+        setHasSubmitted(true);
+        setShowUpdateForm(false);
+        setShowUpdateForm2(false);
+        history.push(`/shop`);
+
+      }
     }
-
   }
+
   const handleCancel = async (e) => {
     setShowUpdateForm2(false);
   };
-
 
   const handleDelete = async (e) => {
     await dispatch(deleteShopThunk());
@@ -83,12 +89,21 @@ function EditShop({ shop, setShowUpdateForm2 }) {
     history.push(`/shop`);
   };
 
+  useEffect(() => {
+    setLengthError(name.length < 4)
+  }, [name])
+
+  useEffect(() => {
+    setDescriptionError(description.length < 20)
+  }, [description])
+
+
   return (
     <>
       {showUpdateForm && (
         <div>
           <div className="form-page">
-            {errors && <div className='error-section'>Looks like this name is already taken.</div>}
+            {/* {errors && <div className='error-section'>Looks like this name is already taken.</div>} */}
             <div className="update-form-container-including-title">
               <h1 className="edit-this-pin">Edit this Shop</h1>
               <div className="update-form-container">
@@ -101,10 +116,14 @@ function EditShop({ shop, setShowUpdateForm2 }) {
                           type="text"
                           name="name"
                           value={name}
-                          onChange={(e) => setName(e.target.value)}
+                          // onChange={(e) => setName(e.target.value)}
+                          onChange={handleName}
                           required
                         />
+
                       </div>
+                      {errors && <div className='error-section'><i class="fa-solid fa-triangle-exclamation fa-xl"></i>Looks like this name is already taken.</div>}
+                      {lengthError && <div className='error-section'><i class="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
                       <div className="description-area">
                         <label>Description </label>
                         <textarea
@@ -112,10 +131,12 @@ function EditShop({ shop, setShowUpdateForm2 }) {
                           className="text-input-box"
                           name="description"
                           value={description}
-                          onChange={(e) => setDescription(e.target.value)}
+                          // onChange={(e) => setDescription(e.target.value)}
+                          onChange={handleDescription}
                           placeholder="Description "
                         />
                       </div>
+                      {descriptionError && <div className='error-section'><i class="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
                     </div>
                     <div className="right-container">
                       <div className="pic-container">
