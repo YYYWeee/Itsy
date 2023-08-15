@@ -37,7 +37,7 @@ function NavBarLeftComponent({ user }) {
   };
 
   const handleClickLanding = () => {
-    history.push("/");
+    history.push("/listings");
     window.scrollTo(0, 0);
   };
 

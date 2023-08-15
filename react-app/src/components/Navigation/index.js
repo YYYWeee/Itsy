@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import NavBarLeftComponent from "./NavBarLeftComponent";
+import CategoriesBar from "./CategoriesBar"
 import './Navigation.css';
 
 // function Navigation({ isLoaded }){
@@ -26,10 +27,18 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   return (
-    <div className="header">
-      <NavBarLeftComponent user={sessionUser} />
-      {isLoaded && <ProfileButton user={sessionUser} />}
-    </div>
+    <>
+
+        <div className="header">
+          <NavBarLeftComponent user={sessionUser} />
+          {isLoaded && <ProfileButton user={sessionUser} />}
+
+        </div>
+        <div className='header2'>
+          <CategoriesBar />
+        </div>
+
+    </>
   );
 }
 

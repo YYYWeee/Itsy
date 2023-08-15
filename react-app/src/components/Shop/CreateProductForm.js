@@ -332,7 +332,7 @@ function CreateProductForm() {
               />
               {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-1000 characters</div>}
               <input
-                className="price"
+                className="price-create-form"
                 value={price}
                 placeholder="Price"
                 style={{ textAlign: 'right' }}

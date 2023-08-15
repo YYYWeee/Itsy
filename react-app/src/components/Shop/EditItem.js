@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { fetchOneItemThunk } from "../../store/item";
 import OpenModalButton from "../OpenModalButton";
 import DeleteItemModal from "./DeleteItemModal";
-
+import "./EditItem.css";
 
 function EditItem() {
   const history = useHistory();
@@ -24,6 +24,7 @@ function EditItem() {
 
 
   const [showMenu, setShowMenu] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(true);
   const ulRef1 = useRef();
   const closeMenu = () => setShowMenu(false);
   const { itemId } = useParams();
@@ -46,9 +47,33 @@ function EditItem() {
   const targetItem = useSelector((state) =>
     state.items.singleItem ? state.items.singleItem : {}
   );
+
+  // if (sessionUser && targetItem) {
+  //   if (targetItem.shop_id !== sessionUser.shop) {
+  //     // history.push(`/listings`);
+  //     return <Redirect to="/" />;
+  //   }
+  // }
+  // useEffect(() => {
+  //   if (sessionUser && targetItem) {
+  //     if (targetItem.shop_id !== sessionUser.shop) {
+  //       setIsAuthorized(false)
+  //       return;
+  //     }else{
+  //       setIsAuthorized(true)
+  //     }
+  //   }
+  //   console.log('isAuthorized@@@@@@',isAuthorized)
+  //   console.log('isAuthorized@@@@@@',targetItem.shop_id,sessionUser.shop)
+  //   console.log('isAuthorized@@@@@@',isAuthorized)
+  // }, [targetItem.shop_id, sessionUser.shop]);
+
+
+
+
+
   // console.log('I want to edit this item!!!!!!!!!!!', targetItem)
   // console.log('testing', targetItem.title)
-
 
 
 
@@ -247,195 +272,189 @@ function EditItem() {
   };
   return (
     <>
+      {targetItem.shop_id == sessionUser.shop &&
+        (<div className="form-page">
+          <form onSubmit={(e) => handleSubmit(e)} encType="multipart/form-data">
+            <div className="form-container">
+              <div className="image-container">
 
-      <div className="form-page">
-        <form onSubmit={(e) => handleSubmit(e)} encType="multipart/form-data">
-          <div className="form-container">
-            <div className="image-container">
-
-              {/* first image */}
-              <div
-                id="first-image-Container"
-                className={noPicture ? "no-picture cursor" : "cursor"}
-                onClick={() => uploadInput.current.click()}
-              >
-                <input
-                  className="uploadButton"
-                  id="image"
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg, image/gif"
-                  onChange={handlePhoto}
-                  ref={uploadInput}
-                  style={{ display: "none" }}
-                />
-                {preview || (
-                  <div
-                    id="upload-sign-box-text"
-                    className={noPicture ? "no-picture" : ""}
-                  >
-                    <i className="fa-solid fa-upload"></i>
-                    <div>
-                      {!noPicture
-                        ? "Click to upload."
-                        : "Product image is required."}
+                {/* first image */}
+                <div
+                  id="first-image-Container"
+                  className={noPicture ? "no-picture cursor" : "cursor"}
+                  onClick={() => uploadInput.current.click()}
+                >
+                  <input
+                    className="uploadButton"
+                    id="image"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg, image/gif"
+                    onChange={handlePhoto}
+                    ref={uploadInput}
+                    style={{ display: "none" }}
+                  />
+                  {preview || (
+                    <div
+                      id="upload-sign-box-text"
+                      className={noPicture ? "no-picture" : ""}
+                    >
+                      <i className="fa-solid fa-upload"></i>
+                      <div>
+                        {!noPicture
+                          ? "Click to upload."
+                          : "Product image is required."}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-              {/* first image end */}
+                  )}
+                </div>
+                {/* first image end */}
 
-              {/* second image */}
+                {/* second image */}
 
-              <div
-                id="second-image-Container"
-                className={noPicture2 ? "no-picture2 cursor" : "cursor"}
-                onClick={() => uploadInput2.current.click()}
-              >
-                <input
-                  className="uploadButton"
-                  id="image2"
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg, image/gif"
-                  onChange={handlePhoto2}
-                  ref={uploadInput2}
-                  style={{ display: "none" }}
-                />
-                {preview2 || (
-                  <div
-                    id="upload-sign-box-text"
-                    className={noPicture2 ? "no-picture2" : ""}
-                  >
-                    <i className="fa-solid fa-upload"></i>
-                    <div>
-                      {!noPicture2
-                        ? "Click to upload."
-                        : "Product image is required."}
+                <div
+                  id="second-image-Container"
+                  className={noPicture2 ? "no-picture2 cursor" : "cursor"}
+                  onClick={() => uploadInput2.current.click()}
+                >
+                  <input
+                    className="uploadButton"
+                    id="image2"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg, image/gif"
+                    onChange={handlePhoto2}
+                    ref={uploadInput2}
+                    style={{ display: "none" }}
+                  />
+                  {preview2 || (
+                    <div
+                      id="upload-sign-box-text"
+                      className={noPicture2 ? "no-picture2" : ""}
+                    >
+                      <i className="fa-solid fa-upload"></i>
+                      <div>
+                        {!noPicture2
+                          ? "Click to upload."
+                          : "Product image is required."}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
 
-              {/* second image end */}
+                {/* second image end */}
 
-              {/* third image  */}
-              <div
-                id="third-image-Container"
-                className={noPicture3 ? "no-picture3 cursor" : "cursor"}
-                onClick={() => uploadInput3.current.click()}
-              >
-                <input
-                  className="uploadButton"
-                  id="image"
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg, image/gif"
-                  onChange={handlePhoto3}
-                  ref={uploadInput3}
-                  style={{ display: "none" }}
-                />
-                {preview3 || (
-                  <div
-                    id="upload-sign-box-text"
-                    className={noPicture3 ? "no-picture3" : ""}
-                  >
-                    <i className="fa-solid fa-upload"></i>
-                    <div>
-                      {!noPicture3
-                        ? "Click to upload."
-                        : "Product image is required."}
+                {/* third image  */}
+                <div
+                  id="third-image-Container"
+                  className={noPicture3 ? "no-picture3 cursor" : "cursor"}
+                  onClick={() => uploadInput3.current.click()}
+                >
+                  <input
+                    className="uploadButton"
+                    id="image"
+                    type="file"
+                    accept="image/png, image/jpeg, image/jpg, image/gif"
+                    onChange={handlePhoto3}
+                    ref={uploadInput3}
+                    style={{ display: "none" }}
+                  />
+                  {preview3 || (
+                    <div
+                      id="upload-sign-box-text"
+                      className={noPicture3 ? "no-picture3" : ""}
+                    >
+                      <i className="fa-solid fa-upload"></i>
+                      <div>
+                        {!noPicture3
+                          ? "Click to upload."
+                          : "Product image is required."}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
+                {/* third image end */}
               </div>
-              {/* third image end */}
-            </div>
-            <div className="product-detail-Container">
-              <div>
-                <h1>Update your listing</h1>
-                <div>Add some photos and details about your item. </div>
-                <div>Fill out what you can for now—you'll be able to edit this later.</div>
-              </div>
+              <div className="product-detail-Container">
+                <div>
+                  <h1>Update your listing</h1>
+                  <div>Add some photos and details about your item. </div>
+                  <div>Fill out what you can for now—you'll be able to edit this later.</div>
+                </div>
 
-              <input
-                className="name"
-                type="text"
-                value={title}
-                placeholder="Title"
-                // onChange={(e) => setTitle(e.target.value)}
-                onChange={handleTitle}
-                required
-              ></input>
-              {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-200 characters</div>}
-              <textarea
-                className="description"
-                value={description}
-                placeholder="Description"
-                // onChange={(e) => setDescription(e.target.value)}
-                onChange={handleDescription}
-              />
-              {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-1000 characters</div>}
-              <input
-                className="price"
-                value={price}
-                placeholder="Price"
-                style={{ textAlign: 'right' }}
-                // onChange={(e) => setPrice(e.target.value)}
-                onChange={handlePrice}
-
-              ></input>
-              <p className='errors'>{errors && errors.filter((validation) =>
-                validation.includes("required"))}</p>
-              <p className='errors'>{errors && errors.filter((validation) =>
-                validation.includes("Invalid"))}</p>
-              <p className='errors'>{errors && errors.filter((validation) =>
-                validation.includes("greater"))}</p>
-            </div>
-
-
-
-            <div className="button-container">
-              {/* delete button */}
-              <div className="left-btn" ref={ulRef1}>
-                <OpenModalButton
-                  buttonText="Delete"
-                  onItemClick={closeMenu}
-                  modalComponent={<DeleteItemModal item={targetItem} />}
+                <input
+                  className="name"
+                  type="text"
+                  value={title}
+                  placeholder="Title"
+                  // onChange={(e) => setTitle(e.target.value)}
+                  onChange={handleTitle}
+                  required
+                ></input>
+                {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-200 characters</div>}
+                <textarea
+                  className="description"
+                  value={description}
+                  placeholder="Description"
+                  // onChange={(e) => setDescription(e.target.value)}
+                  onChange={handleDescription}
                 />
+                {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-1000 characters</div>}
+                <input
+                  className="price-update-form"
+                  value={price}
+                  placeholder="Price"
+                  style={{ textAlign: 'right' }}
+                  // onChange={(e) => setPrice(e.target.value)}
+                  onChange={handlePrice}
+
+                ></input>
+                <p className='errors'>{errors && errors.filter((validation) =>
+                  validation.includes("required"))}</p>
+                <p className='errors'>{errors && errors.filter((validation) =>
+                  validation.includes("Invalid"))}</p>
+                <p className='errors'>{errors && errors.filter((validation) =>
+                  validation.includes("greater"))}</p>
               </div>
-              {/* delete button */}
-              <div className="right-btn">
+
+
+
+              <div className="button-container">
+                {/* delete button */}
+                <div className="left-btn" ref={ulRef1}>
+                  <OpenModalButton
+                    buttonText="Delete"
+                    onItemClick={closeMenu}
+                    modalComponent={<DeleteItemModal item={targetItem} />}
+                  />
+                </div>
+                {/* delete button */}
+                <div className="right-btn">
                   <button type="submit" className="saveButton" disabled={errors.length > 0}>
                     Save
                   </button>
-                {/* </div> */}
-                {/* <div className="cancel-btn-container"> */}
+                  {/* </div> */}
+                  {/* <div className="cancel-btn-container"> */}
                   <button
                     className="cancel-button"
                     onClick={handleCancel}
                   >
                     Cancel
                   </button>
-                {/* </div> */}
-                {/* <div className="backButton-container"> */}
+                  {/* </div> */}
+                  {/* <div className="backButton-container"> */}
                   <button type="submit" className="backButton" onClick={handleBack}>
                     Go Back
                   </button>
-                {/* </div> */}
+                  {/* </div> */}
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
 
-      </div>
+        </div>)}
 
 
     </>
   )
-
-
-
-
-
-
 
 }
 export default EditItem;
