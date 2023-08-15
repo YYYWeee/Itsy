@@ -12,6 +12,9 @@
   align-items: flex-start;
   justify-content: center;
   width: 80%;
+  /* position: relative;
+  z-index: 4; */
+
 }
 
 .log-btn {

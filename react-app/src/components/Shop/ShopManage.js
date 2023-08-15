@@ -40,7 +40,7 @@ const ShopManage = () => {
         ></img>
       </div>
       <div className="shop-container-info">
-        <div>
+        <div className="shop-name">
           <h1>{user.username}'s shop</h1>
         </div>
         <div className="shop-detail-info">

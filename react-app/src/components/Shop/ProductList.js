@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import EditItem from "./EditItem";
+import { loadUserShopAction } from "../../store/shop";
 import "./ProductList.css";
 
 
@@ -15,8 +16,6 @@ function ProductList() {
   const items = useSelector((state) => state.shops.singleShop.products); //array
   const [targetId, setTargetId] = useState('');
 
-
-  // const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   if (!items) return null;
 
@@ -31,52 +30,7 @@ function ProductList() {
     history.push(`/item/${itemId}/edit`);
   };
 
-  // return showUpdateForm === true ?
-  //   (<EditItem itemId={targetId} setShowUpdateForm3={showUpdateForm} />
-  //   ) : (
-  //     <div className="page-container">
-  //       <div className="top-container">
-  //         <h1> Product list</h1 >
-  //         <div className="create-item-btn">
-  //           <button onClick={handleAddProduct}>Add product</button>
-  //         </div>
-  //       </div >
 
-  //       {items.length ?
-  //           (<div className="items-container">
-  //             {items.map((item) => {
-  //               return (
-  //                 <>
-  //                   <div className="single-product-container" key={item.id}>
-  //                     <img
-  //                       className="preview-image"
-  //                       src={item.img_1}
-  //                       alt={item.img_1}
-  //                       onClick={() => history.push(`/listings/${item.id}`)}
-  //                     />
-
-  //                     <div className="price">${item.price}</div>
-  //                     <div>
-  //                       <button
-  //                         className="update-btn"
-  //                         onClick={() => handleUpdate(item.id)}
-  //                       >
-  //                         <i className="fa-solid fa-pen-to-square fa-lg"></i>
-  //                       </button>
-  //                     </div>
-  //                   </div>
-  //                 </>
-  //               );
-  //             }
-  //             )}
-  //           </div>) : (
-  //             <div>
-  //               <div><h2>Your don't have any items in your shop</h2></div>
-  //             </div>
-  //           )
-  //       }
-  //     </div >
-  //   )
   return (
     <>
       <div className="page-container">

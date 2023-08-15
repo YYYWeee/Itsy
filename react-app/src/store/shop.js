@@ -98,6 +98,7 @@ export const deleteItemThunk = (itemId) => async (dispatch) => {
   if (response.ok) {
     const { id: deletedItemId } = await response.json();
     dispatch(deleteItem(itemId));
+    // dispatch(loadUserShopAction());
     return deletedItemId;
   }
 };

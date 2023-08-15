@@ -56,11 +56,12 @@ function CreateProductForm() {
   );
 
   const handleTitle = e => {
-    if (e.target.value.length <= 20 && /^[a-zA-Z0-9]*$/.test(e.target.value)) setTitle(e.target.value)
+    // if (e.target.value.length <= 200 && /^[a-zA-Z0-9]*$/.test(e.target.value)) setTitle(e.target.value)
+    if (e.target.value.length <= 200 ) setTitle(e.target.value)
   }
 
   const handleDescription = e => {
-    if (e.target.value.length <= 500) setDescription(e.target.value)
+    if (e.target.value.length <= 1000) setDescription(e.target.value)
   }
   const handlePrice = e => {
     if (e.target.value <100000  && /^[0-9]*$/.test(e.target.value)) setPrice(e.target.value)
@@ -321,7 +322,7 @@ function CreateProductForm() {
                 onChange={handleTitle}
                 required
               ></input>
-              {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
+              {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-200 characters</div>}
               <textarea
                 className="description"
                 value={description}
@@ -329,9 +330,9 @@ function CreateProductForm() {
                 // onChange={(e) => setDescription(e.target.value)}
                 onChange={handleDescription}
               />
-              {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
+              {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-1000 characters</div>}
               <input
-                className="price"
+                className="price-create-form"
                 value={price}
                 placeholder="Price"
                 style={{ textAlign: 'right' }}

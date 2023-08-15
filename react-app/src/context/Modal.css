@@ -21,4 +21,13 @@
 #modal-content {
   position: absolute;
   background-color:white;
+
+  /* position: relative; */
+  /* z-index: 150; */
+}
+
+
+#modal{
+  position: relative;
+  z-index: 150;
 }

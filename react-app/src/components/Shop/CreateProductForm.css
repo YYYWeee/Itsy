@@ -222,3 +222,17 @@ h1{
   background-color: #ffe8e7;
 
 }
+
+
+.price-create-form{
+  display: flex;
+  align-items: center;
+  bottom: 30px;
+  left: 10px;
+  background-color: white;
+  width: fit-content;
+  border-radius: 25px;
+  max-height: 25px;
+  border: none;
+  border: 1px solid rgb(189, 183, 183);
+}

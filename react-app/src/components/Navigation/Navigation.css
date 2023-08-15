@@ -14,7 +14,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 80;
+  z-index: 100;
   background-color: white;
 
   display: flex;
@@ -128,7 +128,7 @@ nav {
   padding: 8px;
 }
 
-.create-item > button {
+.create-item>button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -138,7 +138,7 @@ nav {
   width: 100%;
 }
 
-.create-item > button:hover {
+.create-item>button:hover {
   background-color: #e9e9e9;
   border-radius: 8px;
 }
@@ -172,7 +172,7 @@ nav {
   background-color: transparent;
   padding: 0;
   margin: 0;
-  width: 10%;
+  width: 100%;
   height: 100%;
   outline: None;
   border: none;
@@ -196,14 +196,20 @@ nav {
 }
 
 .header-right-container {
-  gap: 35px;
+  /* gap: 35px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1rem;
+
 }
 
 .header-right-container.when-log-in {
-  gap: 3px;
+  gap: 30px;
 }
 
 /* header right -- when user login*/
@@ -258,7 +264,7 @@ nav {
   text-decoration: none;
 }
 
-.nav-github > a {
+.nav-github>a {
   text-decoration: none;
   font-weight: 600;
   color: var(--black);
@@ -360,16 +366,52 @@ nav {
   flex-direction: column;
 }
 
-.user-menu-options > button {
+.user-menu-options>button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  padding: 2px;
   font-weight: 600;
   text-align: left;
+  color: black;
 }
 
-.user-menu-options > button:hover {
+.user-menu-options>button:hover {
   background-color: #e9e9e9;
   border-radius: 8px;
+}
+
+
+
+
+.navCategoryContainer {
+  width: 100%;
+  border-bottom: 1px solid #ececec;
+  display: flex;
+  justify-content: center;
+}
+
+.categories {
+  max-width: 1400px;
+  padding: 0 36px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  position: fixed;
+  z-index: 80;
+  background-color: white;
+}
+
+.category {
+  background-color: white;
+  font-size: 14px;
+  padding: 1rem 0;
+  color: rgb(34, 34, 34);
+  cursor: pointer;
+  position: relative;
+  margin-top: 40px;
+  font-size: 13px;
+  /* position: fixed; */
+
 }

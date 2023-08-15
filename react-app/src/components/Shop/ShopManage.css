@@ -21,10 +21,26 @@
 }
 .shop-img{
   border-radius: 10px;
+  width: 100% !important;
+
 }
 
  .shop-container-info{
   display: flex;
   flex-direction: column;
+  /* max-width: 1200px; */
+  width: 100%;
+  padding: 12px;
+  margin: 0 auto;
+  min-height: 250px;
+  background-color:#f2f0eb;
+  /* text-align: center; */
 
 }
+/* .shop-name{
+  border: -2px;
+}
+
+.shop-detail-info{
+  border-top: 2px;
+} */
