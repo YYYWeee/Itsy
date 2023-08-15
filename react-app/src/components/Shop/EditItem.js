@@ -275,6 +275,7 @@ function EditItem() {
       {targetItem.shop_id == sessionUser.shop &&
         (<div className="form-page">
           <form onSubmit={(e) => handleSubmit(e)} encType="multipart/form-data">
+          {/* <form encType="multipart/form-data"> */}
             <div className="form-container">
               <div className="image-container">
 
@@ -428,7 +429,7 @@ function EditItem() {
                 </div>
                 {/* delete button */}
                 <div className="right-btn">
-                  <button type="submit" className="saveButton" disabled={errors.length > 0}>
+                  <button type="submit" className="saveButton"  disabled={errors.length > 0}>
                     Save
                   </button>
                   {/* </div> */}
