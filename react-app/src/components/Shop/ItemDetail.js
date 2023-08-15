@@ -55,12 +55,12 @@ function ItemDetail() {
           <div className="item-price">${targetItem.price}</div>
           <div className="item-title">{targetItem.title}</div>
           <div className="shop-name">{targetItem.shop}</div>
-          <div class="product-rating" onClick={() => alert("Feature Coming Soon...")}>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
+          <div className="product-rating" onClick={() => alert("Feature Coming Soon...")}>
+            <i className="fas fa-star"></i>
+            <i className="fas fa-star"></i>
+            <i className="fas fa-star"></i>
+            <i className="fas fa-star"></i>
+            <i className="fas fa-star-half-alt"></i>
             <span>4.6(281)</span>
           </div>
 
