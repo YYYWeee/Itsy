@@ -72,7 +72,7 @@ function ProfileButton({ user }) {
       {user ? (
         <div className="header-right-container when-log-in">
           <div className="favorite" onClick={() => alert("Feature coming soon!")}>
-            <i class="fa-regular fa-heart"></i>
+            <i className="fa-regular fa-heart"></i>
           </div>
           <div className='market' onClick={() => history.push(`/shop`)}>
             <i className="fa-solid fa-shop"></i>

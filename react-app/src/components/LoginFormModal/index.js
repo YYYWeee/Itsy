@@ -92,7 +92,7 @@ function LoginFormModal() {
   return (
     <div className="log-wrap">
       <img
-        src="https://cdn.discordapp.com/attachments/1138525166754877607/1138525262473089156/apple-touch-icon.png"
+        src="https://cdn.discordapp.com/attachments/1138525166754877607/1139564738385281105/logo.png"
         alt="Itsy"
         id="navigation-title-img"
       />

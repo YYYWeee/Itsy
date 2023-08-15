@@ -48,29 +48,6 @@ function EditItem() {
     state.items.singleItem ? state.items.singleItem : {}
   );
 
-  // if (sessionUser && targetItem) {
-  //   if (targetItem.shop_id !== sessionUser.shop) {
-  //     // history.push(`/listings`);
-  //     return <Redirect to="/" />;
-  //   }
-  // }
-  // useEffect(() => {
-  //   if (sessionUser && targetItem) {
-  //     if (targetItem.shop_id !== sessionUser.shop) {
-  //       setIsAuthorized(false)
-  //       return;
-  //     }else{
-  //       setIsAuthorized(true)
-  //     }
-  //   }
-  //   console.log('isAuthorized@@@@@@',isAuthorized)
-  //   console.log('isAuthorized@@@@@@',targetItem.shop_id,sessionUser.shop)
-  //   console.log('isAuthorized@@@@@@',isAuthorized)
-  // }, [targetItem.shop_id, sessionUser.shop]);
-
-
-
-
 
   // console.log('I want to edit this item!!!!!!!!!!!', targetItem)
   // console.log('testing', targetItem.title)
@@ -429,7 +406,7 @@ function EditItem() {
                 </div>
                 {/* delete button */}
                 <div className="right-btn">
-                  <button type="submit" className="saveButton"  disabled={errors.length > 0}>
+                  <button type="submit" className="saveButton"  disabled={errors.length > 0} >
                     Save
                   </button>
                   {/* </div> */}

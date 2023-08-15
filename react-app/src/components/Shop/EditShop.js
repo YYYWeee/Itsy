@@ -122,8 +122,8 @@ function EditShop({ shop, setShowUpdateForm2 }) {
                         />
 
                       </div>
-                      {errors && <div className='error-section'><i class="fa-solid fa-triangle-exclamation fa-xl"></i>Looks like this name is already taken.</div>}
-                      {lengthError && <div className='error-section'><i class="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
+                      {errors && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Looks like this name is already taken.</div>}
+                      {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
                       <div className="description-area">
                         <label>Description </label>
                         <textarea
@@ -136,7 +136,7 @@ function EditShop({ shop, setShowUpdateForm2 }) {
                           placeholder="Description "
                         />
                       </div>
-                      {descriptionError && <div className='error-section'><i class="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
+                      {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
                     </div>
                     <div className="right-container">
                       <div className="pic-container">
