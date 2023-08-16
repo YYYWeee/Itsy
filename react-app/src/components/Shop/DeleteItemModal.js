@@ -10,13 +10,13 @@ import { fetchUserShopThunk } from "../../store/shop"
 import "./DeleteItemModal.css";
 
 
-function DeleteItemModal({item}) {
+function DeleteItemModal({ item, setModalOpen2 }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   // const [showDeleteForm, setShowDeleteForm] = useState(true);
-
+  const [modalOpen, setModalOpen] = useState(false);
 
 
   const items = useSelector((state) =>
@@ -29,37 +29,66 @@ function DeleteItemModal({item}) {
 
 
   const handleDelete = async (e) => {
+    console.log('in handle Delete')
     const data = await dispatch(deleteItemThunk(item.id));
-    // closeModal();
-    if ( data == targetItem.id) {
-      console.log('after confirm delete',data)
-      closeModal();
-      history.push(`/shop`);
-    }
+    setModalOpen2(false)
+    // setModalOpen(false);
 
-    // history.push(`/shop`);
   };
 
 
 
   return (
     <>
-      <div className="delete-item">
+      {/* <div className="delete-item">
         <div className="del-title">Delete this Item?</div>
         <div className="delete-content">
           Once you delete a Item, you can't undo it!
         </div>
         <div className="del-p-btn">
-          <button className="cancel-btn" onClick={closeModal}>
+          <button className="cancel-btn"
+          onClick={() => {
+            setOpenModal(false);
+          }}>
             Cancel
           </button>
           <button className="del-btn" onClick={handleDelete}>
             Delete
           </button>
         </div>
+      </div> */}
+
+<div className="modalBackground">
+
+      <div className="modalContainer">
+        <div className="titleCloseBtn">
+          <button
+            onClick={() => {
+              setModalOpen2(false);
+            }}
+          >
+            X
+          </button>
+        </div>
+        <div className="title">
+          <h1>Are You Sure You Want to Continue?</h1>
+        </div>
+        <div className="body">
+          <p>The next page looks amazing. Hope you want to go there!</p>
+        </div>
+        <div className="footer">
+          <button
+            onClick={() => {
+              setModalOpen2(false);
+            }}
+            id="cancelBtn"
+          >
+            Cancel
+          </button>
+          <button>Continue</button>
+        </div>
       </div>
-
-
+    </div>
 
     </>
   )

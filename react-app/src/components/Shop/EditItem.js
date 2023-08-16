@@ -19,20 +19,20 @@ function EditItem() {
   const [lengthError, setLengthError] = useState(false)
   const [descriptionError, setDescriptionError] = useState(false)
 
-  // const [showDeleteForm, setShowDeleteForm] = useState(false);
+
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    console.log('Toggle modal clicked');
+    setModal(!modal);
+  };
 
 
-
-  const [showMenu, setShowMenu] = useState(false);
-  const [isAuthorized, setIsAuthorized] = useState(true);
-  const ulRef1 = useRef();
-  const closeMenu = () => setShowMenu(false);
   const { itemId } = useParams();
 
 
   useEffect(() => {
     const res = dispatch(fetchOneItemThunk(itemId));
-    window.scroll(0, 0);
+    // window.scroll(0, 0);
   }, []);
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -47,13 +47,6 @@ function EditItem() {
   const targetItem = useSelector((state) =>
     state.items.singleItem ? state.items.singleItem : {}
   );
-
-
-  // console.log('I want to edit this item!!!!!!!!!!!', targetItem)
-  // console.log('testing', targetItem.title)
-
-
-
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -79,9 +72,6 @@ function EditItem() {
   const uploadInput = useRef();
   const uploadInput2 = useRef();
   const uploadInput3 = useRef();
-
-  const [modal, setModal] = useState(false);
-
 
   useEffect(() => {
     setTitle(targetItem.title)
@@ -236,7 +226,7 @@ function EditItem() {
       //   history.push(`/shop`);
       // }
 
-      // history.push(`/shop`);
+      history.push(`/shop`);
     }
     console.log('in handle submit!!!!!!!!!!')
   }
@@ -248,13 +238,29 @@ function EditItem() {
   const handleBack = async (e) => {
     history.push(`/shop`);
   };
+
+
+  const handleDelete = async (e) => {
+    console.log('in handle Delete')
+    const data = await dispatch(deleteItemThunk(itemId));
+    toggleModal();
+    history.push(`/shop`);
+  };
+
+
+  if(modal) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
+
   return (
     <>
       {targetItem.shop_id == sessionUser.shop &&
         (<div className="form-page">
-          <form onSubmit={(e) => handleSubmit(e)} encType="multipart/form-data">
+          {/* <form onSubmit={(e) => handleSubmit(e)} encType="multipart/form-data"> */}
           {/* <form onSubmit={handleSubmit} encType="multipart/form-data"> */}
-          {/* <form encType="multipart/form-data"> */}
+          <form encType="multipart/form-data" onSubmit={(e) => e.preventDefault()}>
             <div className="form-container">
               <div className="image-container">
 
@@ -398,33 +404,42 @@ function EditItem() {
 
 
               <div className="button-container">
-                {/* delete button */}
-                <div className="left-btn" ref={ulRef1}>
-                  <OpenModalButton
-                    buttonText="Delete"
-                    onItemClick={closeMenu}
-                    modalComponent={<DeleteItemModal item={targetItem} />}
-                  />
-                </div>
-                {/* delete button */}
+
+                <button onClick={() => { toggleModal();  }} className="deleteButton">
+                  Delete
+                </button>
+
+
+                {modal && (
+                  <div className="modal">
+                    <div onClick={toggleModal} className="overlay"></div>
+                    <div className="modal-content">
+                      <h2>Are you sure you want to delete?</h2>
+                      {/* <p>
+                      Once you delete a Item, you can't undo it!
+                      </p> */}
+                      <button className="cancel-btn" onClick={toggleModal}>
+                        cancel
+                      </button>
+                      <button className="del-btn" onClick={() => {  handleDelete(); }}>
+                        delete
+                      </button>
+                    </div>
+                  </div>
+                )}
+                {/* delete button end */}
+
                 <div className="right-btn">
-                  <button type="submit" className="saveButton"  disabled={errors.length > 0} >
-                    Save
-                  </button>
-                  {/* </div> */}
-                  {/* <div className="cancel-btn-container"> */}
                   <button
                     className="cancel-button"
                     onClick={handleCancel}
                   >
                     Cancel
                   </button>
-                  {/* </div> */}
-                  {/* <div className="backButton-container"> */}
-                  <button type="submit" className="backButton" onClick={handleBack}>
-                    Go Back
+                  <button type="submit" className="saveButton" disabled={errors.length > 0} onClick={handleSubmit} >
+                    Save
                   </button>
-                  {/* </div> */}
+
                 </div>
               </div>
             </div>
