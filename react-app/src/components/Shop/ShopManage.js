@@ -31,7 +31,7 @@ const ShopManage = () => {
     <EditShop shop={shop} setShowUpdateForm2={setShowUpdateForm} />
   ) : (
     <>
-      <h1 className="title">Management shop</h1>
+      {/* <h1 className="title">Management shop</h1> */}
       <div className="img-container">
         <img
           src={shop.shop_img}
