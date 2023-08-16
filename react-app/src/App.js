@@ -14,6 +14,7 @@ import LandingPage from "./components/LandingPage";
 import ItemDetail from "./components/Shop/ItemDetail";
 import EditItem from "./components/Shop/EditItem";
 import MainProductList from "./components/Shop/MainProductList";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      {/* <Footer /> */}
     </>
   );
 }

@@ -67,10 +67,24 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  const handleGithubClick = () => {
+    // window.location.href = "https://github.com/YYYWeee/Itsy";
+    window.open("https://github.com/YYYWeee/Itsy", "_blank");
+  };
+  const handleLinkedinClick = () => {
+    // window.location.href = "https://www.linkedin.com/in/wendy-kuo-32093773/";
+    window.open("https://www.linkedin.com/in/wendy-kuo-32093773/", "_blank");
+  };
   return (
     <>
       {user ? (
         <div className="header-right-container when-log-in">
+          <div className="github" onClick={handleGithubClick}>
+            <i class="fa-brands fa-github fa-xl" ></i>
+          </div>
+          <div className="linkedin" onClick={handleLinkedinClick}>
+            <i class="fa-brands fa-linkedin fa-xl"></i>
+          </div>
           <div className="favorite" onClick={() => alert("Feature coming soon!")}>
             <i className="fa-regular fa-heart"></i>
           </div>
@@ -142,11 +156,12 @@ function ProfileButton({ user }) {
           </ul>
         </div>
       ) : (
-        <div className="header-right-container">
-          <div className="nav-github cursor">
-            <a href="https://github.com/YYYWeee/Capstone.git" className="git">
-              Github
-            </a>
+        <div className="header-right-container when-log-out">
+          <div className="github cursor" onClick={handleGithubClick}>
+            <i class="fa-brands fa-github fa-xl" ></i>
+          </div>
+          <div className="linkedin" onClick={handleLinkedinClick}>
+            <i class="fa-brands fa-linkedin fa-xl"></i>
           </div>
           <OpenModalButton
             buttonText="Log In"
