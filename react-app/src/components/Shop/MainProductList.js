@@ -37,7 +37,7 @@ function MainProductList() {
 
   return (
     <>
-      <h1 className="welcome">Welcome</h1>
+      {/* <h1 className="welcome">Welcome</h1> */}
       <div className="page-container">
         <div className="items-container">
           {items.map((item) => {
