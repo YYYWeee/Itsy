@@ -87,7 +87,7 @@ input {
 }
 
 .cancel-button:hover {
-  background-color: var(--btn-grey-hover);
+  background-color: grey;
 }
 
 .button-container {
