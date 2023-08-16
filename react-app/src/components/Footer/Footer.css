@@ -1,0 +1,47 @@
+.social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+
+
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  z-index: 100000;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #282828;
+  padding: 10px;
+
+  box-sizing: border-box;
+
+}
+
+.footer-bottom {
+  color: white;
+  text-align: center;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica,
+    "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo,
+    "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+
+
+.page-container {
+  padding-bottom: 1000px;
+}
+.items-container {
+  padding-bottom: 1000px;
+}
