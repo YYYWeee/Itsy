@@ -85,15 +85,15 @@ function ProfileButton({ user }) {
           <div className="linkedin" onClick={handleLinkedinClick}>
             <i class="fa-brands fa-linkedin fa-xl"></i>
           </div>
-          <div className="favorite" onClick={() => alert("Feature coming soon!")}>
-            <i className="fa-regular fa-heart"></i>
+          <div className="favorite hover-text" onClick={() => alert("Feature coming soon!")}>
+            <i className="fa-regular fa-heart"><span class="tooltip-text" id="bottom">Favorites</span></i>
           </div>
-          <div className='market' onClick={() => history.push(`/shop`)}>
-            <i className="fa-solid fa-shop"></i>
+          <div className='market hover-text' onClick={() => history.push(`/shop`)}>
+            <i className="fa-solid fa-shop"><span class="tooltip-text" id="bottom">Shop Manager</span></i>
           </div>
           {/* <div className="shoppingcart" onClick={() => history.push('/cart')}> */}
-          <div className="shoppingcart" onClick={() => alert("Feature coming soon!")}>
-            <i className="fa-solid fa-cart-shopping"></i>
+          <div className="shoppingcart hover-text" onClick={() => alert("Feature coming soon!")}>
+            <i className="fa-solid fa-cart-shopping"><span class="tooltip-text" id="bottom">Shopping Cart</span></i>
           </div>
           <button
             // onClick={handleClickUser}
