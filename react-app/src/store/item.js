@@ -21,11 +21,10 @@ export const loadAllItemsAction = (items) => ({
 
 
 export const fetchOneItemThunk = (itemId) => async (dispatch) => {
-  console.log('in the thunk !!!!!!!')
   const res = await fetch(`/api/items/${itemId}`);
   if (res.ok) {
     const data = await res.json();
-    console.log('@@@@@@@@  Target Product @@@@@@@@@@@@@@@@@@@@@', data)
+    // console.log('@@@@@@@@  Target Product @@@@@@@@@@@@@@@@@@@@@', data)
     dispatch(loadOneItemAction(data));
     return data
   } else {

@@ -155,7 +155,6 @@ nav {
   border: 4px solid transparent;
   height: 32px;
   width: 80%
-
 }
 
 .nav-search:hover {
@@ -211,6 +210,7 @@ nav {
 .header-right-container.when-log-in {
   gap: 30px;
 }
+
 .header-right-container.when-log-out {
   gap: 30px;
 }
@@ -419,10 +419,16 @@ nav {
 
 }
 
-.github, .linkedin, .favorite, .market, .shoppingcart{
+.github,
+.linkedin,
+.favorite,
+.market,
+.shoppingcart {
   cursor: pointer;
 }
-
+.shoppingcart{
+  margin-top: 16px;
+}
 
 .tooltip-text {
   visibility: hidden;
@@ -453,4 +459,21 @@ nav {
   /* margin: 40px; */
   font-family: Arial;
   text-align: center;
+}
+
+
+
+.badge:after {
+
+  content: attr(value);
+  font-size: 12px;
+  color: #fff;
+  background: #F40009;
+  border-radius: 50%;
+  padding: 0 5px;
+  position: relative;
+  left:8px;
+  top:-26px;
+  font-size: 13px;
+  opacity: 0.98;
 }
