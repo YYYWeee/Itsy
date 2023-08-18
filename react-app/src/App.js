@@ -14,6 +14,7 @@ import LandingPage from "./components/LandingPage";
 import ItemDetail from "./components/Shop/ItemDetail";
 import EditItem from "./components/Shop/EditItem";
 import MainProductList from "./components/Shop/MainProductList";
+import CartItem from "./components/Cart/CartItem/CartItem";
 import Footer from "./components/Footer";
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
           </Route>
           <Route exact path="/items/new">
             <CreateProductForm />
+          </Route>
+          <Route exact path="/cart">
+            <CartItem />
           </Route>
         </Switch>
       )}

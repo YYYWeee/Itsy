@@ -10,11 +10,11 @@ export default function Footer() {
           {/* <div className="footer-header">Let's connect</div> */}
           <div className="social">
             <a href='https://github.com/YYYWeee/Itsy' target="_blank" title="GitHub">
-              <i class="fa-brands fa-github fa-2xl" ></i>
+              <i className="fa-brands fa-github fa-2xl" ></i>
             </a>
             <a href='https://www.linkedin.com/in/wendy-kuo-32093773/' target="_blank" title="LinkedIn">
 
-              <i class="fa-brands fa-linkedin fa-2xl"></i>
+              <i className="fa-brands fa-linkedin fa-2xl"></i>
             </a>
           </div>
           <div className="footer-bottom">

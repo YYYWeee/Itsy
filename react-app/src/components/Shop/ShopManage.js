@@ -41,7 +41,7 @@ const ShopManage = () => {
       </div>
       <div className="shop-container-info">
         <div className="shop-name">
-          <h1>{user.username}'s shop</h1>
+          {/* <h2>{user.username}'s shop</h2> */}
         </div>
         <div className="shop-detail-info">
           <div><h2>{shop?.name}<button

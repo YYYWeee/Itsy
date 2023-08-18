@@ -1,12 +1,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { fetchAllItemsInCartThunk } from "../../store/cart"
 
 // import "./ProfileButton.css";
 import "./Navigation.css";
@@ -75,25 +76,36 @@ function ProfileButton({ user }) {
     // window.location.href = "https://www.linkedin.com/in/wendy-kuo-32093773/";
     window.open("https://www.linkedin.com/in/wendy-kuo-32093773/", "_blank");
   };
+
+
+  useEffect(() => {
+    const res = dispatch(fetchAllItemsInCartThunk());
+    window.scroll(0, 0);
+  }, [dispatch])
+  const items = Object.values(
+    useSelector((state) => (state.carts.shoppingcart.items ? state.carts.shoppingcart.items : {}))
+  );
+
+
   return (
     <>
       {user ? (
         <div className="header-right-container when-log-in">
           <div className="github" onClick={handleGithubClick}>
-            <i class="fa-brands fa-github fa-xl" ></i>
+            <i className="fa-brands fa-github fa-xl" ></i>
           </div>
           <div className="linkedin" onClick={handleLinkedinClick}>
-            <i class="fa-brands fa-linkedin fa-xl"></i>
+            <i className="fa-brands fa-linkedin fa-xl"></i>
           </div>
           <div className="favorite hover-text" onClick={() => alert("Feature coming soon!")}>
-            <i className="fa-regular fa-heart"><span class="tooltip-text" id="bottom">Favorites</span></i>
+            <i className="fa-regular fa-heart"><span className="tooltip-text" id="bottom">Favorites</span></i>
           </div>
           <div className='market hover-text' onClick={() => history.push(`/shop`)}>
-            <i className="fa-solid fa-shop"><span class="tooltip-text" id="bottom">Shop Manager</span></i>
+            <i className="fa-solid fa-shop"><span className="tooltip-text" id="bottom">Shop Manager</span></i>
           </div>
-          {/* <div className="shoppingcart" onClick={() => history.push('/cart')}> */}
-          <div className="shoppingcart hover-text" onClick={() => alert("Feature coming soon!")}>
-            <i className="fa-solid fa-cart-shopping"><span class="tooltip-text" id="bottom">Shopping Cart</span></i>
+          {/* <div className="shoppingcart" onClick={() => alert("Feature coming soon!")}> */}
+          <div className="shoppingcart hover-text" onClick={() => history.push(`/cart`)}>
+            <i className="fa-solid fa-cart-shopping badge" value={items.length}><span className="tooltip-text" id="bottom">Shopping Cart</span></i>
           </div>
           <button
             // onClick={handleClickUser}
@@ -158,10 +170,10 @@ function ProfileButton({ user }) {
       ) : (
         <div className="header-right-container when-log-out">
           <div className="github cursor" onClick={handleGithubClick}>
-            <i class="fa-brands fa-github fa-xl" ></i>
+            <i className="fa-brands fa-github fa-xl" ></i>
           </div>
           <div className="linkedin" onClick={handleLinkedinClick}>
-            <i class="fa-brands fa-linkedin fa-xl"></i>
+            <i className="fa-brands fa-linkedin fa-xl"></i>
           </div>
           <OpenModalButton
             buttonText="Log In"

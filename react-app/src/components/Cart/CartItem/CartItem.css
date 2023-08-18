@@ -1,0 +1,100 @@
+h2 {
+  margin-top: 200px;
+
+}
+
+.page-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cart-page-container {
+  max-width: 1000px;
+  padding: 36px;
+  margin: 0 auto;
+  border-bottom: 1px solid #808080;
+  min-height: 450px;
+
+}
+
+.single-cart-item-container {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.cart-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+
+.preview-image-cart {
+  width: 170px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.remove-btn {
+  cursor: pointer;
+}
+
+
+.cursor {
+  cursor: pointer;
+}
+
+select {
+  cursor: pointer;
+}
+
+.second-row{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+
+}
+
+
+.title-and-qty{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.total-price{
+  font-weight: bold;
+}
+
+.price-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+  align-items: flex-end;
+}
+
+.top-row{
+  font-size: large;
+  font-weight: bold;
+}
+
+.ecah-price{
+  color: #696969	;
+  font-size:12px ;
+}
+
+
+
+.single-cart-item-container{
+  /* width: 250px;
+  height: 150px; */
+  border-radius: 6px;
+  box-shadow: 0 0 5px #989898;
+}
