@@ -15,6 +15,9 @@ h2 {
   margin: 0 auto;
   border-bottom: 1px solid #808080;
   min-height: 450px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
 
 }
 
@@ -54,7 +57,7 @@ select {
   cursor: pointer;
 }
 
-.second-row{
+.second-row {
   display: flex;
   flex-direction: row;
   gap: 40px;
@@ -62,39 +65,118 @@ select {
 }
 
 
-.title-and-qty{
+.title-and-qty {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.total-price{
+.total-price {
   font-weight: bold;
-}
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
 
-.price-container{
+}
+.total-price-sub{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.price-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 50%;
+  width: 60%;
   align-items: flex-end;
 }
 
-.top-row{
+.top-row {
   font-size: large;
   font-weight: bold;
 }
 
-.ecah-price{
-  color: #696969	;
-  font-size:12px ;
+.ecah-price {
+  color: #696969;
+  font-size: 12px;
 }
 
 
 
-.single-cart-item-container{
+.single-cart-item-container {
   /* width: 250px;
   height: 150px; */
   border-radius: 6px;
   box-shadow: 0 0 5px #989898;
+}
+
+
+.payment-container {
+  width: 600px;
+  height: 300px;
+
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  border-radius: 8px;
+
+}
+
+.payment-card-option {
+  padding-left: 0;
+  list-style: none;
+}
+
+
+.visa-option {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.amex-option {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.googlePay-option {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* .radio-input{
+  width: 4px;
+  height: 4px;
+} */
+
+input{
+  cursor: pointer;
+}
+
+
+.checkout-btn {
+  display: flex;
+  justify-content: center;
+  border-radius: 23px;
+  width: 100%;
+  height: fit-content;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+  padding: 10px;
+  align-items: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.payment-title{
+  font-weight: bold;
+}
+
+.cart-item-title{
+  font-size: 13px;
 }

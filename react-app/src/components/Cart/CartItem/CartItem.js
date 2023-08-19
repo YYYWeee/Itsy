@@ -10,6 +10,7 @@ import "./CartItem.css";
 
 function CartItem() {
   let unit;
+  let total=0;
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,6 +23,7 @@ function CartItem() {
   );
   useEffect(() => {
     const res = dispatch(fetchAllItemsInCartThunk());
+
     window.scroll(0, 0);
   }, [dispatch])
 
@@ -42,16 +44,21 @@ function CartItem() {
   }
 
   const handleChangeQty = async (itemId, qty) => {
-    console.log('Change quantityy')
+    console.log('Change quantity')
     await dispatch(modifyItemQtyThunk(itemId, qty))
     // await dispatch(fetchAllItemsInCartThunk())
   }
+  products.forEach((product) => {
+    const productQuantity = calculateTotalQuantity(product.id);
+    total += productQuantity * product.price;
+  });
+
   return (
     <>
 
       {products.length > 0 ?
-        (<div className="page-title"><h2> {products.length} {unit} in your cart </h2></div>) : (<div className="page-title"><h2>Your cart is empty.</h2></div>)
-      }
+        (<div className="page-title"><h2> {products.length} {unit} in your cart </h2></div>) : (<div className="page-title"><h2>Your cart is empty.</h2></div>)}
+
       <div className="cart-page-container">
         <div className="cart-items-container">
           {products.map((product) => {
@@ -107,9 +114,61 @@ function CartItem() {
           })}
 
         </div>
+        {products.length > 0 ? (
+          <div className="payment-container">
+            <div className="payment-title">How you'll pay</div>
+            <ul className="payment-card-option">
+              <li className="payment-card-option-li">
+                <div className="radio-list">
+                  <div className="visa-option">
+                    <input
+                      id='visa'
+                      name='option'
+                      type='radio'
+                      style={{ width: '20px', height: '20px' }}
+                      checked
+                      className="radio-input"
+                    />
+                    <label for="visa"><i class="fa-brands fa-cc-visa fa-xl"></i> <i class="fa-brands fa-cc-mastercard fa-xl"></i></label>
+                  </div>
+                  <div className="amex-option">
+                    <input
+                      id='amex'
+                      name='option'
+                      type='radio'
+                      style={{ width: '20px', height: '20px' }}
+                      className="radio-input"
+                    />
+                    <label for="paypal"><i class="fa-brands fa-cc-amex fa-xl"></i></label>
+                  </div>
+
+                  <div className="googlePay-option">
+                    <input
+                      id='googlePay'
+                      name='option'
+                      type='radio'
+                      style={{ width: '20px', height: '20px' }}
+                      className="radio-input"
+                    />
+                    <label for="googlePay"><i class="fa-brands fa-google-pay fa-xl"></i></label>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div className="total-price">
+              <div className="total-and-qty">
+                Total ({products.length} {unit})
+              </div>
+              <div className="total-price-sub">
+              ${total}
+              </div>
+            </div>
+            <div className="checkout-btn" onClick={() => alert("Feature coming soon!")}>Proceed to checkout</div>
+          </div>) : (<div></div>)}
       </div>
     </>
   )
+
 }
 
 
