@@ -114,7 +114,7 @@ function ItemDetail() {
               <div className="item-detail-info">
                 <div className="cart-img-container">
                   <img className="cart-item-img" src={targetItem.img_1} />
-                  <i class="fa-solid fa-circle-check"></i>
+                  <i className="fa-solid fa-circle-check"></i>
                 </div>
                 <div className="cart-item-text">1 item added to cart</div>
                 <div className="cart-button-container">

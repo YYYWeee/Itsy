@@ -26,6 +26,25 @@ class Order(db.Model):
         "OrderItem", back_populates="order", cascade="all, delete-orphan")
 
 
+    def calculate_qty_items(self):
+        qty = 0
+        for item in self.orderitems:
+            qty += item.quantity
+        return qty
+
+    def calculate_checkout_price(self):
+        paymoney = 0
+        for item in self.orderitems:
+            res = item.quantity * item.productitem.price
+            paymoney += res
+        return paymoney
+
+    def items(self):
+        res = {}
+        for orderitem in self.orderitems:
+            res[orderitem.item_id] = orderitem.to_dict()
+        return res
+
 
     def to_dict(self):
         order_dict = {
@@ -35,6 +54,9 @@ class Order(db.Model):
             # 'quantity': self.quantity,
             'shipping_address': self.shipping_address,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'num_items': self.calculate_qty_items(),
+            'total_price': self.calculate_checkout_price(),
+            'order_items': self.items(),
         }
         return order_dict

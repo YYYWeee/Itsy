@@ -15,6 +15,10 @@ import ItemDetail from "./components/Shop/ItemDetail";
 import EditItem from "./components/Shop/EditItem";
 import MainProductList from "./components/Shop/MainProductList";
 import CartItem from "./components/Cart/CartItem/CartItem";
+import OrderHistory from "./components/OrderHistory/OrderHistory";
+import Checkout from "./components/Checkout/Checkout";
+
+
 import Footer from "./components/Footer";
 
 function App() {
@@ -60,6 +64,14 @@ function App() {
           </Route>
           <Route exact path="/cart">
             <CartItem />
+          </Route>
+
+          <Route exact path="/orders">
+            <OrderHistory />
+          </Route>
+
+          <Route exact path="/checkout">
+            <Checkout />
           </Route>
         </Switch>
       )}

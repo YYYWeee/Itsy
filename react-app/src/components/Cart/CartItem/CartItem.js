@@ -53,6 +53,7 @@ function CartItem() {
     total += productQuantity * product.price;
   });
 
+
   return (
     <>
 
@@ -105,7 +106,7 @@ function CartItem() {
                     </div>
                   </div>
                   <div className="remove-btn" onClick={() => handleRemove(product.id)}>
-                    <i class="fa-solid fa-trash"></i> Remove
+                    <i className="fa-solid fa-trash"></i> Remove
                   </div>
                 </div>
 
@@ -129,7 +130,7 @@ function CartItem() {
                       checked
                       className="radio-input"
                     />
-                    <label for="visa"><i class="fa-brands fa-cc-visa fa-xl"></i> <i class="fa-brands fa-cc-mastercard fa-xl"></i></label>
+                    <label htmlForfor="visa"><i class="fa-brands fa-cc-visa fa-xl"></i> <i class="fa-brands fa-cc-mastercard fa-xl"></i></label>
                   </div>
                   <div className="amex-option">
                     <input
@@ -139,7 +140,7 @@ function CartItem() {
                       style={{ width: '20px', height: '20px' }}
                       className="radio-input"
                     />
-                    <label for="paypal"><i class="fa-brands fa-cc-amex fa-xl"></i></label>
+                    <label htmlForfor="paypal"><i class="fa-brands fa-cc-amex fa-xl"></i></label>
                   </div>
 
                   <div className="googlePay-option">
@@ -150,7 +151,7 @@ function CartItem() {
                       style={{ width: '20px', height: '20px' }}
                       className="radio-input"
                     />
-                    <label for="googlePay"><i class="fa-brands fa-google-pay fa-xl"></i></label>
+                    <label htmlForfor="googlePay"><i class="fa-brands fa-google-pay fa-xl"></i></label>
                   </div>
                 </div>
               </li>
@@ -163,7 +164,8 @@ function CartItem() {
               ${total}
               </div>
             </div>
-            <div className="checkout-btn" onClick={() => alert("Feature coming soon!")}>Proceed to checkout</div>
+            {/* <div className="checkout-btn" onClick={() => alert("Feature coming soon!")}>Proceed to checkout</div> */}
+            <div className="checkout-btn" onClick={() => history.push(`/checkout`)}>Proceed to checkout</div>
           </div>) : (<div></div>)}
       </div>
     </>
