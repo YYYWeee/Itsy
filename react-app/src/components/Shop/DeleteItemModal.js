@@ -15,7 +15,6 @@ function DeleteItemModal({ item, setModalOpen2 }) {
   const { closeModal } = useModal();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-  // const [showDeleteForm, setShowDeleteForm] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
 
 
@@ -32,7 +31,6 @@ function DeleteItemModal({ item, setModalOpen2 }) {
     console.log('in handle Delete')
     const data = await dispatch(deleteItemThunk(item.id));
     setModalOpen2(false)
-    // setModalOpen(false);
 
   };
 
@@ -40,23 +38,7 @@ function DeleteItemModal({ item, setModalOpen2 }) {
 
   return (
     <>
-      {/* <div className="delete-item">
-        <div className="del-title">Delete this Item?</div>
-        <div className="delete-content">
-          Once you delete a Item, you can't undo it!
-        </div>
-        <div className="del-p-btn">
-          <button className="cancel-btn"
-          onClick={() => {
-            setOpenModal(false);
-          }}>
-            Cancel
-          </button>
-          <button className="del-btn" onClick={handleDelete}>
-            Delete
-          </button>
-        </div>
-      </div> */}
+
 
 <div className="modalBackground">
 

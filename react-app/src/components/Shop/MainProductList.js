@@ -27,7 +27,8 @@ function MainProductList() {
     dispatch(fetchAllItemsThunk())
   }, [dispatch]);
 
-  if (!items) return null;
+  // if (!items) return null;
+  if (!items.length) return null;
 
   // items?.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
   //sort the items randomly
