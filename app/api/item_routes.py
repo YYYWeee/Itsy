@@ -44,7 +44,6 @@ def new_item():
 
 
     if form.validate_on_submit():
-        # print('!!!!!!!!!!!!!!!!!!!!!!!!!!!',form.data["image"])  #<FileStorage: '6.jpg' ('image/jpeg')>
         print('Pass validation')
         image_file = form.data["image"]
         image_file2 = form.data["image2"]
