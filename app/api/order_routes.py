@@ -13,10 +13,11 @@ order_routes = Blueprint('orders', __name__)
 @order_routes.route('/old')
 @login_required
 def get_all_old_order():
-    past_orders = Order.query.filter(Order.user_id == current_user.id).order_by(
+    old_orders = Order.query.filter(Order.user_id == current_user.id).order_by(
         Order.updated_at.desc()).all()
 
-    return {"old_orders": {order.id: order.to_dict() for order in past_orders}}
+    return {"old_orders": {order.id: order.to_dict() for order in old_orders}}
+
 
 
 @order_routes.route('/old/<int:orderId>')

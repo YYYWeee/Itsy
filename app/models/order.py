@@ -42,7 +42,7 @@ class Order(db.Model):
     def items(self):
         res = {}
         for orderitem in self.orderitems:
-            res[orderitem.item_id] = orderitem.to_dict()
+            res[orderitem.product_id] = orderitem.to_dict()
         return res
 
 

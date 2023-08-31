@@ -69,7 +69,9 @@ function App() {
           <Route exact path="/orders">
             <OrderHistory />
           </Route>
-
+          {/* <Route exact path="/checkout/completed">
+            <NewestOrderInfo />
+          </Route> */}
           <Route exact path="/checkout">
             <Checkout />
           </Route>
