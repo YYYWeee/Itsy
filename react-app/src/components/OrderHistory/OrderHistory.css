@@ -2,3 +2,10 @@
   margin-top: 200px;
 
 }
+
+
+.order-history-page-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

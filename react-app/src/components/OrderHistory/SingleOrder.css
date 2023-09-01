@@ -1,0 +1,40 @@
+
+.single-item{
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+}
+
+.old-order-container{
+  margin: 100px;
+  margin: auto;
+}
+
+.old-order-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 50px 50px;
+  max-width: 1000px;
+  margin-bottom: 40px;
+}
+
+.item-list{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.general-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.order-right-container{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

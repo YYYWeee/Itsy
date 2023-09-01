@@ -1,3 +1,31 @@
-.checkout-page-title{
+.checkout-page-title {
   margin-top: 200px;
+}
+
+
+.checkout-form-page {
+  max-width: 1000px;
+  padding: 36px;
+  margin: 0 auto;
+
+  min-height: 450px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+
+}
+
+.form-container-enter-address {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+}
+
+.address-field{
+  width: 600px;
+}
+
+.placeOrderButton{
+  width: 600px;
 }

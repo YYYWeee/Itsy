@@ -122,71 +122,71 @@ function Checkout() {
 
       <div className="checkout-form-page">
         <div className="form-container-enter-address">
-          <div className="form-container-enter-address">
-            <h1 className="checkout-page-title">Enter an address</h1>
+
+          <h1 className="checkout-page-title">Enter an address</h1>
 
 
-            <form onSubmit={handleSubmit} id="enter-address-form">
+          <form onSubmit={handleSubmit} id="enter-address-form">
 
-              <div className="street-address-section">
-                <div><label>Street address</label></div>
-                <input
-                  id='id_address'
-                  className='address-field'
-                  type='text'
-                  value={address}
-                  onChange={e => setAddress(e.target.value)}
-                />
-                {addressError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{addressError}</div>}
-              </div>
+            <div className="street-address-section">
+              <div><label>Street address</label></div>
+              <input
+                id='id_address'
+                className='address-field'
+                type='text'
+                value={address}
+                onChange={e => setAddress(e.target.value)}
+              />
+              {addressError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{addressError}</div>}
+            </div>
 
-              <div className="zip-code-section">
-                <div><label>Zip code</label></div>
-                <input
-                  id='id_zip'
-                  className='zip-field'
-                  type='text'
-                  value={zip}
-                  onChange={handleZipCode}
-                />
-                {zipCodeError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{zipCodeError}</div>}
-              </div>
-              <div className="city-section">
-                <div><label>City</label></div>
-                <input
-                  id='id_city'
-                  className='city-field'
-                  type='text'
-                  value={city}
-                  onChange={e => setCity(e.target.value)}
-                />
-                {cityError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{cityError}</div>}
-              </div>
+            <div className="zip-code-section">
+              <div><label>Zip code</label></div>
+              <input
+                id='id_zip'
+                className='zip-field'
+                type='text'
+                value={zip}
+                onChange={handleZipCode}
+              />
+              {zipCodeError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{zipCodeError}</div>}
+            </div>
+            <div className="city-section">
+              <div><label>City</label></div>
+              <input
+                id='id_city'
+                className='city-field'
+                type='text'
+                value={city}
+                onChange={e => setCity(e.target.value)}
+              />
+              {cityError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{cityError}</div>}
+            </div>
 
 
 
-              <div className='state-section'>
-                <div><label>State <span>*</span></label></div>
-                <select
-                  className='select-state-menu'
-                  value={state}
-                  defaultValue={state}
-                  onChange={e => setState(e.target.value)}
-                >
-                  <option value='' disabled>Select state</option>
-                  {Object.keys(STATES).map(key =>
-                    <option value={key} key={key}>{STATES[key]}</option>
-                  )}
-                </select>
-                {stateError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{stateError}</div>}
-              </div>
+            <div className='state-section'>
+              <div><label>State <span>*</span></label></div>
+              <select
+                className='select-state-menu'
+                value={state}
+                defaultValue={state}
+                onChange={e => setState(e.target.value)}
+              >
+                <option value='' disabled>Select state</option>
+                {Object.keys(STATES).map(key =>
+                  <option value={key} key={key}>{STATES[key]}</option>
+                )}
+              </select>
+              {stateError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{stateError}</div>}
+            </div>
 
-              <button type="submit" className="placeOrderButton" disabled={addressError || zipCodeError || cityError || stateError} >
-                Place order
-              </button>
-            </form>
-          </div>
+            <button type="submit" className="placeOrderButton" disabled={addressError || zipCodeError || cityError || stateError} >
+              Place order
+            </button>
+          </form>
         </div>
+
       </div>
     </>
   )

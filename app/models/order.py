@@ -49,9 +49,7 @@ class Order(db.Model):
     def to_dict(self):
         order_dict = {
             'id': self.id,
-            # 'product_id': self.product_id,
             'user_id': self.user_id,
-            # 'quantity': self.quantity,
             'shipping_address': self.shipping_address,
             'created_at': self.created_at,
             'updated_at': self.updated_at,

@@ -48,7 +48,7 @@ export const placeOrderThunk = (address) => async (dispatch) => {
 
   if (response.ok) {
     const newOrder = await response.json()
-    dispatch(loadNewestOldOrderThunk())
+
     dispatch(fetchAllItemsInCartThunk())
     return newOrder
   } else {
@@ -65,42 +65,16 @@ export const loadAllOldOrdersThunk = () => async (dispatch) => {
   return data.old_orders;
 };
 
-//newest_old_order
-export const loadNewestOldOrderThunk = () => async (dispatch) => {
-  const res = await fetch(`api/orders/old/newest`);
-  const data = await res.json();
-  dispatch(loadNewestOldOrderAction(data));
-  return data.newest_order;
-};
-
-
-//single_old_order
-export const getSingleOldOrderThunk = (orderId) => async (dispatch) => {
-  const res = await fetch(`api/orders/old/${orderId}`);
-  const data = await res.json();
-  dispatch(loadOneOldOrderAction(data));
-  return data.single_old_order;
-};
 
 
 
 /**  Reducer: */
-const initialState = { all_old_orders: {}, single_old_order: {}, newest_old_order: {}, };
+
+const initialState = { all_old_orders: {}};
 const ordersReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALL_OLD_ORDERS:
       return { ...state, all_old_orders: { ...action.payload.old_orders } };
-    case LOAD_ONE_OLD_ORDER:
-      return {
-        ...state,
-        single_old_order: { ...action.payload.single_old_order },
-      };
-    case LOAD_NEWEST_OLD_ORDER:
-      return {
-        ...state,
-        newest_old_order: { ...action.payload.newest_order },
-      };
-
 
     default:
       return state;
