@@ -29,3 +29,10 @@
 .placeOrderButton{
   width: 600px;
 }
+
+.error-section{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start
+}
