@@ -1,31 +1,36 @@
-from app.models import db, Product, environment, SCHEMA
+from app.models import db, Order, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
-# pending
+
 def seed_orders():
-  orders = [{
-    'product_id':4,
+  orders = [
+    { #id : 1
     'user_id':1,
-    'quantity':3,
-    'shipping_address':'67 Wagon Lane Sioux Falls, SD 57103'
+    'shipping_address':'718 N Highland Ave, Los Angeles, CA 90038'
     },
-    {
-      'product_id':5,
+    { # id : 2
       'user_id':1,
-      'quantity':1,
-      'shipping_address':'67 Wagon Lane Sioux Falls, SD 57103'
+      'shipping_address':'718 N Highland Ave, Los Angeles, CA 90038'
     },
-    {
-      'product_id':6,
+    { # id : 3
       'user_id':1,
-      'quantity':6,
-      'shipping_address':'67 Wagon Lane Sioux Falls, SD 57103'
+      'shipping_address':'718 N Highland Ave, Los Angeles, CA 90038'
     },
-    # {
-    #   'product_id':,
-    #   'user_id':2,
-    #   'quantity':,
-    #   'shipping_address':'8323 Berkshire Street Ballston Spa, NY 12020'
-    # }
-    ]
+    { # id : 4
+      'user_id':2,
+      'shipping_address':'3737 Moraga Ave # B307, San Diego, CA 92117'
+    },
+  ]
+  seed_orders = [db.session.add(
+    Order(**order)) for order in orders]
+  db.session.commit()
+
+def undo_orders():
+    if environment == "production":
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.orders RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM orders"))
+
+    db.session.commit()

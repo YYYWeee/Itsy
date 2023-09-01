@@ -12,25 +12,22 @@ function ItemDetail() {
   const { itemId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  // const [bigImg, setBigImg] = useState('')
   const sessionUser = useSelector((state) => state.session.user);
   const targetItem = useSelector((state) =>
     state.items.singleItem ? state.items.singleItem : {}
   );
-  // const mainpic = targetItem.img_1
-  const [bigImg, setBigImg] = useState(targetItem.img_1)
+  const [bigImg, setBigImg] = useState(targetItem.img_1)     //modify ?
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
     console.log('Toggle modal clicked');
     setModal(!modal);
 
-    // setTimeout(() => {
-    //   setModal(false)
-    // }, 1500)
+    setTimeout(() => {
+      setModal(false)
+    }, 1500)
   };
 
   useEffect(() => {
-    // const res = dispatch(fetchOneItemThunk(itemId));
     dispatch(fetchOneItemThunk(itemId))
       .then(res => {
         setBigImg(targetItem.img_1)
@@ -39,12 +36,6 @@ function ItemDetail() {
     dispatch(fetchAllItemsInCartThunk());
   }, [dispatch, itemId, targetItem.img_1]);
 
-  // const handleAddToCart = async (itemId)=>{
-  //   console.log('Click on add to cart')
-  //   await dispatch(saveItemToCartThunk(itemId))
-  //   await dispatch(fetchAllItemsInCartThunk());
-  //   setIsShoppingCartModal(true)
-  // }
 
   const handleAddToCart = async (itemId) => {
 
@@ -114,7 +105,7 @@ function ItemDetail() {
               <div className="item-detail-info">
                 <div className="cart-img-container">
                   <img className="cart-item-img" src={targetItem.img_1} />
-                  <i class="fa-solid fa-circle-check"></i>
+                  <i className="fa-solid fa-circle-check"></i>
                 </div>
                 <div className="cart-item-text">1 item added to cart</div>
                 <div className="cart-button-container">

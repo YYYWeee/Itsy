@@ -4,7 +4,8 @@ from flask import Blueprint, jsonify, request, redirect, url_for
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 
-from app.models import db, Shop, Product, User, Cart
+from app.forms.order_form import OrderForm
+from app.models import db, Shop, Product, User, Cart, Order, OrderItem
 from sqlalchemy import and_, case
 from sqlalchemy.sql import func
 
@@ -78,3 +79,39 @@ def edit_item_qty(itemId):
 
     db.session.commit()
     return target_item.to_dict()
+
+
+#*************************************************************************#
+#checkout all the items in the cart
+@cart_routes.route('/checkout', methods=['POST'])
+@login_required
+def checkout_shoppingcart():
+    print('checkout backend')
+    cart_items =Cart.query.filter_by(user_id=current_user.id).all()
+
+    form = OrderForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        print('Pass validatation####################')
+        new_order = Order(
+            user_id=current_user.id,
+            shipping_address=form.data['shipping_address'],
+        )
+        db.session.add(new_order)
+        db.session.commit()
+        print('new_order*****************',new_order.to_dict())
+        for cart_item in cart_items:
+            order_item = OrderItem(
+                order_id=new_order.id,
+                product_id=cart_item.product_id,
+                quantity=cart_item.quantity
+            )
+            db.session.add(order_item)
+            db.session.commit()
+
+        for cart_item in cart_items:
+            db.session.delete(cart_item)
+        db.session.commit()
+        return {'message': 'order successfully placed'}, 201
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

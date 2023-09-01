@@ -25,8 +25,7 @@ function ProductList() {
   };
 
   const handleUpdate = (itemId) => {
-    // setShowUpdateForm(true);
-    // setTargetId(itemId)
+
     history.push(`/item/${itemId}/edit`);
   };
 

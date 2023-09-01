@@ -26,7 +26,7 @@ function ProfileButton({ user }) {
 
   const handledPurchaseHistory = async (e) => {
     e.preventDefault();
-    history.push(`/your/purchase/history`);
+    history.push(`/orders`);
   }
 
   const handleLogout = async (e) => {
@@ -160,10 +160,12 @@ function ProfileButton({ user }) {
               {/* <button onClick={() => alert("Feature coming soon!")}>
                 Settings
               </button> */}
-              <button onClick={() => alert("Feature coming soon!")}>
+              {/* <button onClick={() => alert("Feature coming soon!")}> */}
+              <button onClick={handledPurchaseHistory}>
+              <i className="fa-regular fa-clipboard fa-xl icon-indropdown"></i>
                 Purchase
               </button>
-              <button onClick={handleLogout}>Log Out</button>
+              <button onClick={handleLogout}><i className="fa-solid fa-left-long fa-xl icon-indropdown"></i>Log Out</button>
             </div>
           </ul>
         </div>
