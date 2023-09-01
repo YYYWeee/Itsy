@@ -137,7 +137,7 @@ function Checkout() {
                 value={address}
                 onChange={e => setAddress(e.target.value)}
               />
-              {addressError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{addressError}</div>}
+              {addressError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{addressError}</div>}
             </div>
 
             <div className="zip-code-section">
@@ -149,7 +149,7 @@ function Checkout() {
                 value={zip}
                 onChange={handleZipCode}
               />
-              {zipCodeError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{zipCodeError}</div>}
+              {zipCodeError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{zipCodeError}</div>}
             </div>
             <div className="city-section">
               <div><label>City</label></div>
@@ -160,7 +160,7 @@ function Checkout() {
                 value={city}
                 onChange={e => setCity(e.target.value)}
               />
-              {cityError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{cityError}</div>}
+              {cityError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{cityError}</div>}
             </div>
 
 
@@ -178,7 +178,7 @@ function Checkout() {
                   <option value={key} key={key}>{STATES[key]}</option>
                 )}
               </select>
-              {stateError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{stateError}</div>}
+              {stateError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{stateError}</div>}
             </div>
 
             <button type="submit" className="placeOrderButton" disabled={addressError || zipCodeError || cityError || stateError} >
