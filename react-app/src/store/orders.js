@@ -1,5 +1,5 @@
 
-import {fetchAllItemsInCartThunk} from './cart'
+import { fetchAllItemsInCartThunk } from './cart'
 
 
 
@@ -66,15 +66,32 @@ export const loadAllOldOrdersThunk = () => async (dispatch) => {
 };
 
 
+//newest_old_order
+export const loadNewestOldOrderThunk = () => async (dispatch) => {
+  console.log('frontend fetch lastest order')
+  const res = await fetch("/api/orders/old/newest");
+  const data = await res.json();
+  dispatch(loadNewestOldOrderAction(data));
+  return data.newest_order;
+};
 
 
 /**  Reducer: */
 
-const initialState = { all_old_orders: {}};
+const initialState = { all_old_orders: {}, newest_old_order: {} };
 const ordersReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALL_OLD_ORDERS:
       return { ...state, all_old_orders: { ...action.payload.old_orders } };
+
+
+    case LOAD_NEWEST_OLD_ORDER:
+      return {
+        ...state,
+        newest_old_order: { ...action.payload.newest_order },
+      };
+
+
 
     default:
       return state;
