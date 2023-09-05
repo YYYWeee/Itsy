@@ -24,7 +24,7 @@ function ItemDetail() {
 
     setTimeout(() => {
       setModal(false)
-    }, 1500)
+    }, 5000)
   };
 
   useEffect(() => {

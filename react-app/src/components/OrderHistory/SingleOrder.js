@@ -1,5 +1,10 @@
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { saveItemToCartThunk } from "../../store/cart";
+import { fetchAllItemsInCartThunk } from "../../store/cart"
+
 import "./SingleOrder.css"
+
 
 const calculateNewDate = (oldDate) => {
   const date = new Date(oldDate);
@@ -13,12 +18,13 @@ const calculateNewDate = (oldDate) => {
 
 
 function SingleOrder({ order }) {
+
+  const dispatch = useDispatch();
   const history = useHistory();
   const order_items = Object.values(order?.order_items);
   // const order_date = order.order_items[0].updated_at;
 
   // let newDate = new Date(oneBookingPOJO.startDate);
-
 
   return (
     <>
@@ -41,6 +47,8 @@ function SingleOrder({ order }) {
                   <div>Quantity: {item.quantity}</div>
                   {/* <div>{item.product_price}</div> */}
                   <div>$: {item.product_price * item.quantity}</div>
+
+                  <button className="buyAgainBtn" onClick={() => history.push(`/listings/${item.product_id}`)}>Buy this again</button>
                 </div>
               </div>
             ))}

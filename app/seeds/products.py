@@ -1475,7 +1475,7 @@ def seed_products():
     today = datetime.now()
     # define the range of 2 years ago from today
     two_years_ago = today - timedelta(days=365*2)
-    # generate 31 elements for 31 pins with random datetimes within the 2-year range
+    # generate 167 elements for 167 orders with random datetimes within the 2-year range
 
     randomCreatedAtDates = []
     for _ in range(167):
