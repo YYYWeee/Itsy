@@ -10,7 +10,7 @@ import "./CartItem.css";
 
 function CartItem() {
   let unit;
-  let total=0;
+  let total = 0;
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -58,7 +58,17 @@ function CartItem() {
     <>
 
       {products.length > 0 ?
-        (<div className="page-title"><h2> {products.length} {unit} in your cart </h2></div>) : (<div className="page-title"><h2>Your cart is empty.</h2></div>)}
+        (<div className="page-title">
+          <h2> {products.length} {unit} in your cart </h2>
+          <div className="purchaseProtection-container">
+            <img className='purchaseProtection-icon' src='https://cdn.discordapp.com/attachments/1138525166754877607/1148661394783358986/Etsy_Purchase_Protection.png' />
+            <div className="protection-text">Itsy Purchase Protection: Shop confidently on Itsy knowing if something goes wrong with an order, we've got your back</div>
+          </div>
+        </div>
+
+
+
+        ) : (<div className="page-title"><h2>Your cart is empty.</h2></div>)}
 
       <div className="cart-page-container">
         <div className="cart-items-container">
@@ -161,11 +171,15 @@ function CartItem() {
                 Total ({products.length} {unit})
               </div>
               <div className="total-price-sub">
-              ${total}
+                ${total}
               </div>
             </div>
             {/* <div className="checkout-btn" onClick={() => alert("Feature coming soon!")}>Proceed to checkout</div> */}
             <div className="checkout-btn" onClick={() => history.push(`/checkout`)}>Proceed to checkout</div>
+            <div className="donation-container">
+              <div className="dotnationText">The Uplift Fund supports nonprofits that provide resources to creative entrepreneurs in communities that need it most. You can donate your change at Checkout.</div>
+              <img className='dotnationIcon' src="https://i.etsystatic.com/site-assets/donate-the-change/dtc_logo_uplift_fund_01_08.svg" />
+            </div>
           </div>) : (<div></div>)}
       </div>
     </>
