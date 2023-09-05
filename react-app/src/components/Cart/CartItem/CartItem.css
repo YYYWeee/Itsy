@@ -5,8 +5,9 @@ h2 {
 
 .page-title {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .cart-page-container {
@@ -179,4 +180,49 @@ input{
 
 .cart-item-title{
   font-size: 13px;
+}
+
+
+.donation-container{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.dotnationIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+}
+
+.dotnationText{
+  font-size: 13px;
+  color: #787878;
+}
+
+
+.purchaseProtection-container{
+  display: flex;
+  flex-direction: row;
+  background-color: #d7e6f5;
+  padding:5px 15px;
+  border-radius: 12px;
+  width: 950px;
+}
+
+.purchaseProtection-icon{
+  display: flex;
+
+}
+
+.protection-text{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 19.6px;
+  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans", Arial, sans-serif;
+
 }
