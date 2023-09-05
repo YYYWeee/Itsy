@@ -17,7 +17,7 @@ import MainProductList from "./components/Shop/MainProductList";
 import CartItem from "./components/Cart/CartItem/CartItem";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
 import Checkout from "./components/Checkout/Checkout";
-
+import OrderConfirmation from "./components/OrderConfirmation/OrderConfirmation"
 
 import Footer from "./components/Footer";
 
@@ -65,6 +65,12 @@ function App() {
           <Route exact path="/cart">
             <CartItem />
           </Route>
+
+
+          <Route exact path="/order/confirm">
+            <OrderConfirmation />
+          </Route>
+
 
           <Route exact path="/orders">
             <OrderHistory />

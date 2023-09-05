@@ -24,16 +24,15 @@ def get_all_old_order():
 @login_required
 def get_single_old_order(orderId):
     single_past_order = Order.query.get(orderId)
-    if not single_past_order:
-        return jsonify({"message": "Order not found"}), 404
+
     return {"single_old_order": single_past_order.to_dict()}
 
-
+# fetch the latest one
 @order_routes.route('/old/newest')
 @login_required
 def get_newest_old_order():
+    print('backend#######')
     last_past_order = Order.query.filter(
         Order.user_id == current_user.id).order_by(Order.updated_at.desc()).first()
-    if not last_past_order:
-        return jsonify({"message": "Order not found"}), 404
+
     return {"newest_order": last_past_order.to_dict()}

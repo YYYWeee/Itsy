@@ -113,7 +113,9 @@ function Checkout() {
 
 
     const data = await dispatch(placeOrderThunk(formData));
-    history.push(`/orders`);
+    history.push(`/order/confirm`);
+
+    // history.push(`/orders`);
 
   }
 
