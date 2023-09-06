@@ -37,14 +37,14 @@ export const deleteItem = (itemId) => ({
 /** Thunk: */
 export const fetchUserShopThunk = () => async (dispatch) => {
   const res = await fetch("/api/shop");
-  console.log('res!!!', res)
+  // console.log('res!!!', res)
   if (res.ok) {
     const data = await res.json();
-    console.log('shop!!!', data)
+    // console.log('shop!!!', data)
     dispatch(loadUserShopAction(data));
   } else {
     const errors = await res.json();
-    console.log(errors);
+    // console.log(errors);
     return errors;
   }
 };
@@ -58,9 +58,10 @@ export const createItemThunk = (item) => async (dispatch) => {
     const newItem = await response.json()
     dispatch(createItem(newItem))
     return newItem
-  } else {
-    console.log("There was an error adding your new item!");
   }
+  // else {
+  //   console.log("There was an error adding your new item!");
+  // }
 }
 
 
@@ -70,7 +71,7 @@ export const updateItemThunk = (updateItem, id) => async (dispatch) => {
   for (let [key, value] of updateItem.entries()) {
     formDataObject[key] = value;
   }
-  console.log("~~~~~~~~~~~~~~formData thunks ~~~~~~~~~~~~~", formDataObject);
+  // console.log("~~~~~~~~~~~~~~formData thunks ~~~~~~~~~~~~~", formDataObject);
 
   const response = await fetch(`/api/items/${id}`, {
     method: "PUT",
@@ -81,9 +82,9 @@ export const updateItemThunk = (updateItem, id) => async (dispatch) => {
     // body: JSON.stringify(updateItem),
     body: updateItem,
   });
-  console.log('!!!!!!!!!!!in the update item thunk!!!!!!!!', response)
+  // console.log('!!!!!!!!!!!in the update item thunk!!!!!!!!', response)
   let updatedItem = await response.json();
-  console.log("updated Item in thunk", updatedItem);
+  // console.log("updated Item in thunk", updatedItem);
 
   dispatch(loadUserShopAction());
   return updatedItem;

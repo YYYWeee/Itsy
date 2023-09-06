@@ -40,7 +40,7 @@ export const fetchAllItemsThunk = () => async (dispatch) => {
     dispatch(loadAllItemsAction(items));
   } else {
     const errors = await res.json();
-    console.log(errors);
+    // console.log(errors);
     return errors;
   }
 };

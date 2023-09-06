@@ -19,7 +19,7 @@ function OrderConfirmation() {
         : {}
     )
   );   //array
-  console.log('!@@@@@@@@@', latestOrderitems)
+  // console.log('!@@@@@@@@@', latestOrderitems)
 
   useEffect(() => {
     const res = dispatch(loadNewestOldOrderThunk());

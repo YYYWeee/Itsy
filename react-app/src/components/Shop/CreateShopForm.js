@@ -88,7 +88,7 @@ function CreateShopForm({ setShowCreateForm2 }) {
       // console.log('data!!!!!', data)
 
       if (data['errors']) {
-        console.log('here')
+
         setErrors(true)
       } else {
         setName("");

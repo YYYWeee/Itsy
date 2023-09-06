@@ -28,7 +28,7 @@ function DeleteItemModal({ item, setModalOpen2 }) {
 
 
   const handleDelete = async (e) => {
-    console.log('in handle Delete')
+
     const data = await dispatch(deleteItemThunk(item.id));
     setModalOpen2(false)
 

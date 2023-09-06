@@ -38,13 +38,13 @@ function CartItem() {
     return result.quantity
   };
   const handleRemove = async (itemId) => {
-    console.log('Click on remove')
+    // console.log('Click on remove')
     await dispatch(deleteItemFromCartThunk(itemId))
     await dispatch(fetchAllItemsInCartThunk())
   }
 
   const handleChangeQty = async (itemId, qty) => {
-    console.log('Change quantity')
+    // console.log('Change quantity')
     await dispatch(modifyItemQtyThunk(itemId, qty))
     // await dispatch(fetchAllItemsInCartThunk())
   }

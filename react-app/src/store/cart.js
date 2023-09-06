@@ -38,7 +38,7 @@ export const fetchAllItemsInCartThunk = () => async (dispatch) => {
     dispatch(getAllItemsAction(data));
   } else {
     const errors = await res.json();
-    console.log(errors);
+    // console.log(errors);
     return errors;
   }
 }
@@ -54,9 +54,10 @@ export const saveItemToCartThunk = (itemId) => async (dispatch) => {
     const newItem = await response.json()
     dispatch(saveItemAction(newItem))
     return newItem
-  } else {
-    console.log("There was an error saving the item to shopping cart!");
   }
+  // else {
+  //   console.log("There was an error saving the item to shopping cart!");
+  // }
 
 }
 

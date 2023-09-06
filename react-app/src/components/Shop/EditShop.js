@@ -69,7 +69,7 @@ function EditShop({ shop, setShowUpdateForm2 }) {
 
       } else {
         await dispatch(fetchUserShopThunk())
-        console.log('%%%%%%%%%%%%%%%%%%%', errors)
+
         setHasSubmitted(true);
         setShowUpdateForm(false);
         setShowUpdateForm2(false);

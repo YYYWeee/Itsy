@@ -1,0 +1,30 @@
+.error-page-title {
+  margin-top: 400px;
+
+}
+
+.pageNotFound-page {
+  background-image: url("https://cdn.discordapp.com/attachments/1138525166754877607/1148730397304311848/bg.png");
+  background-size: contain;
+  height: 1000px;
+  background-repeat: no-repeat;
+
+}
+
+.pageNotFound-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  align-items: flex-start;
+  margin-left: 200px;
+
+
+}
+
+.error-page-subtitle{
+  margin-top: 20px;
+}
+
+.goBack{
+  cursor: pointer;
+}
