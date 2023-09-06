@@ -3,6 +3,7 @@
 export const LOAD_ONE_ITEM = "items/LOAD_ONE_ITEM";
 const LOAD_ALL_ITEMS = 'items/LOAD_ALL_ITEMS';
 
+
 /**  Action Creators: */
 
 export const loadOneItemAction = (item) => ({
@@ -17,9 +18,8 @@ export const loadAllItemsAction = (items) => ({
 });
 
 
+
 /** Thunk: */
-
-
 export const fetchOneItemThunk = (itemId) => async (dispatch) => {
   const res = await fetch(`/api/items/${itemId}`);
   if (res.ok) {
@@ -45,14 +45,26 @@ export const fetchAllItemsThunk = () => async (dispatch) => {
   }
 };
 
+// Fetch all items belong to  specific category
+export const fetchCategoryItemsThunk = (category_name) => async (dispatch) => {
+  console.log('in the thunk',category_name)
+  const res = await fetch(`/api/categories/${category_name}`);
+  // const res = await fetch(`/api/items/${category_name}`);
+  if (res.ok) {
+    const { items } = await res.json();
+    dispatch(loadAllItemsAction(items));
+  } else {
+    const errors = await res.json();
+    return errors;
+  }
+}
 
 /** Reducer: */
 const initialState = { allItems: {}, singleItem: {} };
 
 const itemsReducer = (state = initialState, action) => {
-  // console.log('in item reducer')
-
   switch (action.type) {
+
     case LOAD_ONE_ITEM:
       return { ...state, singleItem: { ...action.item } };
 
@@ -68,6 +80,10 @@ const itemsReducer = (state = initialState, action) => {
         allItems: itemsState,
         singleItem: {},
       };
+
+
+
+
     default:
       return state;
   }

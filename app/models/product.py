@@ -16,6 +16,8 @@ class Product(db.Model):
     description=db.Column(db.String, nullable=True)
     # category_id
     #one user can only have one shop
+    category = db.Column(db.String, nullable=True)
+
     shop_id= db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('shops.id')), nullable=False)
     img_1= db.Column(db.String, nullable=False)
     img_2= db.Column(db.String)
@@ -44,7 +46,8 @@ class Product(db.Model):
             'img_3': self.img_3,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'shop': self.shop.name
+            'shop': self.shop.name,
+            'category' :self.category,
             # 'shop': self.shop[0].id if self.shop else None,
         }
         return product_dict

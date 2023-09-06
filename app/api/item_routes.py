@@ -139,3 +139,8 @@ def delete_item(itemId):
     return {"id": targetItem.id}
 
 #*************************************************************************#
+# Fetch all items belong to  specific category
+# @item_routes.route('<string:category_name>')
+# def get_category_items(category_name):
+#     items = Product.query.filter(Product.category == category_name)
+#     return {'items': [item.to_dict() for item in items]}

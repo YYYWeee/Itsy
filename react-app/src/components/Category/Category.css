@@ -1,0 +1,43 @@
+.page-container {
+  margin-top: 200px;
+}
+
+.price:hover {
+  background-color: #d3d3d3;
+}
+
+.preview-image {
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.preview-image:hover {
+  width: 250px;
+  height: 150px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px black;
+  /* transition-duration: 200ms; */
+}
+
+
+.price {
+  display: flex;
+  position: relative;
+  z-index: 3;
+  align-items: center;
+  bottom: 30px;
+  left: 10px;
+  background-color: white;
+  width: fit-content;
+  border-radius: 25px;
+  max-height: 25px;
+
+
+}
+.test{
+  padding-bottom: 2000px;
+}
+
+.welcome{
+  margin-top: 300px;
+}
