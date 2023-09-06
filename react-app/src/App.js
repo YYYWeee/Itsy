@@ -18,6 +18,7 @@ import CartItem from "./components/Cart/CartItem/CartItem";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
 import Checkout from "./components/Checkout/Checkout";
 import OrderConfirmation from "./components/OrderConfirmation/OrderConfirmation"
+import PageNotFound from "./components/PageNotFound/PageNotFound"
 
 import Footer from "./components/Footer";
 
@@ -80,6 +81,9 @@ function App() {
           </Route> */}
           <Route exact path="/checkout">
             <Checkout />
+          </Route>
+          <Route>
+            <PageNotFound />
           </Route>
         </Switch>
       )}
