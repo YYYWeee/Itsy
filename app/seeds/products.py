@@ -107,7 +107,7 @@ def seed_products():
         'price':22,
         'description':'Stack our Opal Inlay Hoops with your everyday jewelry pieces to add a sparkle of color and uniqueness. With our three different opal colors, these huggie hoop earrings are a great gift for someone just as special and one of a kind.',
         'shop_id':4,
-        'category':'Art',
+        'category':'Jewelry',
         'img_1':'https://i.etsystatic.com/10204022/r/il/656c6e/4601143021/il_794xN.4601143021_3nrr.jpg',
         'img_2':'https://i.etsystatic.com/10204022/r/il/7cf553/4766895233/il_794xN.4766895233_ochy.jpg',
         'img_3':'https://i.etsystatic.com/10204022/r/il/77d7a4/4536147838/il_794xN.4536147838_jw22.jpg'
@@ -2349,8 +2349,8 @@ def seed_products():
         'shop_id':4,
         'category':'Toys',
         'img_1':'https://i.etsystatic.com/25247641/r/il/e42d71/3693266689/il_794xN.3693266689_s0ux.jpg',
-        'img_2':'https://i.etsystatic.com/25247641/r/il/0aec45/4593620723/il_794xN.4593620723_7wpd.jpg',
-        'img_3':'https://i.etsystatic.com/25247641/r/il/151257/3693256215/il_794xN.3693256215_jkcv.jpg'
+        'img_2':'https://i.etsystatic.com/38748266/r/il/a5ad8f/4316493860/il_794xN.4316493860_nre3.jpg',
+        'img_3':'https://i.etsystatic.com/38748266/r/il/135490/4316493858/il_794xN.4316493858_cll4.jpg'
         },
         {
         'title':'Large Waddle of Penguins With Icy Cliffs and Ice Floe SET I',
@@ -2362,6 +2362,206 @@ def seed_products():
         'img_2':'https://i.etsystatic.com/19283971/r/il/488e19/4038832252/il_794xN.4038832252_btno.jpg',
         'img_3':'https://i.etsystatic.com/19283971/r/il/a2aa8b/4409825548/il_794xN.4409825548_kq0q.jpg'
         },
+        {
+        'title':'Montessori Wooden Toy Gift for Toddler, Four Elements Stacker Toy, Weather Fire Water Soil Puzzle, 1st Birthday Gift, Baby Christmas Gift',
+        'price':90,
+        'description':'🌈Montessori Wooden Four Elements Stacker Toys are open-ended, simple, inspired by nature and designed to promote learning through imaginative, fantasy play. This large 23 pcs Waldorf Fire Water Soil Weather Puzzle Toys is a perfect birthday gift for toddlers.',
+        'shop_id':4,
+        'category':'Toys',
+        'img_1':'https://i.etsystatic.com/38748266/r/il/ee975d/4825391364/il_794xN.4825391364_h4ur.jpg',
+        'img_2':'https://i.etsystatic.com/38748266/r/il/dd7b56/4485620779/il_794xN.4485620779_jgj0.jpg',
+        'img_3':'https://i.etsystatic.com/38748266/r/il/1a0ac1/4485620795/il_794xN.4485620795_k7uc.jpg'
+        },
+        {
+        'title':'Wooden Blue Bungalow House Toys, Waldorf House Puzzle Toys, House Stacker, Grimms Style, Montessori Toys, Educational Toys, Nursery Decor,',
+        'price':28,
+        'description':'🌈 Montessori Wooden Blue Bungalow House Toys are open-ended, simple, inspired by nature and designed to promote learning through imaginative, fantasy play. This large 5 pcs Waldorf House Puzzle Toys is a perfect birthday gift for toddlers. 🌈 Made of high quality natural solid wood. Provide a non-toxic and safe rainbow stacking game with smooth edges and surfaces for kids. No smell. Perfect for little hands. All of the paints used in our product are harmless to health and EN 71-3 certified. Sanding processes are carried out in our products, there are no sharp edges.',
+        'shop_id':4,
+        'category':'Toys',
+        'img_1':'https://i.etsystatic.com/38748266/r/il/5e35fa/4724973846/il_794xN.4724973846_5l7g.jpg',
+        'img_2':'https://i.etsystatic.com/38748266/r/il/6df82e/4392645726/il_794xN.4392645726_37xa.jpg',
+        'img_3':'https://i.etsystatic.com/38748266/r/il/82b6ac/4440039891/il_794xN.4440039891_akm9.jpg'
+        },
+        {
+        'title':'FlowerBar® "Flower Meadow" dried flowers Flowergram & noble oak, wooden arrangement, dried flowers, durable',
+        'price':22,
+        'description':'Our flower meadow is just right for spring and summer. With their many different and invigorating colors, your home becomes a real experience - exciting and full of beauty. Whether you place your FlowerBar on a shelf or hang it on the wall, it will be a real eye-catcher in your home.',
+        'shop_id':4,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/26047742/r/il/9d80ff/3008760738/il_794xN.3008760738_cvpu.jpg',
+        'img_2':'https://i.etsystatic.com/26047742/r/il/2b31c9/3057082414/il_794xN.3057082414_d9dk.jpg',
+        'img_3':'https://i.etsystatic.com/26047742/r/il/528640/3445926935/il_794xN.3445926935_8oj3.jpg'
+        },
+        {
+        'title':'Montessori Toy, Homeschooling Learning Toy for Preschoolers, Christmas toy for 3, 4, 5, 6 years old, Birthday Girl, Birthday Boy, Fishing',
+        'price':28,
+        'description':'Magnetic Fishing Game ABC Learning Toy for Toddlers, Colour Sorting Montessori Preschool Educational Toy Promotes Letter Number Recognition and Fine Motor Skills, Includes 2 Poles and Storage Bag MAGNETIC FISHING TOY for toddlers 3+ years promotes letter and number recognition, hand eye coordination and other valuable life skills. Preschoolers will have hours of fun catching cute wooden fish, jellyfish and starfish emblazoned with alphabet letters. Letters are also colour-coded to their cubbies, promoting visual perception and critical thinking.',
+        'shop_id':4,
+        'category':'Toys',
+        'img_1':'https://i.etsystatic.com/22925008/r/il/e045cb/4158954163/il_794xN.4158954163_jy10.jpg',
+        'img_2':'https://i.etsystatic.com/22925008/r/il/fafd5a/4095499452/il_794xN.4095499452_chsx.jpg',
+        'img_3':'https://i.etsystatic.com/22925008/r/il/e2b67b/4143077031/il_794xN.4143077031_e1nz.jpg'
+        },
+        {
+        'title':'Toddlers Montessori Wooden Educational Toys for Baby Boys Girls Age 2 3 4 Year Old, Shape Sorting Toys Gifts for Kids , Fine Motor Skills',
+        'price':35,
+        'description':'Toddlers Montessori Wooden Educational Toys for Baby Boys Girls Age 2 3 4 Year Old, Shape Sorting Toys Gifts for Kids , Fine Motor Skills 【Montessori Toys for 3 4 Year Old】High-quality wooden toys include 12 fruit blocks, 8 carrots, 10 cute worms, and a five-sided cart with different shapes and structures. Furthermore, the wooden toy is large particles, polished edges, and non-toxic water-based paint, satisfying both baby\’s need for fun learning and the parent\’s wish for safety and quality. 【Kids Educational STEM Toys】The cute wooden farm toy can play pulling radishes, fruit recognition, shape matching, carts, color recognition, rabbit catch worms, storage, and sorting, which is a great toy for 3-5 year old girls and boys. A variety of game methods can make your baby happier. 【Fine Motor Skills】The Montessori wood toys are educational toys for 3-5 years old. The shape sort game can improve the fine motor skills for 3-5 year old baby, and the rabbit catch worms can training hand-eye coordination, and colorful fruit pattern blocks can improve color, shape, and fruit recognition.',
+        'shop_id':4,
+        'category':'Toys',
+        'img_1':'https://i.etsystatic.com/22419565/r/il/d5250e/4972879650/il_794xN.4972879650_pssv.jpg',
+        'img_2':'https://i.etsystatic.com/22419565/r/il/31ec0f/5021132577/il_794xN.5021132577_oqfe.jpg',
+        'img_3':'https://i.etsystatic.com/22419565/r/il/4df03b/5021133449/il_794xN.5021133449_jli5.jpg'
+        },
+        {
+        'title':'Kids Fishing Game, Easter Basket Stuffers for Toddler Boys, Montessori Toys 3 Year Old Birthday Gift for Boys, Easter Gifts for Little Girls',
+        'price':23,
+        'description':'Kids magnetized fishing game with handmade felt pieces in a custom Maisie Taylor Designs muslin storage bag. Perfect game to go for road trips, airplane rides and more. Set includes: One 12-inch fishing pole with 1-inch round magnetic “bobber;” six 4x2 felt fish with paper clips inside to attract to pole; 8x10 muslin bag ',
+        'shop_id':4,
+        'category':'Toys',
+        'img_1':'https://i.etsystatic.com/13205416/r/il/d1642e/1508943097/il_794xN.1508943097_8qfg.jpg',
+        'img_2':'https://i.etsystatic.com/13205416/r/il/181ed8/1508964519/il_794xN.1508964519_e4b1.jpg',
+        'img_3':'https://i.etsystatic.com/13205416/r/il/6d98e0/1461690656/il_794xN.1461690656_n4zt.jpg'
+        },
+        {
+        'title':'Dingle Dangle Baby Gift Set (3-in-1 Diaper Changer, Baby Mobile, Rattle) | Best Baby Shower Gift, Gift for Dad, Baby Registry Gift, Baby Toy',
+        'price':45,
+        'description':'The wooden garage is not just a shelf. It can teach children creativity, taking initiative, develop imagination and fine motor skills, and of course will help to teach tiding a room with pleasure. The best thing is that it is personalised. 📐Dimensions: 36.22" x 14.17" x 29.53" (92 x 36 x 75 cm.)',
+        'shop_id':4,
+        'category':'Toys',
+        'img_1':'https://i.etsystatic.com/41269719/r/il/9d31f3/4634049070/il_794xN.4634049070_8yvn.jpg',
+        'img_2':'https://i.etsystatic.com/41269719/r/il/fb4b80/4681912061/il_794xN.4681912061_4ebv.jpg',
+        'img_3':'https://i.etsystatic.com/41269719/r/il/76576c/4633673954/il_794xN.4633673954_3g1z.jpg'
+        },
+        {
+        'title':'Toddler toys 2 year old, 2 year old girl gift, 2 year old boy gift, toddler puzzle, toddler toys, 2 year old toys, Montessori puzzles toys',
+        'price':19,
+        'description':'Montessori puzzles are the best way to keep your active child entertained and educated. Here at EcoBabyPuzzle we do our best to create wonderful quality educational toys for your kids. Our wooden puzzles will help your child with cognitive learning, will improve eye-hand coordination, and problem-solving skills. Bright illustrations on the puzzles will attract the attention of your little one, and can also help him or her learn colors. Each set includes 9 circles, which are divided into 3 puzzles piece.',
+        'shop_id':4,
+        'category':'Toys',
+        'img_1':'https://i.etsystatic.com/32753543/r/il/e6f8c6/5104287338/il_794xN.5104287338_c8ce.jpg',
+        'img_2':'https://i.etsystatic.com/32753543/r/il/621192/5152514529/il_794xN.5152514529_kp7y.jpg',
+        'img_3':'https://i.etsystatic.com/32753543/r/il/35709b/5104287968/il_794xN.5104287968_tg7p.jpg'
+        },
+        {
+        'title':'Name Puzzle with Planets of the Solar System, Space Nursery, Educational Toy with Planets, Sun and Earth Baby Shower Gift, Christmas Gifts',
+        'price':39,
+        'description':'Knowledge about the solar system is more important than ever. It helps us appreciate the Earth, and preserve our natural resources. Sit down and discover the space with our Solar System Montessori Board!',
+        'shop_id':4,
+        'category':'Toys',
+        'img_1':'https://i.etsystatic.com/17305851/r/il/9a4acd/4422023905/il_794xN.4422023905_4u52.jpg',
+        'img_2':'https://i.etsystatic.com/17305851/r/il/cf837e/4374599540/il_794xN.4374599540_gkmn.jpg',
+        'img_3':'https://i.etsystatic.com/17305851/r/il/7fd0a1/4374600040/il_794xN.4374600040_64bk.jpg'
+        },
+        {
+        'title':'Space Balance Stacker Solar System Montessori and Waldorf Toy for boys and girls of all ages',
+        'price':42,
+        'description':'Handcrafted Space / Solar System Wooden Puzzle for boys and girls of all ages. Includes a labeled sturdy 8"x 10"muslin bag for easy storage. Each piece of the Solar System Stacker is hand cut and painted so there might be slight imperfections but making this wonderful toy unique and special in its own way.',
+        'shop_id':4,
+        'category':'Toys',
+        'img_1':'https://i.etsystatic.com/14550717/r/il/cb467a/2069215813/il_794xN.2069215813_4agj.jpg',
+        'img_2':'https://i.etsystatic.com/14550717/r/il/9897dc/2069190509/il_794xN.2069190509_rzyp.jpg',
+        'img_3':'https://i.etsystatic.com/14550717/r/il/436d0e/3373065945/il_794xN.3373065945_q6sr.jpg'
+        },
+          {
+        'title':'Monet Waterlily Cat Print, Claude Monet Cat Poster, Black Cat Art, Floral Print, Funny Cat print, Funny gift, Home decor Poster PS0016',
+        'price':12,
+        'description':'An iconic exhibition poster featuring the work of Claude Monet. ✔️ The museum-grade 210 gsm paper is known to be archival, which means it can be stored for a long time without turning yellow.',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/27194634/r/il/dd3a20/5015009724/il_794xN.5015009724_m1n9.jpg',
+        'img_2':'https://i.etsystatic.com/27194634/r/il/f371db/3970027830/il_794xN.3970027830_nvg7.jpg',
+        'img_3':'https://i.etsystatic.com/27194634/r/il/8f4ed6/4017685987/il_794xN.4017685987_4nge.jpg'
+        },
+        {
+        'title':'Custom Neon Sign | Neon Signs | Wedding Neon Signs | Aesthetic Neon Sign | Neon Name Signs | LED Neon Lights | Neon Sign | Wall Decor',
+        'price':32,
+        'description':'Looking for a vibrant and unique addition to your space? Consider a custom neon sign! We specialize in bringing your creative visions to life in the form of a neon sign. Whether it\'s a favorite quote, image, or logo, our team can transform your ideas into a stunning LED neon sign that will be delivered right to your doorstep.Not only do these neon signs make for eye-catching decor, but they can also contribute to a positive and uplifting atmosphere in your room or space. Our bright and flashy neon signs are perfect for parties, weddings, cafes, and even the office.',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/22777667/r/il/3d00de/5202367490/il_794xN.5202367490_irh9.jpg',
+        'img_2':'https://i.etsystatic.com/22777667/r/il/860b4d/5250576813/il_794xN.5250576813_rjqn.jpg',
+        'img_3':'https://i.etsystatic.com/22777667/r/il/27675c/5202362844/il_794xN.5202362844_fcwf.jpg'
+        },
+        {
+        'title':'Moss Wall Art | Moss Wall Decor | Preserved Moss Art Framed | Moss Wall Sets | Moss No Maintenance Required Moss "Living" Wall ~ "moss mix"',
+        'price':32,
+        'description':'We leave a green signature in your living spaces with innovative, creative and aesthetic plant decorations. We passionately combine nature and design. We adapt our designs to the style and identity of your interiors. Handmade plant compositions come to life on any wall, surface or floor. ',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/36626581/r/il/18e173/4337045487/il_794xN.4337045487_8hyd.jpg',
+        'img_2':'https://i.etsystatic.com/36626581/r/il/6833d0/4284467103/il_794xN.4284467103_pchq.jpg',
+        'img_3':'https://i.etsystatic.com/36626581/r/il/2ab337/4236815766/il_794xN.4236815766_kgrj.jpg'
+        },
+        {
+        'title':'Aesthetic Kitchen Decor Cute Cooking Art Kitchen Wall Art Print Minimalist Heart Print Red Chef Art Print Digital Download 1 Print',
+        'price':2,
+        'description':'This beautiful, originally-designed Aesthetic Kitchen digital art print is the perfect way to brighten up a room and add some personality. It reflects a bohemian, mid-century, modern, and minimalist style, and makes for the perfect decor for entryways, living rooms, bedrooms, kitchens, bathrooms, dorms, and more!',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/39293244/r/il/d4bbfe/5160835100/il_794xN.5160835100_l9k7.jpg',
+        'img_2':'https://i.etsystatic.com/39293244/r/il/6d4936/4958071001/il_794xN.4958071001_j5xs.jpg',
+        'img_3':'https://i.etsystatic.com/39293244/r/il/e5cbac/4909807266/il_794xN.4909807266_1d4v.jpg'
+        },
+        {
+        'title':'Trendy Retro Wall Art Set, Retro Trendy Aesthetic Poster, Red Ace Card Poster, Lucky You Wall Art, Playing Card Poster Art, DIGITAL DOWNLOAD',
+        'price':8,
+        'description':' Trendy Retro Wall Art Set, Retro Trendy Aesthetic Poster, Red Ace Card Poster, Lucky You Wall Art, Playing Card Poster Art, DIGITAL DOWNLOAD.',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/44155686/r/il/a045e2/5123629952/il_794xN.5123629952_sjvl.jpg',
+        'img_2':'https://i.etsystatic.com/44155686/r/il/da4b49/5171841051/il_794xN.5171841051_kq0w.jpg',
+        'img_3':'https://i.etsystatic.com/44155686/r/il/21514f/5123615368/il_794xN.5123615368_sm2p.jpg'
+        },
+        {
+        'title':'BHR-138 Big Pottery Hand Roller - Spiral Wind',
+        'price':19,
+        'description':'The Big Hand Roller is a texture roller for clay artists. The roller is deeply carved, has a unique design, and releases well from clay. MKM rollers are made from wood that is precision carved to make deep beautiful impressions. The BHR rollers are beveled carved, allowing them to release easily from clay. Because of their smaller size and lightweight, BHR rollers are perfect for rolling vertically up the walls of a thrown pot. Once the pattern is rolled rib the inside of the bowl to reshape the form. BHR rollers also work great on slabs. The ends of the rollers are rounded to allow patterns to blend with multiple rolls. For long rolls, the MKM Roller Board can help create long smooth rolls and avoid knuckle bumps.',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/9880881/r/il/b6d7c3/4466963561/il_794xN.4466963561_ot8t.jpg',
+        'img_2':'https://i.etsystatic.com/9880881/r/il/5c5b2a/4466961801/il_794xN.4466961801_rw7o.jpg',
+        'img_3':'https://i.etsystatic.com/9880881/r/il/49fb79/3510658341/il_794xN.3510658341_q6r1.jpg'
+        },
+        {
+        'title':'RS-026 Small Pottery Handle Roller - Leafy Vine',
+        'price':12,
+        'description':'RS rollers are made from hardwood to create smooth and crisp designs in any clay. With the RS roller, it is simple to roll long strips without the pattern breaks you get from stamping. The RS rollers are a terrific and easy way to add unique textures to any form.',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/9880881/r/il/9e2c79/1567985964/il_794xN.1567985964_3hed.jpg',
+        'img_2':'https://i.etsystatic.com/9880881/r/il/25cdc7/1552140923/il_794xN.1552140923_diht.jpg',
+        'img_3':'https://i.etsystatic.com/9880881/r/il/ede737/1567985854/il_794xN.1567985854_8zlg.jpg'
+        },
+        {
+        'title':'Double Glass Frame for Pressed Flowers, Polaroid and Artwork - Floating Glass Hanging Metal Picture Frames - Set of 3 - 6x6, 6x8, 4x9 inches',
+        'price':35,
+        'description':'Display your sweet moments in these elegant & unique glass frames. Great for holding your precious memories & keepsakes - cards, photos, handwritten notes, sonogram, flower bouquet, leaves, DYI crafts. Easy to use & personalize - these frames will make a thoughtful gift for any occasion! Perfect gift idea for your loved ones to celebrate: birthday, wedding, graduation, baby shower, engagement, anniversary, mother\'s day, Holiday & more.',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/32371020/r/il/d61a0c/4093318479/il_794xN.4093318479_1da8.jpg',
+        'img_2':'https://i.etsystatic.com/32371020/r/il/3bee5c/4045681110/il_794xN.4045681110_6zv5.jpg',
+        'img_3':'https://i.etsystatic.com/32371020/r/il/e15fbc/4045680988/il_794xN.4045680988_5erx.jpg'
+        },
+        {
+        'title':'Wedding song lyrics Photo Mat personalized with Names, first dance frame, personalized wedding gift, bride and groom, wedding photo',
+        'price':42,
+        'description':'PLEASE READ ENTIRE LISTING!! I cannot be held responsible for any mistake made on buyers part for not reading the listing! This mat is such a beautiful way to display a wedding photo and the PERFECT gift for the Bride and Groom! Your 5x7 wedding photo will fit in this 11x14 mat. If you have another favorite song or iPad verse, I can format up to 300 words. If you have written your own wedding vows this is a Beautiful way to display them.',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/5850214/r/il/9948c6/1006329365/il_794xN.1006329365_nhxn.jpg',
+        'img_2':'https://i.etsystatic.com/5850214/r/il/62f842/959787196/il_794xN.959787196_6fmy.jpg',
+        'img_3':'https://i.etsystatic.com/5850214/r/il/2916be/1006329285/il_794xN.1006329285_g0c4.jpg'
+        },
+         {
+        'title':'Music Vintage Poster, Lose Your Mind Find Your Soul Vintage Print, Girl With Wine, Gift For Girl, Wine Lovers Gift, Music Lovers',
+        'price':14,
+        'description':'Bring high quality wall art into your home or office with a canvas print that will never warp or sag. Our solid faced canvas prints are 1.25” thick and feature a sealed, finished back and pre-installed hanging hardware. It’s designed to hang tough and is super easy to display. Explore our framed canvas print options for an eye-catching accent.',
+        'shop_id':2,
+        'category':'Art',
+        'img_1':'https://i.etsystatic.com/28581209/r/il/0608fb/3999080991/il_794xN.3999080991_ervj.jpg',
+        'img_2':'https://i.etsystatic.com/28581209/r/il/aac6fc/3999080879/il_794xN.3999080879_klwj.jpg',
+        'img_3':'https://i.etsystatic.com/28581209/r/il/11d4ba/3359539983/il_794xN.3359539983_55l7.jpg'
+        },
     ]
     today = datetime.now()
     # define the range of 2 years ago from today
@@ -2369,7 +2569,7 @@ def seed_products():
     # generate 167 elements for 167 orders with random datetimes within the 2-year range
 
     randomCreatedAtDates = []
-    for _ in range(240):
+    for _ in range(260):
         created_at = datetime.fromtimestamp(random.randint(
             int(two_years_ago.timestamp()), int(today.timestamp())))
         randomCreatedAtDates.append(created_at)
