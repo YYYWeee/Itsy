@@ -228,17 +228,17 @@ function EditItem() {
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
-      console.log("formData in update item form ~~~~~~~~~~~~~", formDataObject);  //collect correct info
+      // console.log("formData in update item form ~~~~~~~~~~~~~", formDataObject);  //collect correct info
 
       const data = await dispatch(updateItemThunk(formData, itemId))
-      console.log('here!!!!!!!!!!!!!!', data)
+
       // if (data.id) {
       //   history.push(`/shop`);
       // }
 
       // history.push(`/shop`);
     }
-    console.log('in handle submit!!!!!!!!!!')
+
   }
 
   const handleCancel = async (e) => {

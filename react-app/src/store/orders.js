@@ -36,7 +36,7 @@ export const loadNewestOldOrderAction = (payload) => ({
 /** Thunk  **/
 
 export const placeOrderThunk = (address) => async (dispatch) => {
-  console.log('in thunk')
+
   const response = await fetch(`/api/carts/checkout`, {
     method: "POST",
     headers: {
@@ -51,9 +51,10 @@ export const placeOrderThunk = (address) => async (dispatch) => {
 
     dispatch(fetchAllItemsInCartThunk())
     return newOrder
-  } else {
-    console.log("There was an error placing your order");
   }
+  // else {
+  //   console.log("There was an error placing your order");
+  // }
 };
 
 
@@ -68,7 +69,7 @@ export const loadAllOldOrdersThunk = () => async (dispatch) => {
 
 //newest_old_order
 export const loadNewestOldOrderThunk = () => async (dispatch) => {
-  console.log('frontend fetch lastest order')
+
   const res = await fetch("/api/orders/old/newest");
   const data = await res.json();
   dispatch(loadNewestOldOrderAction(data));

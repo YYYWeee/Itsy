@@ -32,7 +32,7 @@ function DeleteItemModal({item}) {
     const data = await dispatch(deleteItemThunk(item.id));
     // closeModal();
     if ( data == targetItem.id) {
-      console.log('after confirm delete',data)
+      // console.log('after confirm delete',data)
       closeModal();
       history.push(`/shop`);
     }

@@ -52,7 +52,7 @@ export const authenticate = () => async (dispatch) => {
 };
 // **********************************************************************
 export const login = (user) => async (dispatch) => {
-  console.log("inside login thunk");
+
   const { email, password } = user;
   const response = await fetch("/api/auth/login", {
     method: "POST",
@@ -72,7 +72,7 @@ export const login = (user) => async (dispatch) => {
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {
-      console.log("store set user failed", data.errors);
+
       return data.errors;
     }
   } else {
@@ -96,7 +96,7 @@ export const logout = () => async (dispatch) => {
 // **********************************************************************
 export const signUp = (user) => async (dispatch) => {
   const { email, username, first_name, last_name, password } = user;
-  console.log("i am in signup thunk");
+
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: {
@@ -112,19 +112,19 @@ export const signUp = (user) => async (dispatch) => {
   });
 
   if (response.ok) {
-    console.log("I signed up!");
+
     const data = await response.json();
     dispatch(setUser(data));
     return null;
   } else if (response.status < 500) {
-    console.log("booo");
+
     const data = await response.json();
     if (data.errors) {
       return data.errors;
     }
   } else {
     const data = await response.json();
-    console.log(data.errors);
+    // console.log(data.errors);
     return ["An error occurred. Please try again."];
   }
 };
@@ -143,7 +143,7 @@ export const fetchAllUsersThunk = () => async (dispatch) => {
 // **********************************************************************
 // create new shop
 export const createNewShopThunk = (shop) => async dispatch => {
-  console.log('in thunk')
+
   const response = await fetch(`/api/shop`, {
     method: "POST",
     body: shop,
@@ -153,7 +153,7 @@ export const createNewShopThunk = (shop) => async dispatch => {
     dispatch(setShop(newShop.id))
     return newShop
   } else {
-    console.log("There was an error creating your shop!");
+    // console.log("There was an error creating your shop!");
     return 'invalidName'
   }
 }
@@ -173,7 +173,7 @@ export const updateShopThunk = (updateShop) => async (dispatch) => {
     dispatch(setShop(updatedShop.id))
     return updatedShop
   } else {
-    console.log("There was an error updating your shop!");
+    // console.log("There was an error updating your shop!");
     return 'invalidName'
   }
 

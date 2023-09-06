@@ -59,11 +59,11 @@ def new_shop():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        print('Pass validation')
+
         image_file = form.data["image"]
         image_file.filename = get_unique_filename(image_file.filename)
         upload = upload_file_to_s3(image_file)
-        print('@@@@@@@@@',form.data["name"])
+
 
         new_shop = Shop(
             owner_id=current_user.to_dict()['id'],
@@ -71,12 +71,12 @@ def new_shop():
             name = form.data['name'],
             description = form.data['description']
         )
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!",new_shop)
+
         db.session.add(new_shop)
         db.session.commit()
         return new_shop.to_dict()
 
-    print(form.errors)
+
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
 #*************************************************************************#
@@ -87,7 +87,7 @@ def edit_shop():
     form = EditShopForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     target_shop = Shop.query.filter_by(owner_id=current_user.id).first()
-    print('###@@@@@@@@@@@@@@@@@@@@@@@here##',form.data['name'])
+
 
     if form.validate_on_submit():
         target_shop.name = form.data['name']

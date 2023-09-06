@@ -117,7 +117,7 @@ function CreateProductForm() {
     // alert(typeof vResult) //Number
 
 
-    console.log('!!!!!!!!', isNaN(price))
+    // console.log('!!!!!!!!', isNaN(price))
     if (!price) {
       errorsArray.push("Price is required")
     } else if (isNaN(price)) {
@@ -179,8 +179,6 @@ function CreateProductForm() {
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
-      console.log('formData!!!',formData)
-      console.log("formData in create product form", formDataObject);
 
 
       const data = await dispatch(createItemThunk(formData))

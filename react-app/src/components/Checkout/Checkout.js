@@ -106,7 +106,7 @@ function Checkout() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let fullAddress = address + ',' + city + ',' + state + ' ' + zip
-    console.log('full_address is ------>', fullAddress)
+    // console.log('full_address is ------>', fullAddress)
     const formData = {
       shipping_address: fullAddress,
     };

@@ -23,17 +23,14 @@ function ItemDetail() {
       state.items.singleItem ? state.items.singleItem : {}
     )
   );
-  if (targetItemArray.length < 1) {
-    console.log('no such item')
 
-  }
 
-  console.log('$$$$$$$$$$$$', targetItemArray)
+
 
   const [bigImg, setBigImg] = useState(targetItem.img_1)     //modify ?
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
-    console.log('Toggle modal clicked');
+    // console.log('Toggle modal clicked');
     setModal(!modal);
 
     setTimeout(() => {
@@ -55,7 +52,7 @@ function ItemDetail() {
 
     if (sessionUser) {
 
-      console.log('Click on add to cart')
+
       await dispatch(saveItemToCartThunk(itemId))
       await dispatch(fetchAllItemsInCartThunk());
       toggleModal();
