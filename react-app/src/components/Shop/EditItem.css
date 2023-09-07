@@ -291,7 +291,7 @@ body.active-modal {
 .overlay {
   background: rgba(49,49,49,0.8);
 }
-.modal-content {
+.modal-content-delete {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -303,6 +303,10 @@ body.active-modal {
   max-width: 600px;
   min-width: 300px;
   border-radius: 10px;
+  z-index: 100000px;
+}
+.delete-modal-title{
+margin-top: 50px;
 }
 
 .close-modal {
@@ -338,11 +342,5 @@ body.active-modal {
   cursor: pointer;
   width: 5rem;
   margin-top: 1rem;
-}
 
-
-.del-btn:hover,
-.cancel-btn:hover {
-  filter: brightness(90%);
-  /* background-color:red; */
 }

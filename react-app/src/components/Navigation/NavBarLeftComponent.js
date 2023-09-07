@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 function NavBarLeftComponent({ user }) {
+  const [keyword, setKeyword] = useState('')
   const history = useHistory();
   const ulRef = useRef();
   const [showMenu, setShowMenu] = useState(false);
@@ -41,17 +42,12 @@ function NavBarLeftComponent({ user }) {
     window.scrollTo(0, 0);
   };
 
-  const handleCreatePin = () => {
-    history.push("/pin-builder");
-    closeMenu();
-    window.scrollTo(0, 0);
-  };
 
-  const handleCreateBoard = () => {
-    history.push(`/${user.username}/board-builder`);
-    closeMenu();
-    window.scrollTo(0, 0);
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // pending
+
+  }
 
   return (
     <>
@@ -64,31 +60,26 @@ function NavBarLeftComponent({ user }) {
               id="navigation-title-img1"
             />
           </button>
-          {/* <NavLink exact to="/pins" className="nav-home cursor">
-            Home
-          </NavLink> */}
-          {/* <div className="create-container"> */}
-            {/* <button onClick={openMenu} className="nav-create cursor">
-              <span className="create">Create</span>
-              <i
-                className={`fa-solid fa-chevron-${profileArrowDirection} arrow`}
-              ></i>
-            </button> */}
-            {/* <div className={ulClassName} ref={ulRef}>
-              <div className="create-item">
-                <button onClick={handleCreatePin}>Create Pin</button>
-              </div>
-              <div className="create-item">
-                <button onClick={handleCreateBoard}>Create Board</button>
-              </div>
-            </div> */}
-          {/* </div> */}
+
           <div
             className="nav-search"
-            onClick={() => alert("Feature coming soon!")}
+          // onClick={() => alert("Feature coming soon!")}
           >
             <i className="fas fa-search"></i>
-            <input className="search-input" placeholder="Search for anything"/>
+            <form onSubmit={handleSubmit}>
+              <input
+                className="search-input"
+                placeholder="Search for anything"
+                value={keyword}
+                onChange={e => {
+                  if (/^[a-zA-Z0-9]*$/.test(e.target.value))
+                    setKeyword(e.target.value)
+                }}
+              />
+              <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+
+            </form>
           </div>
         </div>
       ) : (
