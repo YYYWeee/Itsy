@@ -6,6 +6,8 @@
   padding: 1rem;
   width: 35rem;
   background-color: white;
+  border-radius: 25px;
+
 
 }
 
@@ -13,7 +15,7 @@
   font-size: 23px;
   margin-bottom: 1rem;
   font-weight: 500;
-  margin-top: 200px;
+  margin-top: 20px;
 }
 
 .delete-content{

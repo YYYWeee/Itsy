@@ -47,9 +47,9 @@ export const fetchAllItemsThunk = () => async (dispatch) => {
 
 // Fetch all items belong to  specific category
 export const fetchCategoryItemsThunk = (category_name) => async (dispatch) => {
-  console.log('in the thunk',category_name)
+
   const res = await fetch(`/api/categories/${category_name}`);
-  // const res = await fetch(`/api/items/${category_name}`);
+
   if (res.ok) {
     const { items } = await res.json();
     dispatch(loadAllItemsAction(items));
@@ -58,6 +58,20 @@ export const fetchCategoryItemsThunk = (category_name) => async (dispatch) => {
     return errors;
   }
 }
+
+// Fetch all items based on the search filter
+export const fetchSearchItemsThunk = (keyword) => async (dispatch) => {
+  const res = await fetch(`/api/items/search/${keyword}`);
+  if (res.ok) {
+    const { items } = await res.json();
+    dispatch(loadAllItemsAction(items));
+  } else {
+    const errors = await res.json();
+    return errors;
+  }
+
+}
+
 
 /** Reducer: */
 const initialState = { allItems: {}, singleItem: {} };

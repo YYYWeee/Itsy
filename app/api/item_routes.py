@@ -32,6 +32,13 @@ def get_one_item(itemId):
     response = item.to_dict()
     print('response!!!!!!',response)
     return response
+#*************************************************************************#
+# search filter
+
+@item_routes.route('/search/<string:itemName>')
+def get_all_search_item(itemName):
+    items = Product.query.filter(Product.title.like(f'%{itemName}%')).all()  #string formatting (f-string)
+    return {'items': [item.to_dict() for item in items]}
 
 #*************************************************************************#
 # create a product
@@ -40,8 +47,6 @@ def get_one_item(itemId):
 def new_item():
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('hihihiihiiiihiiiii',form.data)
-
 
     if form.validate_on_submit():
         print('Pass validation')

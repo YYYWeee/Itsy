@@ -20,6 +20,7 @@ import Checkout from "./components/Checkout/Checkout";
 import OrderConfirmation from "./components/OrderConfirmation/OrderConfirmation"
 import PageNotFound from "./components/PageNotFound/PageNotFound"
 import Category from "./components/Category/Category"
+import Search from "./components/Search/Search"
 
 import Footer from "./components/Footer";
 
@@ -68,7 +69,9 @@ function App() {
             <Category />
           </Route>
 
-
+          <Route exact path="/search/:keyword">
+            <Search />
+          </Route>
 
 
           <Route exact path="/items/new">

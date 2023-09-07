@@ -413,8 +413,8 @@ function EditItem() {
                 {modal && (
                   <div className="modal">
                     <div onClick={toggleModal} className="overlay"></div>
-                    <div className="modal-content">
-                      <h2>Are you sure you want to delete?</h2>
+                    <div className="modal-content-delete">
+                      <h2 className="delete-modal-title">Are you sure you want to delete?</h2>
                       {/* <p>
                       Once you delete a Item, you can't undo it!
                       </p> */}

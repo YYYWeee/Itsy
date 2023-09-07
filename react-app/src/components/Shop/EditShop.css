@@ -72,8 +72,7 @@ input {
   background-color: grey;
 }
 
-.cancel-button,
-.delete-pin {
+.cancel-button {
   width: 70px;
 
   min-height: 30px;
@@ -83,7 +82,7 @@ input {
   font-weight: bold;
   padding: 12px 5px;
   border-radius: 60px;
-  z-index: 100;
+  /* z-index: 100; */
 }
 
 .cancel-button:hover {
