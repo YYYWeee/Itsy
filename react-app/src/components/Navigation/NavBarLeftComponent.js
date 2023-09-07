@@ -105,7 +105,7 @@ function NavBarLeftComponent({ user }) {
 
   return (
     <>
-      {user ? (
+      {/* {user ? ( */}
         <div className="header-left-container">
           <button onClick={handleClick} className="logo cursor">
             <img
@@ -162,15 +162,14 @@ function NavBarLeftComponent({ user }) {
                       >{item.title}</li>
 
                     ))
-
-
                     : <li className="no-result">No item found</li>
                 }
               </ul>
             }
           </div>
         </div>
-      ) : (
+      {/* )  */}
+      {/* : (
 
         <div className="header-left-container">
           <button onClick={handleClickLanding} className="logo cursor">
@@ -182,7 +181,7 @@ function NavBarLeftComponent({ user }) {
           </button>
 
         </div>
-      )}
+      )} */}
     </>
   );
 }
