@@ -116,7 +116,7 @@ function NavBarLeftComponent({ user }) {
           </button>
 
           <div className="nav-search-container">
-            {/* <i className="fas fa-search"></i> */}
+
             <form className='search-bar-container' onSubmit={handleSubmit}>
               <input
                 className="search-input"
@@ -126,6 +126,14 @@ function NavBarLeftComponent({ user }) {
                 onChange={e => {
                   if (/^[a-zA-Z0-9]*$/.test(e.target.value))
                     setKeyword(e.target.value)
+                }}
+                // onClick={e=>{
+                //   setShowResult(true)
+                // }}
+                // onMouseOver={() => setShowResult(true)}
+                onFocus={() => {
+                  setShowResult(!!keyword.length)
+                  console.log('focus!!!!!')
                 }}
 
               />
@@ -138,7 +146,6 @@ function NavBarLeftComponent({ user }) {
 
               onMouseOver={() => setShowResult(true)}
               onMouseLeave={() => setShowResult(false)}
-              onFocus={() => setShowResult(true)}
               >
                 {
                   Object.values(result)[0].length > 0 ?

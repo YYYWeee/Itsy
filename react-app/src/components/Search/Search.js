@@ -44,6 +44,11 @@ function Search() {
     <>
       {items.length ?
         <div className="page-container">
+          <div className="search-title">
+            <h1>You searched for "{keyword}"</h1>
+            <h3>{items.length} items</h3>
+          </div>
+
           <div className="items-container">
             {items.map((item) => {
 

@@ -37,3 +37,9 @@
 /* .test{
   padding-bottom: 2000px;
 } */
+.page-container-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}

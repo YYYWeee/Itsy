@@ -162,7 +162,10 @@ nav {
   gap: 5px;
   border: 4px solid transparent;
   height: 32px;
-  width: 1300%
+  /* width: 1300% */
+  width: 80%;
+
+
 }
 
 .search-input:hover {
@@ -504,10 +507,10 @@ nav {
 .resultUL {
   list-style: none;
   position: absolute;
-  width: 51%;
+  width: 43%;
   background-color: white;
   top: 35px;
-  left: 540px;
+  /* left: 540px; */
   border: 1px solid rgb(0, 0, 0, 0.3);
 
   box-shadow: 0 0 5px #989898;
@@ -518,4 +521,9 @@ nav {
 
 .Yes-result:hover {
   background-color:#E0E0E0;
+}
+
+
+.search-submit-btn:hover {
+  background-color: #282828;
 }
