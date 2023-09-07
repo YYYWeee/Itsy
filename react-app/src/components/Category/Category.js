@@ -23,7 +23,7 @@ function Category() {
 
   useEffect(() => {
     dispatch(fetchCategoryItemsThunk(category_name))
-  }, [dispatch,category_name]);
+  }, [dispatch, category_name]);
 
   let items = Object.values(
     useSelector((state) => (state.items.allItems ? state.items.allItems : {}))
@@ -38,7 +38,9 @@ function Category() {
     <>
 
       <div className="page-container">
+        <h1 className="page-container-title"> {category_name}</h1>
         <div className="items-container">
+
           {items.map((item) => {
 
             return (
