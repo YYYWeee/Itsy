@@ -37,7 +37,7 @@ def get_one_item(itemId):
 
 @item_routes.route('/search/<string:itemName>')
 def get_all_search_item(itemName):
-    items = Product.query.filter(Product.name.like(f'%{itemName}%')).all()  #string formatting (f-string)
+    items = Product.query.filter(Product.title.like(f'%{itemName}%')).all()  #string formatting (f-string)
     return {'items': [item.to_dict() for item in items]}
 
 #*************************************************************************#

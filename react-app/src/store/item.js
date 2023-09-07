@@ -60,8 +60,8 @@ export const fetchCategoryItemsThunk = (category_name) => async (dispatch) => {
 }
 
 // Fetch all items based on the search filter
-export const fetchSearchItemsThunk = (itemName) => async (dispatch) => {
-  const res = await fetch(`/api/items/search/${itemName}`);
+export const fetchSearchItemsThunk = (keyword) => async (dispatch) => {
+  const res = await fetch(`/api/items/search/${keyword}`);
   if (res.ok) {
     const { items } = await res.json();
     dispatch(loadAllItemsAction(items));
