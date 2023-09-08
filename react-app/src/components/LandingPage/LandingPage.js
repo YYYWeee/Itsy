@@ -55,7 +55,7 @@ function LandingPage() {
           <h3>You might be interested in</h3>
           <ul className="category-conteiner">
                         <li >
-                            <div id="art" onClick={() => history.push(`/listings`)}></div>
+                            <div id="art" onClick={() => history.push(`/category/Art`)}></div>
                             <h4>Art</h4>
                         </li>
                         <li >
