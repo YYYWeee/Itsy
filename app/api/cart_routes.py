@@ -23,8 +23,8 @@ def get_all__items():
     product_ids = [item.product_id for item in cart_items]
     products = Product.query.filter(Product.id.in_(product_ids)).all()
 
-    print('cart_items!!!!!!!!!!!!',cart_items)
-    print('products!!!!!!!!!!!!',products)
+    # print('cart_items!!!!!!!!!!!!',cart_items)
+    # print('products!!!!!!!!!!!!',products)
 
     return {'items' : [item.to_dict() for  item in cart_items],
             'products':[product.to_dict() for  product in products]
@@ -86,20 +86,20 @@ def edit_item_qty(itemId):
 @cart_routes.route('/checkout', methods=['POST'])
 @login_required
 def checkout_shoppingcart():
-    print('checkout backend')
+    # print('checkout backend')
     cart_items =Cart.query.filter_by(user_id=current_user.id).all()
 
     form = OrderForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print('Pass validatation####################')
+        # print('Pass validatation####################')
         new_order = Order(
             user_id=current_user.id,
             shipping_address=form.data['shipping_address'],
         )
         db.session.add(new_order)
         db.session.commit()
-        print('new_order*****************',new_order.to_dict())
+        # print('new_order*****************',new_order.to_dict())
         for cart_item in cart_items:
             order_item = OrderItem(
                 order_id=new_order.id,

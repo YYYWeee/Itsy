@@ -60,7 +60,7 @@ function NavBarLeftComponent({ user }) {
 
 
   useEffect(() => {
-    console.log('keyword', keyword)
+    // console.log('keyword', keyword)
 
     // fetch(`/api/items/search/${keyword}`)
     //   .then(res => {
@@ -78,8 +78,8 @@ function NavBarLeftComponent({ user }) {
           const data = await res.json();
           setResult(data);
           setShowResult(true);
-          console.log('@@@@@@@@@', Object.values(result)[0])
-          console.log('@@@@@@@@@', result)
+          // console.log('@@@@@@@@@', Object.values(result)[0])
+          // console.log('@@@@@@@@@', result)
           // console.log('@@@@@@@@@',Object.values(result)[0][0].id)  //第二個0 是iterate all the item
 
         } else {
@@ -133,7 +133,7 @@ function NavBarLeftComponent({ user }) {
               // onMouseOver={() => setShowResult(true)}
               onFocus={() => {
                 setShowResult(!!keyword.length)
-                console.log('focus!!!!!')
+                // console.log('focus!!!!!')
               }}
 
             />
