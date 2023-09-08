@@ -55,24 +55,24 @@ function LandingPage() {
           <h3>You might be interested in</h3>
           <ul className="category-conteiner">
                         <li >
-                            <div id="personalized-gifts" onClick={() => history.push(`/listings`)}></div>
-                            <h4>Personalized Gifts</h4>
+                            <div id="art" onClick={() => history.push(`/listings`)}></div>
+                            <h4>Art</h4>
                         </li>
                         <li >
-                            <div id="fall-decor" onClick={() => history.push(`/listings`)}></div>
-                            <h4>Fall Decor</h4>
+                            <div id="toys" onClick={() => history.push(`/category/Toys`)}></div>
+                            <h4>Toys</h4>
                         </li>
                         <li >
-                            <div id="clothings" onClick={() => history.push(`/listings`)}></div>
+                            <div id="clothings" onClick={() => history.push(`/category/Clothing`)}></div>
                             <h4>Clothing</h4>
                         </li>
                         <li >
-                            <div id="jewelry" onClick={() => history.push(`/listings`)}></div>
+                            <div id="jewelry" onClick={() => history.push(`/category/Jewelry`)}></div>
                             <h4>Jewelry</h4>
                         </li>
                         <li >
-                            <div id="wedding-gifts" onClick={() => history.push(`/listings`)}></div>
-                            <h4>Wedding Gifts</h4>
+                            <div id="wedding" onClick={() => history.push(`/category/Wedding`)}></div>
+                            <h4>Wedding</h4>
                         </li>
 
                     </ul>
