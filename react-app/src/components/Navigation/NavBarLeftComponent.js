@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { fetchSearchItemsThunk } from '../../store/item'
 
+import "./Navigation.css";
+
 function NavBarLeftComponent({ user }) {
   const [keyword, setKeyword] = useState('')
   const [showResult, setShowResult] = useState(false)
