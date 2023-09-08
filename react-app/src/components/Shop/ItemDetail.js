@@ -98,14 +98,14 @@ function ItemDetail() {
             <div className="item-price">${targetItem.price}</div>
             <div className="item-title">{targetItem.title}</div>
             <div className="shop-name">{targetItem.shop}</div>
-            <div className="product-rating" onClick={() => alert("Feature Coming Soon...")}>
+            {/* <div className="product-rating" onClick={() => alert("Feature Coming Soon...")}>
               <i className="fas fa-star"></i>
               <i className="fas fa-star"></i>
               <i className="fas fa-star"></i>
               <i className="fas fa-star"></i>
               <i className="fas fa-star-half-alt"></i>
               <span>4.6(281)</span>
-            </div>
+            </div> */}
 
             {/* <button className="addBtn" onClick={() => alert("Feature Coming Soon...")}>Add to cart</button> */}
             <button className="addBtn" onClick={() => handleAddToCart(targetItem.id)}>Add to cart</button>
