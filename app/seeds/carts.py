@@ -9,8 +9,8 @@ def seed_carts():
     carts = [
         {
         'user_id':1,
-        'product_id':1,
-        'quantity':3
+        'product_id':126,
+        'quantity':1
         },
         {
         'user_id':1,
@@ -19,18 +19,18 @@ def seed_carts():
         },
         {
         'user_id':1,
-        'product_id':15,
-        'quantity':2
+        'product_id':157,
+        'quantity':4
         },
         {
         'user_id':1,
-        'product_id':42,
-        'quantity':6
+        'product_id':187,
+        'quantity':1
         },
         {
         'user_id':1,
-        'product_id':110,
-        'quantity':9
+        'product_id':12,
+        'quantity':1
         },
         {
         'user_id':2,
