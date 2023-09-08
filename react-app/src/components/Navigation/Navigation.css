@@ -159,11 +159,13 @@ nav {
   border-radius: 55px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
   border: 4px solid transparent;
   height: 32px;
   /* width: 1300% */
   width: 80%;
+  margin-top: 20px;
 
 
 }
@@ -550,4 +552,11 @@ nav {
 
 .search-submit-btn:hover {
   background-color: #282828;
+}
+
+.search-submit-btn{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-top: 20px;
 }
