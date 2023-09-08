@@ -30,7 +30,7 @@ def get_one_item(itemId):
     if not item:
         return jsonify({"message": "item not found"}), 404
     response = item.to_dict()
-    print('response!!!!!!',response)
+    # print('response!!!!!!',response)
     return response
 #*************************************************************************#
 # search filter
@@ -49,7 +49,7 @@ def new_item():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        print('Pass validation')
+        # print('Pass validation')
         image_file = form.data["image"]
         image_file2 = form.data["image2"]
         image_file3 = form.data["image3"]
@@ -74,7 +74,7 @@ def new_item():
         db.session.add(new_product)
         db.session.commit()
         return new_product.to_dict()
-    print(form.errors)
+    # print(form.errors)
     return {"errors": validation_errors_to_error_messages(form.errors)}
 
 
@@ -86,15 +86,14 @@ def edit_item(itemId):
     form = EditProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     target_item = Product.query.get(itemId)
-    print('backend@@@@@@@@@@',form.data) # image is not able to send to backend (if I dont re-upload the first pic)
-    print('1-!!!!!!!!!!!!!!!!!!!!',form.data['image'])
-    print('2-!!!!!!!!!!!!!!!!!!!!',form.data['image2'])
-    print('3-!!!!!!!!!!!!!!!!!!!!',form.data['image3'])
+    # print('backend@@@@@@@@@@',form.data) # image is not able to send to backend (if I dont re-upload the first pic)
+    # print('1-!!!!!!!!!!!!!!!!!!!!',form.data['image'])
+    # print('2-!!!!!!!!!!!!!!!!!!!!',form.data['image2'])
+    # print('3-!!!!!!!!!!!!!!!!!!!!',form.data['image3'])
 
 
 
     if form.validate_on_submit():
-        print('pass!!!!!')
         if(form.data["image"]):
             image_file = form.data["image"]
             image_file.filename = get_unique_filename(image_file.filename)
@@ -131,7 +130,7 @@ def edit_item(itemId):
         response = target_item.to_dict()
         return response
     if form.errors:
-        print(form.errors)
+
         return form.errors
 #*************************************************************************#
 # delete a product

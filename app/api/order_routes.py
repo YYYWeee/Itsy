@@ -31,7 +31,7 @@ def get_single_old_order(orderId):
 @order_routes.route('/old/newest')
 @login_required
 def get_newest_old_order():
-    print('backend#######')
+
     last_past_order = Order.query.filter(
         Order.user_id == current_user.id).order_by(Order.updated_at.desc()).first()
 

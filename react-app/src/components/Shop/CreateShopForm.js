@@ -81,7 +81,7 @@ function CreateShopForm({ setShowCreateForm2 }) {
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
-      console.log("formData in create shop form", formDataObject);
+      // console.log("formData in create shop form", formDataObject);
 
 
       const data = await dispatch(createNewShopThunk(formData))
