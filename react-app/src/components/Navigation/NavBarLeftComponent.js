@@ -106,46 +106,49 @@ function NavBarLeftComponent({ user }) {
   return (
     <>
       {/* {user ? ( */}
-        <div className="header-left-container">
-          <button onClick={handleClick} className="logo cursor">
-            <img
-              src="https://media.discordapp.net/attachments/1138525166754877607/1139564738385281105/logo.png?width=952&height=994"
-              alt="Itsy"
-              id="navigation-title-img1"
+      <div className="header-left-container">
+        <button onClick={handleClick} className="logo cursor">
+          <img
+            src="https://media.discordapp.net/attachments/1138525166754877607/1139564738385281105/logo.png?width=952&height=994"
+            alt="Itsy"
+            id="navigation-title-img1"
+          />
+        </button>
+
+        <div className="nav-search-container">
+
+          <form className='search-bar-container' onSubmit={handleSubmit}>
+            <input
+              className="search-input"
+              type='text'
+              placeholder="Search for anything"
+              value={keyword}
+              onChange={e => {
+                if (/^[a-zA-Z0-9]*$/.test(e.target.value))
+                  setKeyword(e.target.value)
+              }}
+              // onClick={e=>{
+              //   setShowResult(true)
+              // }}
+              // onMouseOver={() => setShowResult(true)}
+              onFocus={() => {
+                setShowResult(!!keyword.length)
+                console.log('focus!!!!!')
+              }}
+
             />
-          </button>
+            <button type="submit" className="search-submit-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
 
-          <div className="nav-search-container">
 
-            <form className='search-bar-container' onSubmit={handleSubmit}>
-              <input
-                className="search-input"
-                type='text'
-                placeholder="Search for anything"
-                value={keyword}
-                onChange={e => {
-                  if (/^[a-zA-Z0-9]*$/.test(e.target.value))
-                    setKeyword(e.target.value)
-                }}
-                // onClick={e=>{
-                //   setShowResult(true)
-                // }}
-                // onMouseOver={() => setShowResult(true)}
-                onFocus={() => {
-                  setShowResult(!!keyword.length)
-                  console.log('focus!!!!!')
-                }}
 
-              />
-              <button type="submit" className="search-submit-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </form>
+
             {(showResult) &&
               <ul className='resultUL'
 
-              onMouseOver={() => setShowResult(true)}
-              onMouseLeave={() => setShowResult(false)}
+                onMouseOver={() => setShowResult(true)}
+                onMouseLeave={() => setShowResult(false)}
               >
                 {
                   Object.values(result)[0].length > 0 ?
@@ -166,8 +169,9 @@ function NavBarLeftComponent({ user }) {
                 }
               </ul>
             }
-          </div>
+          </form>
         </div>
+      </div>
       {/* )  */}
       {/* : (
 

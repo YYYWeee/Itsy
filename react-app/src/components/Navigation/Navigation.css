@@ -504,23 +504,47 @@ nav {
 
 /* search reltus */
 
-.resultUL {
+/* .resultUL {
   list-style: none;
   position: absolute;
   width: 43%;
   background-color: white;
   top: 35px;
-  /* left: 540px; */
   border: 1px solid rgb(0, 0, 0, 0.3);
-
   box-shadow: 0 0 5px #989898;
   padding: 1rem 0;
   z-index: 200;
   border-radius: 5px;
+} */
+
+
+.resultUL {
+  list-style: none;
+  position: absolute;
+  min-width: 960px;
+  background-color: white;
+   top: 35px;
+  border: 1px solid rgb(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px #989898;
+  padding: 1rem 0;
+  z-index: 150;
+  border-radius: 12px;
 }
 
+.Yes-result {
+  cursor: pointer;
+  padding: 3px 1rem;
+  transition: background-color 0.4s;
+}
+
+.no-result {
+  width: 80%;
+  padding: 3px 1rem;
+}
+
+
 .Yes-result:hover {
-  background-color:#E0E0E0;
+  background-color: #E0E0E0;
 }
 
 
