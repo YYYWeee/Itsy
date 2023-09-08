@@ -79,9 +79,10 @@ function ProfileButton({ user }) {
 
 
   useEffect(() => {
-    const res = dispatch(fetchAllItemsInCartThunk());
+    dispatch(fetchAllItemsInCartThunk());
     window.scroll(0, 0);
   }, [dispatch])
+
   const items = Object.values(
     useSelector((state) => (state.carts.shoppingcart.items ? state.carts.shoppingcart.items : {}))
   );
