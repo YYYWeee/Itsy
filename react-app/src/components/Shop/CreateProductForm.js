@@ -300,11 +300,11 @@ function CreateProductForm() {
               {/* third image end */}
             </div>
             <div className="product-detail-Container">
-              <div className="saveButton-container">
+              {/* <div className="saveButton-container">
                 <button type="submit" className="saveButton" disabled={errors.length > 0}>
                   Save
                 </button>
-              </div>
+              </div> */}
               <div>
                 <h1>Create a listing</h1>
                 <div>Add some photos and details about your item. </div>
@@ -340,10 +340,15 @@ function CreateProductForm() {
               ></input>
               <p className='errors'>{errors.filter((validation) =>
                 validation.includes("required"))}</p>
-              <p className='errors'>{errors.filter((validation) =>
-                validation.includes("Invalid"))}</p>
-              <p className='errors'>{errors.filter((validation) =>
-                validation.includes("greater"))}</p>
+              {/* <p className='errors'>{errors.filter((validation) =>
+                validation.includes("Invalid"))}</p> */}
+              {/* <p className='errors'>{errors.filter((validation) =>
+                validation.includes("greater"))}</p> */}
+                <div className="saveButton-container">
+                <button type="submit" className="saveButton" disabled={errors.length > 0}>
+                  Save
+                </button>
+              </div>
             </div>
           </div>
         </form>

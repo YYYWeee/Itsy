@@ -134,11 +134,11 @@ function CreateShopForm({ setShowCreateForm2 }) {
 
 
             <div className="rightContainer">
-              <div className="saveButton-container">
+              {/* <div className="saveButton-container">
                 <button type="submit" className="saveButton" disabled={descriptionError}>
                   Save
                 </button>
-              </div>
+              </div> */}
               <div>
                 <div><h1>Name your shop</h1></div>
                 <div>Don't sweat it! You can just draft a name now and change it later. We find sellers often draw inspiration from what they sell, their style, pretty much anything goes</div>
@@ -164,6 +164,11 @@ function CreateShopForm({ setShowCreateForm2 }) {
 
               {/* </input> */}
               {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
+              <div className="saveButton-container">
+                <button type="submit" className="saveButton" disabled={descriptionError}>
+                  Save
+                </button>
+              </div>
             </div>
           </div>
         </form>

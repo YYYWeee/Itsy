@@ -67,7 +67,7 @@ h1{
   padding-top: 20px;
   margin-bottom: -10px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .saveButton {
   background-color: black;
@@ -235,4 +235,12 @@ h1{
   max-height: 25px;
   border: none;
   border: 1px solid rgb(189, 183, 183);
+}
+
+
+.errors{
+  font-size: 14px;
+  color: rgb(230, 17, 17);
+  margin-bottom: 20px;
+  text-align: start;
 }
