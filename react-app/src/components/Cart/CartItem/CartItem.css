@@ -47,6 +47,7 @@ h2 {
 
 .remove-btn {
   cursor: pointer;
+  width: fit-content;
 }
 
 
