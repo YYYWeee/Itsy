@@ -24,6 +24,7 @@ function CreateProductForm() {
   const [errors, setErrors] = useState([]);
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const [photo, setPhoto] = useState(null);
   const [photo2, setPhoto2] = useState(null);

@@ -60,7 +60,7 @@
 }
 
 .welcome-sign {
-  font-size: 30px;
+  font-size: 25px;
   margin-bottom: 0.5rem;
   margin-top: 10px;
   /* position: absolute; */
@@ -79,7 +79,7 @@
   border: lightgray 2px solid;
   border-radius: 10px;
   width: 285px;
-  height: 48px;
+  height: 30px;
 }
 
 .sign-input:focus {
