@@ -24,7 +24,7 @@ function CreateProductForm() {
   const [errors, setErrors] = useState([]); //price error
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false); //new
 
   const [photo, setPhoto] = useState(null);
   const [photo2, setPhoto2] = useState(null);
@@ -59,14 +59,14 @@ function CreateProductForm() {
 
   const handleTitle = e => {
     // if (e.target.value.length <= 200 && /^[a-zA-Z0-9]*$/.test(e.target.value)) setTitle(e.target.value)
-    if (e.target.value.length <= 200 ) setTitle(e.target.value)
+    if (e.target.value.length <= 200) setTitle(e.target.value)
   }
 
   const handleDescription = e => {
     if (e.target.value.length <= 1000) setDescription(e.target.value)
   }
   const handlePrice = e => {
-    if (e.target.value <100000  && /^[0-9]*$/.test(e.target.value)) setPrice(e.target.value)
+    if (e.target.value < 100000 && /^[0-9]*$/.test(e.target.value)) setPrice(e.target.value)
   }
 
   const handlePhoto = async ({ currentTarget }) => {
@@ -122,16 +122,19 @@ function CreateProductForm() {
     } else if (price * 1 <= 0) {
       errorsArray.push('Price should be greater than 0')
     }
-
     setErrors(errorsArray);
   }, [price])
 
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!lengthError && !descriptionError) {
-      setHasSubmitted(true);
+    setFormSubmitted(true);
+    setHasSubmitted(true);
 
+    if (lengthError || descriptionError) {
+      console.log('error in product name or description')
+    } else {
       if (image == null && image2 == null && image3 == null) {
         setNoPicture(true);
         setNoPicture2(true);
@@ -159,11 +162,6 @@ function CreateProductForm() {
         setNoPicture3(true);
         return
       }
-
-
-
-
-
       let formData = new FormData();
 
       formData.append("image", image);
@@ -173,12 +171,10 @@ function CreateProductForm() {
       formData.append("description", description);
       formData.append("price", price);
 
-
       const formDataObject = {};
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
-
 
       const data = await dispatch(createItemThunk(formData))
         .then(res => {
@@ -195,7 +191,74 @@ function CreateProductForm() {
       setHasSubmitted(false);
       history.push(`/shop`);
     }
+
+
+
   }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!lengthError && !descriptionError) {
+  //     setHasSubmitted(true);
+
+  //     if (image == null && image2 == null && image3 == null) {
+  //       setNoPicture(true);
+  //       setNoPicture2(true);
+  //       setNoPicture3(true);
+  //       return;
+  //     } else if (image == null && image2 == null) {
+  //       setNoPicture(true);
+  //       setNoPicture2(true);
+  //       return
+  //     } else if (image == null && image3 == null) {
+  //       setNoPicture(true);
+  //       setNoPicture3(true);
+  //       return
+  //     } else if (image2 == null && image3 == null) {
+  //       setNoPicture2(true);
+  //       setNoPicture3(true);
+  //       return
+  //     } else if (image == null) {
+  //       setNoPicture(true);
+  //       return
+  //     } else if (image2 == null) {
+  //       setNoPicture2(true);
+  //       return
+  //     } else if (image3 == null) {
+  //       setNoPicture3(true);
+  //       return
+  //     }
+  //     let formData = new FormData();
+
+  //     formData.append("image", image);
+  //     formData.append("image2", image2);
+  //     formData.append("image3", image3);
+  //     formData.append("title", title);
+  //     formData.append("description", description);
+  //     formData.append("price", price);
+
+  //     const formDataObject = {};
+  //     for (let [key, value] of formData.entries()) {
+  //       formDataObject[key] = value;
+  //     }
+
+  //     const data = await dispatch(createItemThunk(formData))
+  //       .then(res => {
+  //         if (res) {
+  //           // setErrors(true)
+  //           setHasSubmitted(false);
+  //         }
+  //       })
+
+
+  //     setTitle("");
+  //     setPrice("");
+  //     setDescription("");
+  //     setHasSubmitted(false);
+  //     history.push(`/shop`);
+  //   }
+  // }
+
   return (
     <>
       <div className="form-page">
@@ -319,7 +382,7 @@ function CreateProductForm() {
                 onChange={handleTitle}
                 required
               ></input>
-              {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-200 characters</div>}
+              {formSubmitted && lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-200 characters</div>}
               <textarea
                 className="description"
                 value={description}
@@ -327,7 +390,7 @@ function CreateProductForm() {
                 // onChange={(e) => setDescription(e.target.value)}
                 onChange={handleDescription}
               />
-              {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-1000 characters</div>}
+              {formSubmitted && descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-1000 characters</div>}
               <input
                 className="price-create-form"
                 value={price}
@@ -337,14 +400,15 @@ function CreateProductForm() {
                 onChange={handlePrice}
 
               ></input>
-              <p className='errors'>{errors.filter((validation) =>
+              <p className='errors'>{formSubmitted && errors.filter((validation) =>
                 validation.includes("required"))}</p>
               {/* <p className='errors'>{errors.filter((validation) =>
                 validation.includes("Invalid"))}</p> */}
               {/* <p className='errors'>{errors.filter((validation) =>
                 validation.includes("greater"))}</p> */}
-                <div className="saveButton-container">
-                <button type="submit" className="saveButton" disabled={errors.length > 0}>
+              <div className="saveButton-container">
+                {/* <button type="submit" className="saveButton" disabled={errors.length > 0}> */}
+                <button type="submit" className="saveButton">
                   Save
                 </button>
               </div>
