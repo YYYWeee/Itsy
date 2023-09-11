@@ -74,6 +74,16 @@ Check out a live version of Itsy [here](https://itsy.onrender.com/)
 
 ![2023-08-16 22 58 29](https://github.com/YYYWeee/Itsy/assets/63111667/af579700-c115-4ec7-b43d-2864bbb8e3d5)
 
+## Shoopping Cart
+
+
+![2023-09-11 09 33 00](https://github.com/YYYWeee/Itsy/assets/63111667/05dc37da-dddc-41af-88b5-65ef0b368bbb)
+
+## Search Bar
+
+![2023-09-11 09 34 24](https://github.com/YYYWeee/Itsy/assets/63111667/c623845b-3e01-434c-803b-46136e8ce9b2)
+
+
 
 ## Features
 
@@ -89,3 +99,11 @@ Check out a live version of Itsy [here](https://itsy.onrender.com/)
 * An authenticated user(shop owner) can delete a product
 * An authenticated user(shop owner) can modify product detail information
 
+## Shopping Cart
+* An logged in user can add items in the shopping cart
+* An logged in user can view all items in the shopping cart
+* An logged in user can  modify quantity of specific item in the shopping cart
+* An logged in user can  delete specific item in the shopping cart
+
+## Search bar with autocomplete search suggestion
+* Enables users to quickly find and select from a pre-populated list of values as they type.
