@@ -11,8 +11,8 @@ function CreateProductForm() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
 
-  const [lengthError, setLengthError] = useState(false)
-  const [descriptionError, setDescriptionError] = useState(false)
+  const [lengthError, setLengthError] = useState(false)  //title error
+  const [descriptionError, setDescriptionError] = useState(false)  //description error
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -21,7 +21,7 @@ function CreateProductForm() {
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]); //price error
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -46,6 +46,7 @@ function CreateProductForm() {
   useEffect(() => {
     setLengthError(title.length < 4)
   }, [title])
+
   useEffect(() => {
     setDescriptionError(description.length < 20)
   }, [description])
@@ -114,11 +115,6 @@ function CreateProductForm() {
 
   useEffect(() => {
     const errorsArray = [];
-    // = parseInt(price);
-    // alert(typeof vResult) //Number
-
-
-    // console.log('!!!!!!!!', isNaN(price))
     if (!price) {
       errorsArray.push("Price is required")
     } else if (isNaN(price)) {
@@ -163,6 +159,8 @@ function CreateProductForm() {
         setNoPicture3(true);
         return
       }
+
+
 
 
 
