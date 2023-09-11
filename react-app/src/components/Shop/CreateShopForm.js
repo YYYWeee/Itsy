@@ -15,14 +15,16 @@ function CreateShopForm({ setShowCreateForm2 }) {
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState(false);
 
+
+  const [formSubmitted, setFormSubmitted] = useState(false); //new
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [photo, setPhoto] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
   const [noPicture, setNoPicture] = useState(false);
   const uploadInput = useRef();
   const user_shop = useSelector(state => state.session.user.shop)
-  const [lengthError, setLengthError] = useState(false)
-  const [descriptionError, setDescriptionError] = useState(false)
+  const [lengthError, setLengthError] = useState(false)   //name
+  const [descriptionError, setDescriptionError] = useState(false) //description
 
   useEffect(() => {
     setLengthError(name.length < 4)
@@ -43,10 +45,6 @@ function CreateShopForm({ setShowCreateForm2 }) {
   }
 
 
-
-
-
-
   const handlePhoto = async ({ currentTarget }) => {
     if (currentTarget.files[0]) {
       setImage(currentTarget.files[0]);
@@ -61,12 +59,14 @@ function CreateShopForm({ setShowCreateForm2 }) {
   let preview = null;
   if (photoUrl) preview = <img src={photoUrl} id="preview-shop-img" alt="" />;
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!lengthError && !descriptionError) {
-      setHasSubmitted(true);
+    setFormSubmitted(true);
+    setHasSubmitted(true);
 
+    if (lengthError || descriptionError) {
+      console.log('error in shop name or description')
+    } else {
       if (image == null) {
         setNoPicture(true);
         return;
@@ -81,14 +81,9 @@ function CreateShopForm({ setShowCreateForm2 }) {
       for (let [key, value] of formData.entries()) {
         formDataObject[key] = value;
       }
-      // console.log("formData in create shop form", formDataObject);
-
-
       const data = await dispatch(createNewShopThunk(formData))
-      // console.log('data!!!!!', data)
 
       if (data['errors']) {
-
         setErrors(true)
       } else {
         setName("");
@@ -96,7 +91,41 @@ function CreateShopForm({ setShowCreateForm2 }) {
         history.push(`/shop`);
       }
     }
+
   }
+
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!lengthError && !descriptionError) {
+  //     setHasSubmitted(true);
+
+  //     if (image == null) {
+  //       setNoPicture(true);
+  //       return;
+  //     }
+  //     let formData = new FormData();
+
+  //     formData.append("image", image);
+  //     formData.append("name", name);
+  //     formData.append("description", description);
+
+  //     const formDataObject = {};
+  //     for (let [key, value] of formData.entries()) {
+  //       formDataObject[key] = value;
+  //     }
+  //     const data = await dispatch(createNewShopThunk(formData))
+
+  //     if (data['errors']) {
+  //       setErrors(true)
+  //     } else {
+  //       setName("");
+  //       setHasSubmitted(false);
+  //       history.push(`/shop`);
+  //     }
+  //   }
+  // }
 
   return (
     <>
@@ -152,8 +181,8 @@ function CreateShopForm({ setShowCreateForm2 }) {
                 onChange={handleName}
                 required
               ></input>
-              {errors && <div className='error-section'>Looks like this name is already taken.</div>}
-              {lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
+              {errors && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Looks like this name is already taken.</div>}
+              {formSubmitted && lengthError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Name should be between 4-20 characters</div>}
               <textarea
                 className="description"
                 value={description}
@@ -163,9 +192,10 @@ function CreateShopForm({ setShowCreateForm2 }) {
               />
 
               {/* </input> */}
-              {descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
+              {formSubmitted && descriptionError && <div className='error-section'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>Description should be between 20-500 characters</div>}
               <div className="saveButton-container">
-                <button type="submit" className="saveButton" disabled={descriptionError}>
+                {/* <button type="submit" className="saveButton" disabled={descriptionError}> */}
+                <button type="submit" className="saveButton" >
                   Save
                 </button>
               </div>
