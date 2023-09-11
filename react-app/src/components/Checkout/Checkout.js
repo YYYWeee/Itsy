@@ -21,6 +21,8 @@ function Checkout() {
   const [cityError, setCityError] = useState('')
   const [stateError, setStateError] = useState('')
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
 
   const handleZipCode = e => {
     if (e.target.value.length <= 5 && /^[0-9]*$/.test(e.target.value)) setZip(e.target.value)
@@ -32,6 +34,11 @@ function Checkout() {
 
   const handleCity = e => {
     if (e.target.value.length <= 50) setCity(e.target.value)
+  }
+
+  const handleSubmitForm = e => {
+    setFormSubmitted(true);
+    console.log('click on place order')
   }
 
   const STATES = {
@@ -105,19 +112,35 @@ function Checkout() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let fullAddress = address + ',' + city + ',' + state + ' ' + zip
-    // console.log('full_address is ------>', fullAddress)
-    const formData = {
-      shipping_address: fullAddress,
-    };
+    setFormSubmitted(true);
+    if (addressError || zipCodeError || cityError || stateError) {
+      // console.log('error in fields!!!')
+    } else {
+
+      let fullAddress = address + ',' + city + ',' + state + ' ' + zip
+      const formData = {
+        shipping_address: fullAddress,
+      };
+
+      const data = await dispatch(placeOrderThunk(formData));
+      history.push(`/order/confirm`);
 
 
-    const data = await dispatch(placeOrderThunk(formData));
-    history.push(`/order/confirm`);
+    }
 
-    // history.push(`/orders`);
+
+
+    // let fullAddress = address + ',' + city + ',' + state + ' ' + zip
+    // const formData = {
+    //   shipping_address: fullAddress,
+    // };
+
+    // const data = await dispatch(placeOrderThunk(formData));
+    // history.push(`/order/confirm`);
 
   }
+
+  const disabled = addressError || zipCodeError || cityError || stateError ? true : null;
 
   return (
     <>
@@ -139,7 +162,7 @@ function Checkout() {
                 value={address}
                 onChange={e => setAddress(e.target.value)}
               />
-              {addressError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{addressError}</div>}
+              {formSubmitted && addressError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{addressError}</div>}
             </div>
 
             <div className="zip-code-section">
@@ -151,7 +174,7 @@ function Checkout() {
                 value={zip}
                 onChange={handleZipCode}
               />
-              {zipCodeError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{zipCodeError}</div>}
+              {formSubmitted && zipCodeError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{zipCodeError}</div>}
             </div>
             <div className="city-section">
               <div><label>City</label></div>
@@ -162,7 +185,7 @@ function Checkout() {
                 value={city}
                 onChange={e => setCity(e.target.value)}
               />
-              {cityError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{cityError}</div>}
+              {formSubmitted && cityError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{cityError}</div>}
             </div>
 
 
@@ -180,13 +203,32 @@ function Checkout() {
                   <option value={key} key={key}>{STATES[key]}</option>
                 )}
               </select>
-              {stateError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{stateError}</div>}
+              {formSubmitted && stateError && <div className='error-section-checkout'><i className="fa-solid fa-triangle-exclamation fa-xl"></i>{stateError}</div>}
             </div>
 
-            <button type="submit" className="placeOrderButton" disabled={addressError || zipCodeError || cityError || stateError} >
+            <button
+              type="submit"
+              className={`placeOrderButton ${disabled ? "inactive" : ""}`}
+            // disabled={disabled}
+            >
               Place order
             </button>
           </form>
+
+
+          {/* {formSubmitted && (
+            <div className="error-section-checkout">
+              <i className="fa-solid fa-triangle-exclamation fa-xl"></i>
+              {addressError}
+              {zipCodeError}
+              {cityError}
+              {stateError}
+            </div>
+          )} */}
+
+
+
+
         </div>
 
       </div>
@@ -195,11 +237,3 @@ function Checkout() {
 }
 
 export default Checkout;
-
-
-
-
-// Street address
-// Zip code
-// City
-// State

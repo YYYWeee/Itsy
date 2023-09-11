@@ -142,7 +142,7 @@ function CartItem() {
                     />
                     <label htmlForfor="visa"><i class="fa-brands fa-cc-visa fa-xl"></i> <i class="fa-brands fa-cc-mastercard fa-xl"></i></label>
                   </div>
-                  <div className="amex-option">
+                  {/* <div className="amex-option">
                     <input
                       id='amex'
                       name='option'
@@ -151,9 +151,9 @@ function CartItem() {
                       className="radio-input"
                     />
                     <label htmlForfor="paypal"><i class="fa-brands fa-cc-amex fa-xl"></i></label>
-                  </div>
+                  </div> */}
 
-                  <div className="googlePay-option">
+                  {/* <div className="googlePay-option">
                     <input
                       id='googlePay'
                       name='option'
@@ -162,7 +162,7 @@ function CartItem() {
                       className="radio-input"
                     />
                     <label htmlForfor="googlePay"><i class="fa-brands fa-google-pay fa-xl"></i></label>
-                  </div>
+                  </div> */}
                 </div>
               </li>
             </ul>

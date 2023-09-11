@@ -55,33 +55,28 @@ function ProfileButton({ user }) {
 
   useEffect(() => {
     if (!showMenu) return;
-    // console.log(ulRef1.current);
-
-    // const closeMenu = (e) => {
-    //   if (!ulRef1.current.contains(e.target)) {
-    //     setShowMenu(false);
-    //   }
-    // };
-
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
   const handleGithubClick = () => {
-    // window.location.href = "https://github.com/YYYWeee/Itsy";
+
     window.open("https://github.com/YYYWeee/Itsy", "_blank");
   };
   const handleLinkedinClick = () => {
-    // window.location.href = "https://www.linkedin.com/in/wendy-kuo-32093773/";
+
     window.open("https://www.linkedin.com/in/wendy-kuo-32093773/", "_blank");
   };
 
-
   useEffect(() => {
-    dispatch(fetchAllItemsInCartThunk());
-    window.scroll(0, 0);
+    if (user) {
+      dispatch(fetchAllItemsInCartThunk());
+      window.scroll(0, 0);
+    }
   }, [dispatch])
+
+
 
   const items = Object.values(
     useSelector((state) => (state.carts.shoppingcart.items ? state.carts.shoppingcart.items : {}))
@@ -104,7 +99,7 @@ function ProfileButton({ user }) {
           <div className='market hover-text' onClick={() => history.push(`/shop`)}>
             <i className="fa-solid fa-shop"><span className="tooltip-text" id="bottom">Shop Manager</span></i>
           </div>
-          {/* <div className="shoppingcart" onClick={() => alert("Feature coming soon!")}> */}
+
           <div className="shoppingcart hover-text" onClick={() => history.push(`/cart`)}>
             <i className="fa-solid fa-cart-shopping badge" value={items.length}><span className="tooltip-text" id="bottom">Shopping Cart</span></i>
           </div>
@@ -163,7 +158,7 @@ function ProfileButton({ user }) {
               </button> */}
               {/* <button onClick={() => alert("Feature coming soon!")}> */}
               <button onClick={handledPurchaseHistory}>
-              <i className="fa-regular fa-clipboard fa-xl icon-indropdown"></i>
+                <i className="fa-regular fa-clipboard fa-xl icon-indropdown"></i>
                 Purchase
               </button>
               <button onClick={handleLogout}><i className="fa-solid fa-left-long fa-xl icon-indropdown"></i>Log Out</button>

@@ -21,7 +21,7 @@ function randomPick(array) {
 
 function Search() {
   const { keyword } = useParams();
-  console.log('keyword in search component', keyword)
+  // console.log('keyword in search component', keyword)
   const dispatch = useDispatch();
   const history = useHistory();
 

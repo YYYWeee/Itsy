@@ -11,8 +11,8 @@ function CreateProductForm() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
 
-  const [lengthError, setLengthError] = useState(false)
-  const [descriptionError, setDescriptionError] = useState(false)
+  const [lengthError, setLengthError] = useState(false)  //title error
+  const [descriptionError, setDescriptionError] = useState(false)  //description error
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -21,9 +21,10 @@ function CreateProductForm() {
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]); //price error
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const [photo, setPhoto] = useState(null);
   const [photo2, setPhoto2] = useState(null);
@@ -45,6 +46,7 @@ function CreateProductForm() {
   useEffect(() => {
     setLengthError(title.length < 4)
   }, [title])
+
   useEffect(() => {
     setDescriptionError(description.length < 20)
   }, [description])
@@ -113,11 +115,6 @@ function CreateProductForm() {
 
   useEffect(() => {
     const errorsArray = [];
-    // = parseInt(price);
-    // alert(typeof vResult) //Number
-
-
-    // console.log('!!!!!!!!', isNaN(price))
     if (!price) {
       errorsArray.push("Price is required")
     } else if (isNaN(price)) {
@@ -162,6 +159,8 @@ function CreateProductForm() {
         setNoPicture3(true);
         return
       }
+
+
 
 
 
@@ -300,11 +299,11 @@ function CreateProductForm() {
               {/* third image end */}
             </div>
             <div className="product-detail-Container">
-              <div className="saveButton-container">
+              {/* <div className="saveButton-container">
                 <button type="submit" className="saveButton" disabled={errors.length > 0}>
                   Save
                 </button>
-              </div>
+              </div> */}
               <div>
                 <h1>Create a listing</h1>
                 <div>Add some photos and details about your item. </div>
@@ -340,10 +339,15 @@ function CreateProductForm() {
               ></input>
               <p className='errors'>{errors.filter((validation) =>
                 validation.includes("required"))}</p>
-              <p className='errors'>{errors.filter((validation) =>
-                validation.includes("Invalid"))}</p>
-              <p className='errors'>{errors.filter((validation) =>
-                validation.includes("greater"))}</p>
+              {/* <p className='errors'>{errors.filter((validation) =>
+                validation.includes("Invalid"))}</p> */}
+              {/* <p className='errors'>{errors.filter((validation) =>
+                validation.includes("greater"))}</p> */}
+                <div className="saveButton-container">
+                <button type="submit" className="saveButton" disabled={errors.length > 0}>
+                  Save
+                </button>
+              </div>
             </div>
           </div>
         </form>

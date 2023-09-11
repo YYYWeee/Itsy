@@ -20,7 +20,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  /* padding-left: 500px;
+  padding-right: 600px; */
+  /* margin-left: 500px;
+  margin-right: 500px; */
 }
 
 .header-left-container {
@@ -28,6 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 
 .logo {
@@ -147,9 +152,9 @@ nav {
 .search-bar-container {
   display: flex;
   flex-direction: row;
-  /* width: 300%; */
   width: 1200px;
   /* justify-content: space-between; */
+  margin-left: -100px;
 }
 
 .search-input {
@@ -183,7 +188,8 @@ nav {
 .nav-search-container {
   display: flex;
   flex-direction: row;
-
+  width: 800px;
+  /* max-width: 1000px; */
 }
 
 
@@ -215,15 +221,12 @@ nav {
 }
 
 .header-right-container {
-  /* gap: 35px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between; */
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-left: 1rem;
+
 
 }
 
@@ -523,9 +526,10 @@ nav {
 .resultUL {
   list-style: none;
   position: absolute;
-  min-width: 960px;
+  /* min-width: 960px; */
+  width: 650px;
   background-color: white;
-   top: 35px;
+  top: 42px;
   border: 1px solid rgb(0, 0, 0, 0.2);
   box-shadow: 0 0 5px #989898;
   padding: 1rem 0;
@@ -554,7 +558,7 @@ nav {
   background-color: #282828;
 }
 
-.search-submit-btn{
+.search-submit-btn {
   display: flex;
   flex-direction: column;
   align-content: center;
