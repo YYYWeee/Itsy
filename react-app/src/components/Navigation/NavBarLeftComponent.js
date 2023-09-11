@@ -155,16 +155,21 @@ function NavBarLeftComponent({ user }) {
                 {
                   Object.values(result)[0].length > 0 ?
                     Object.values(result)[0].map((item) => (
-                      <li
-                        className="Yes-result"
-                        key={item.id}
-                        onClick={() => {
-                          history.push(`/listings/${item.id}`)
-                          setKeyword('')
-                          setMouseOverResults(false)
+                      <>
+                        <div className="search-container">
+                          <img src={item.img_1} className="search-img" />
+                          <li
+                            className="Yes-result"
+                            key={item.id}
+                            onClick={() => {
+                              history.push(`/listings/${item.id}`)
+                              setKeyword('')
+                              setMouseOverResults(false)
 
-                        }}
-                      >{item.title}</li>
+                            }}
+                          >{item.title}</li>
+                        </div>
+                      </>
 
                     ))
                     : <li className="no-result">No item found</li>
