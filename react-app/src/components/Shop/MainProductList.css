@@ -12,8 +12,8 @@
 }
 
 .preview-image:hover {
-  width: 250px;
-  height: 150px;
+  /* width: 250px;
+  height: 150px; */
   border-radius: 6px;
   box-shadow: 0 0 5px black;
   /* transition-duration: 200ms; */
@@ -36,4 +36,16 @@
 }
 .test{
   padding-bottom: 2000px;
+}
+
+
+.items-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 1000px;
+  height: 300px;
+  gap: 1rem;
+  text-align: center;
+  margin: 1rem auto;
+
 }

@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCategoryItemsThunk } from "../../store/item";
+import Preview from "../Shop/Preview";
+
 
 import "./Category.css";
 
@@ -47,12 +49,13 @@ function Category() {
               <>
                 <div className="single-product-container" key={item.id}>
 
-                  <img
+                  {/* <img
                     className="preview-image cursor"
                     src={item.img_1}
                     alt={item.img_1}
                     onClick={() => history.push(`/listings/${item.id}`)}
-                  />
+                  /> */}
+                  <Preview item={item}/>
 
                   <div className="price"><span>${item.price}</span></div>
 

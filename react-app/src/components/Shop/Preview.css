@@ -1,0 +1,57 @@
+
+#preview {
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.preview-image {
+  width: 250px;
+  height: 150px;
+  border-radius: 12px;
+
+}
+
+.preview-image:hover {
+  width: 250px;
+  height: 150px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px black;
+  /* transition-duration: 200ms; */
+}
+
+
+.price {
+  display: flex;
+  position: relative;
+  z-index: 3;
+  align-items: center;
+  bottom: 30px;
+  left: 10px;
+  background-color: white;
+  width: fit-content;
+  border-radius: 25px;
+  max-height: 25px;
+
+}
+
+.page-button {
+  border: solid 1px;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left {
+  left: 3%;
+}
+
+.right {
+  right: 3%;
+}
