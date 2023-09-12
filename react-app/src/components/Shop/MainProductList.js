@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllItemsThunk } from "../../store/item";
+import Preview from "./Preview";
 
 function randomPick(array) {
   const newArray = [...array];
@@ -44,12 +45,13 @@ function MainProductList() {
             return (
               <>
                 <div className="single-product-container" key={item.id}>
-                  <img
+                  {/* <img
                     className="preview-image cursor"
                     src={item.img_1}
                     alt={item.img_1}
                     onClick={() => history.push(`/listings/${item.id}`)}
-                  />
+                  /> */}
+                  <Preview item={item}/>
                   <div className="price"><span>${item.price}</span></div>
                 </div>
               </>
