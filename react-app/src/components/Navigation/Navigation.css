@@ -535,6 +535,8 @@ nav {
   padding: 1rem 0;
   z-index: 150;
   border-radius: 12px;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .Yes-result {
