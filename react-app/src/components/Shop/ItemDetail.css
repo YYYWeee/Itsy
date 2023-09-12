@@ -108,8 +108,21 @@
   margin-top: 20px;
 }
 
+/* .false {
 
+  line-height: 36px;
+  mask:
+    linear-gradient(270deg, transparent, transparent 30%, #000),
+    linear-gradient(270deg, #000, #000);
+  mask-size: 100% 46px, 100% calc(100% - 46px);
+  mask-position: bottom, top;
+  mask-repeat: no-repeat;
+}
 
+.item-description {
+
+  line-height: 36px;
+} */
 
 
 .description-btn {
