@@ -97,7 +97,7 @@ function ProfileButton({ user }) {
             <i classNamse="fa-regular fa-heart"><span className="tooltip-text" id="bottom">Favorites</span></i>
           </div> */}
           <div className='market hover-text' onClick={() => history.push(`/shop`)}>
-            <i className="fa-solid fa-shop"><span className="tooltip-text" id="bottom">Shop Manager</span></i>
+            <i className="fa-solid fa-shop" onClick={() => history.push(`/shop`)}><span className="tooltip-text" id="bottom">Shop Manager</span></i>
           </div>
 
           <div className="shoppingcart hover-text" onClick={() => history.push(`/cart`)}>

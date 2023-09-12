@@ -121,6 +121,7 @@ h1{
 .image-container{
   display: flex;
   flex-direction: row;
+  margin-top: 100px;
 
 }
 #first-image-Container {
