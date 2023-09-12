@@ -29,6 +29,9 @@ function ItemDetail() {
 
   const [bigImg, setBigImg] = useState(targetItem.img_1)     //modify ?
   const [modal, setModal] = useState(false);
+
+  const [showMore, setShowMore] = useState(false);
+
   const toggleModal = () => {
     // console.log('Toggle modal clicked');
     setModal(!modal);
@@ -109,7 +112,20 @@ function ItemDetail() {
 
             {/* <button className="addBtn" onClick={() => alert("Feature Coming Soon...")}>Add to cart</button> */}
             <button className="addBtn" onClick={() => handleAddToCart(targetItem.id)}>Add to cart</button>
-            <div className="item-description">{targetItem.description}</div>
+            {/* <div className="item-description">{targetItem.description}</div> */}
+            <div className="item-description">
+              {showMore ? targetItem.description : <span
+                // style={{
+                //   background: 'linear-gradient(black, white)',
+                //   backgroundClip: 'text',
+                //   color: 'transparent',
+                // }}
+              >{targetItem.description.substring(0, 100)}</span>}
+              <button className="description-btn" onClick={() => setShowMore(!showMore)}>{showMore ? "Less" : "Learn more about this item"}</button>
+            </div>
+
+
+
           </div>
           {modal && (
             <div className="modal-container right-aligned">
