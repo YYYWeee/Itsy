@@ -38,7 +38,6 @@ function MainProductList() {
 
   return (
     <>
-      {/* <h1 className="welcome">Welcome</h1> */}
       <div className="page-container">
         <div className="items-container">
           {items.map((item) => {
@@ -51,9 +50,7 @@ function MainProductList() {
                     alt={item.img_1}
                     onClick={() => history.push(`/listings/${item.id}`)}
                   />
-                  {/* <div className="img-price-container"> */}
-                    <div className="price"><span>${item.price}</span></div>
-                  {/* </div> */}
+                  <div className="price"><span>${item.price}</span></div>
                 </div>
               </>
             );
