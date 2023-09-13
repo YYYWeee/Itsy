@@ -6,7 +6,7 @@ import { fetchOneItemThunk } from "../../store/item";
 import { saveItemToCartThunk } from "../../store/cart";
 import { fetchAllItemsInCartThunk } from "../../store/cart"
 import PageNotFound from "../PageNotFound/PageNotFound"
-
+import Spinner from "../Spinner/Spinner"
 
 import "./ItemDetail.css";
 
@@ -24,7 +24,7 @@ function ItemDetail() {
     )
   );
 
-
+  const [isLoading, setIsLoading] = useState(true); //for spinner
 
 
   const [bigImg, setBigImg] = useState(targetItem.img_1)     //modify ?
@@ -116,11 +116,12 @@ function ItemDetail() {
             <div className={`item-description ${showMore}`}>
               {showMore ? targetItem.description : <span>{targetItem.description.substring(0, 100)}</span>}
             </div>
-              <button className="description-btn" onClick={() => setShowMore(!showMore)}>{showMore ? "Less" : "Learn more about this item"}</button>
+            <button className="description-btn" onClick={() => setShowMore(!showMore)}>{showMore ? "Less" : "Learn more about this item"}</button>
 
 
 
           </div>
+
           {modal && (
             <div className="modal-container right-aligned">
               <div onClick={toggleModal} className="overlay"></div>
@@ -141,6 +142,7 @@ function ItemDetail() {
             </div>
           )}
         </div>
+
       }
     </>
   )
