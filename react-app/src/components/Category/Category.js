@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCategoryItemsThunk } from "../../store/item";
 import Preview from "../Shop/Preview";
-
+import Spinner from "../Spinner/Spinner"
 
 import "./Category.css";
 
@@ -23,8 +23,10 @@ function Category() {
   const history = useHistory();
   const user = useSelector(state => state.session.user)
 
+  const [isLoading, setIsLoading] = useState(true); //for spinner
+
   useEffect(() => {
-    dispatch(fetchCategoryItemsThunk(category_name))
+    dispatch(fetchCategoryItemsThunk(category_name)).then(() => setIsLoading(false))
   }, [dispatch, category_name]);
 
   let items = Object.values(
@@ -38,35 +40,37 @@ function Category() {
 
   return (
     <>
+      {!isLoading && (
+        <div className="page-container">
+          <h1 className="page-container-title"> {category_name}</h1>
+          <div className="items-container">
 
-      <div className="page-container">
-        <h1 className="page-container-title"> {category_name}</h1>
-        <div className="items-container">
+            {items.map((item) => {
 
-          {items.map((item) => {
+              return (
+                <>
+                  <div className="single-product-container" key={item.id}>
 
-            return (
-              <>
-                <div className="single-product-container" key={item.id}>
-
-                  {/* <img
+                    {/* <img
                     className="preview-image cursor"
                     src={item.img_1}
                     alt={item.img_1}
                     onClick={() => history.push(`/listings/${item.id}`)}
                   /> */}
-                  <Preview item={item}/>
+                    <Preview item={item} />
 
-                  <div className="price"><span>${item.price}</span></div>
+                    <div className="price"><span>${item.price}</span></div>
 
-                </div>
-              </>
-            );
-          }
-          )}
-        </div>
+                  </div>
+                </>
+              );
+            }
+            )}
+          </div>
 
-      </div >
+        </div >
+      )}
+       {isLoading && <Spinner/>}
     </>
   )
 
