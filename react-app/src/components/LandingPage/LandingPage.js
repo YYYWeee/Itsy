@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllItemsThunk } from "../../store/item";
+import Spinner from "../Spinner/Spinner"
 
 import "./LandingPage.css";
 function randomPick(array) {
@@ -15,18 +16,18 @@ function randomPick(array) {
 }
 
 
-
-
 function LandingPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState(true); //for spinner
 
 
   let items = Object.values(
     useSelector((state) => (state.items.allItems ? state.items.allItems : {}))
   );
+
   useEffect(() => {
-    dispatch(fetchAllItemsThunk())
+    dispatch(fetchAllItemsThunk()).then(() => setIsLoading(false))
   }, [dispatch]);
 
   if (!items) return null;
@@ -40,46 +41,49 @@ function LandingPage() {
 
   return (
     <>
-      <div className="home-page-container">
-        {/* <h1 className="landing-title">Fresh finds fit for cozy season.</h1> */}
-        <div className="homepage-banner">
-          <h1>Fresh finds fit for cozy season</h1>
-          <button
-            onClick={() => history.push(`/listings`)}
-          >
-            Shop
-            <i className="fa fa-caret-right" aria-hidden="true"></i>
-          </button>
+      {!isLoading && (
+        <div className="home-page-container">
+          {/* <h1 className="landing-title">Fresh finds fit for cozy season.</h1> */}
+          <div className="homepage-banner">
+            <h1>Fresh finds fit for cozy season</h1>
+            <button
+              onClick={() => history.push(`/listings`)}
+            >
+              Shop
+              <i className="fa fa-caret-right" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div className="recommend-section">
+            <h3>You might be interested in</h3>
+            <ul className="category-conteiner">
+              <li >
+                <div id="art" onClick={() => history.push(`/category/Art`)}></div>
+                <h4>Art</h4>
+              </li>
+              <li >
+                <div id="toys" onClick={() => history.push(`/category/Toys`)}></div>
+                <h4>Toys</h4>
+              </li>
+              <li >
+                <div id="clothings" onClick={() => history.push(`/category/Clothing`)}></div>
+                <h4>Clothing</h4>
+              </li>
+              <li >
+                <div id="jewelry" onClick={() => history.push(`/category/Jewelry`)}></div>
+                <h4>Jewelry</h4>
+              </li>
+              <li >
+                <div id="wedding" onClick={() => history.push(`/category/Wedding`)}></div>
+                <h4>Wedding</h4>
+              </li>
+
+            </ul>
+
+
+          </div>
         </div>
-        <div className="recommend-section">
-          <h3>You might be interested in</h3>
-          <ul className="category-conteiner">
-                        <li >
-                            <div id="art" onClick={() => history.push(`/category/Art`)}></div>
-                            <h4>Art</h4>
-                        </li>
-                        <li >
-                            <div id="toys" onClick={() => history.push(`/category/Toys`)}></div>
-                            <h4>Toys</h4>
-                        </li>
-                        <li >
-                            <div id="clothings" onClick={() => history.push(`/category/Clothing`)}></div>
-                            <h4>Clothing</h4>
-                        </li>
-                        <li >
-                            <div id="jewelry" onClick={() => history.push(`/category/Jewelry`)}></div>
-                            <h4>Jewelry</h4>
-                        </li>
-                        <li >
-                            <div id="wedding" onClick={() => history.push(`/category/Wedding`)}></div>
-                            <h4>Wedding</h4>
-                        </li>
-
-                    </ul>
-
-
-        </div>
-      </div>
+      )}
+      {isLoading && <Spinner />}
     </>
   )
 }
