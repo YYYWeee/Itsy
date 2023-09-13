@@ -46,6 +46,7 @@ function ItemDetail() {
       .then(res => {
         setBigImg(targetItem.img_1)
       })
+      .then(() => setIsLoading(false))
 
     dispatch(fetchAllItemsInCartThunk());
   }, [dispatch, itemId, targetItem.img_1]);
@@ -72,12 +73,16 @@ function ItemDetail() {
     history.push("/cart");
   }
 
-
+  if (targetItemArray.length < 1 && !isLoading) {
+    return <PageNotFound />
+  }
 
 
   return (
     <>
-      {targetItemArray.length < 1 ? <PageNotFound /> :
+      {/* {isLoading && <Spinner />} */}
+      {/* {targetItemArray.length < 1 ? <PageNotFound /> : */}
+      {!isLoading && (
         <div className="item-container">
           <div className="image-container-item-detail-page">
             <div className="item-sub-images">
@@ -141,9 +146,11 @@ function ItemDetail() {
               </div>
             </div>
           )}
-        </div>
 
-      }
+        </div>
+      )}
+      {isLoading && <Spinner/>}
+      {/* } */}
     </>
   )
 }
