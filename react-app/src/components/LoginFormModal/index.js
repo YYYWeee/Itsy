@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
+import { googleLogin } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton";
 import SignupFormModal from "../SignupFormModal";
+import GoogleLoginButton from './GoogleLoginButton'; // Create this component for the Google login button
 import "./LoginForm.css";
+import {fetchAllUsersThunk} from  "../../store/session"
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -18,6 +21,7 @@ function LoginFormModal() {
   const [didSubmit, setDidSubmit] = useState(false);
   const [visible1, setVisible1] = useState(false);
   const { closeModal } = useModal();
+
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -47,6 +51,24 @@ function LoginFormModal() {
       }
     }
   };
+
+  const handleGoogleSubmit = async (e) => {
+    e.preventDefault();
+    setDidSubmit(true);
+    const data = await dispatch(googleLogin()).then(setFormErr({}));
+    if (data) {
+      console.log('data',data)
+    }else{
+      closeModal();
+      history.push("/listings");
+      return null;
+    }
+    // const response = await fetch("/googlelogin", {
+    //   mode: 'no-cors',
+    // }).then(()=>closeModal())
+    // history.push("/listings");
+
+  }
 
 
   const demoUser = async (e) => {
@@ -157,7 +179,11 @@ function LoginFormModal() {
           />
         </div>
       </form>
+
+      {/* <GoogleLoginButton /> */}
+      <button onClick={handleGoogleSubmit}>Google</button>
     </div>
+
   );
 }
 

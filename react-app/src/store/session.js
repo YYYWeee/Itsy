@@ -80,17 +80,38 @@ export const login = (user) => async (dispatch) => {
   }
 };
 
+//**********************************************************************
+export const googleLogin = () => async (dispatch) => {
+
+
+  const response = await fetch("/googlelogin",
+    { mode: 'no-cors' }
+  );
+  console.log('$$$$$$$$$$$')
+
+
+  // if (response.ok) {
+  //   const data = await response.json();
+  //   dispatch(setUser(data));
+  //   console.log('in googleLogin thunk', data)
+  //   return null;
+  // }
+};
+
+
 // **********************************************************************
 export const logout = () => async (dispatch) => {
-  const response = await fetch("/api/auth/logout", {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  // const response = await fetch("/api/auth/logout", {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
 
-  if (response.ok) {
-    dispatch(removeUser());
-  }
+  // if (response.ok) {
+  //   dispatch(removeUser());
+  // }
+  const response = await fetch("/api/auth/logout")
+  console.log('response')
 };
 
 // **********************************************************************
