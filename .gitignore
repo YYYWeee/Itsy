@@ -6,3 +6,4 @@ __pycache__/
 .vscode/
 dev.db
 /instance/dev.db
+/app/client_secret.json

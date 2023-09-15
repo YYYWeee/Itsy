@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Itsy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"
-    />
-    <script src="https://kit.fontawesome.com/2c9536369b.js" crossorigin="anonymous"></script>
-    </head>
-  <body>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Itsy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/2c9536369b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://accounts.google.com/gsi/client" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@2.2.0/build/jwt-decode.min.js"></script>
+  <script>
+    // function handleCredentialResponse(response) {
+    //   console.log("Encoded JWT ID token: " + response.credential);
+    //   console.log(decodedToken.name);
+    //   console.log(decodedToken.email);
+    //   // dispatch(googleLogin());
+
+
+    // }
+  </script>
+
+  <!-- <div id="g_id_onload" data-client_id="5074633217-bmh2g7q9opjgmnv3fv47dedencf66bep.apps.googleusercontent.com"
+    data-callback="handleCredentialResponse"
+    data-your_own_param_1_to_login="any_value"
+    data-your_own_param_2_to_login="any_value"
+    data-context="signin" data-ux_mode="popup"
+    data-auto_prompt="true">
+  </div> -->
+
+
+</body>
+
 </html>
