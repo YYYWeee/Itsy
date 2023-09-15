@@ -84,18 +84,27 @@ export const login = (user) => async (dispatch) => {
 export const googleLogin = () => async (dispatch) => {
 
 
-  const response = await fetch("/googlelogin",
-    { mode: 'no-cors' }
-  );
-  console.log('$$$$$$$$$$$')
 
+  // const response = await fetch("/googlelogin",
+  //   { mode: 'no-cors' }
+  // );
+  // console.log('$$$$$$$$$$$')
 
-  // if (response.ok) {
-  //   const data = await response.json();
-  //   dispatch(setUser(data));
-  //   console.log('in googleLogin thunk', data)
-  //   return null;
-  // }
+  try {
+    const response = await fetch("/googlelogin");
+    if (response.ok) {
+      const { authorization_url } = await response.json();
+
+      // Redirect the user to the authorization URL
+      window.location.href = authorization_url;
+    } else {
+      // Handle errors if needed
+      console.error("Error fetching authorization URL");
+    }
+  } catch (error) {
+    console.error("Error fetching authorization URL:", error);
+  }
+
 
 };
 

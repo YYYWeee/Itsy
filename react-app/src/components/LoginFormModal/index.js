@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
-
+import { useSelector, useDispatch } from "react-redux";
 import { googleLogin } from "../../store/session";
 
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton";
@@ -13,6 +12,8 @@ import "./LoginForm.css";
 function LoginFormModal() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const sessionUser = useSelector((state) => state.session.user);
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,30 +55,23 @@ function LoginFormModal() {
   const handleGoogleSubmit = async (e) => {
     e.preventDefault();
     setDidSubmit(true);
-    // const data = await dispatch(googleLogin()).then(setFormErr({}));
+    const data = await dispatch(googleLogin()).then(setFormErr({}));
 
-    // if (data) {
-    //   console.log('data',data)
-    // }else{
-    //   closeModal();
-    //   history.push("/listings");
-    //   return null;
+
+    // try {
+    //   const response = await fetch("/googlelogin");
+    //   if (response.ok) {
+    //     const { authorization_url } = await response.json();
+
+    //     // Redirect the user to the authorization URL
+    //     window.location.href = authorization_url;
+    //   } else {
+    //     // Handle errors if needed
+    //     console.error("Error fetching authorization URL");
+    //   }
+    // } catch (error) {
+    //   console.error("Error fetching authorization URL:", error);
     // }
-    try {
-      // Fetch the authorization_url from the backend
-      const response = await fetch("/googlelogin");
-      if (response.ok) {
-        const { authorization_url } = await response.json();
-
-        // Redirect the user to the authorization URL
-        window.location.href = authorization_url;
-      } else {
-        // Handle errors if needed
-        console.error("Error fetching authorization URL");
-      }
-    } catch (error) {
-      console.error("Error fetching authorization URL:", error);
-    }
 
   }
 
@@ -117,7 +111,11 @@ function LoginFormModal() {
   }, [email, password]);
 
 
-
+  useEffect(() => {
+    if (sessionUser) {
+      history.push("/listings");
+    }
+  }, [sessionUser]);
 
 
 
@@ -190,6 +188,9 @@ function LoginFormModal() {
         </div>
       </form>
       <button onClick={handleGoogleSubmit}>Google</button>
+      {/* <a class="btn btn-primary" href="{{ url_for('oauth2_authorize', provider='google') }}">Login with Google</a> */}
+
+
     </div>
   );
 }

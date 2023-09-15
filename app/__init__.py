@@ -32,6 +32,22 @@ from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.auth.transport.requests
 
+
+
+#new
+import os
+import secrets
+from urllib.parse import urlencode
+
+from dotenv import load_dotenv
+from flask import Flask, redirect, url_for, render_template, flash, session, \
+    current_app, request
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, logout_user,\
+    current_user
+import requests
+
+
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 app.secret_key = os.environ.get('client_secret') # make sure this matches with what's in client_secret.json
 
@@ -45,7 +61,9 @@ print("secret: ", client_secrets_file)
 #Flow is OAuth 2.0 a class that stores all the information on how we want to authorize our users
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
-    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"],
+    scopes=["https://www.googleapis.com/auth/userinfo.profile",
+            "https://www.googleapis.com/auth/userinfo.email",
+            "openid"],
      #here we are specifing what do we get after the authorization
     redirect_uri="http://localhost:5000/callback"
 )
@@ -87,6 +105,24 @@ app.register_blueprint(cart_routes, url_prefix='/api/carts')
 app.register_blueprint(order_routes, url_prefix='/api/orders')
 app.register_blueprint(category_routes,url_prefix='/api/categories')
 # app.register_blueprint(googleauth_routes,url_prefix='/api/google')
+
+app.config['OAUTH2_PROVIDERS'] = {
+    # Google OAuth 2.0 documentation:
+    # https://developers.google.com/identity/protocols/oauth2/web-server#httprest
+    'google': {
+        'client_id': os.environ.get('CLIENT_ID'),
+        'client_secret': os.environ.get('CLIENT_SECRET'),
+        'authorize_url': 'https://accounts.google.com/o/oauth2/auth',
+        'token_url': 'https://accounts.google.com/o/oauth2/token',
+        'userinfo': {
+            'url': 'https://www.googleapis.com/oauth2/v3/userinfo',
+            'email': lambda json: json['email'],
+        },
+        'scopes': ['https://www.googleapis.com/auth/userinfo.email'],
+    }
+}
+
+
 
 
 db.init_app(app)
@@ -235,8 +271,8 @@ def callback():
         db.session.add(user)
         db.session.commit()
         login_user(user)
-
-    return redirect("/protected_area") # This will send the final redirect to our user's browser. As depicted in Line 8 of the flow chart!
+    return {'message': 'Sucessfully use google account log in'}, 201
+    # return redirect("/protected_area") # This will send the final redirect to our user's browser. As depicted in Line 8 of the flow chart!
 
 
 @app.route("/googlelogout")
@@ -282,6 +318,8 @@ def index():
 def protected_area():
     return f"Hello {session['name']} , your googleID is->{session['google_id']} ,email is -> {session['email']}, last name is {session['last_name']} token--> { session['google_id_token']}! <br/> <a href='/googlelogout'><button>Logout</button></a>"
     # return
+
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)
