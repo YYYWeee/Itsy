@@ -61,7 +61,7 @@ function CartItem() {
         (<div className="page-title">
           <h2> {products.length} {unit} in your cart </h2>
           <div className="purchaseProtection-container">
-            <img className='purchaseProtection-icon' src='https://cdn.discordapp.com/attachments/1138525166754877607/1148661394783358986/Etsy_Purchase_Protection.png' />
+            <img className='purchaseProtection-icon' src='https://cdn.discordapp.com/attachments/1138525166754877607/1148661394783358986/Etsy_Purchase_Protection.png?ex=65f9c249&is=65e74d49&hm=f65271ddf4144ef0502f8478d1efeadd4bebfaccf5aca925b4fbbe8f434ca8ad&' />
             <div className="protection-text">Itsy Purchase Protection: Shop confidently on Itsy knowing if something goes wrong with an order, we've got your back</div>
           </div>
         </div>
