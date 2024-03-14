@@ -7,6 +7,11 @@ import OpenModalButton from "../OpenModalButton";
 import SignupFormModal from "../SignupFormModal";
 import "./LoginForm.css";
 
+function navigate(url) {
+  window.location.href = url;
+}
+
+
 function LoginFormModal() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -85,6 +90,38 @@ function LoginFormModal() {
   }, [email, password]);
 
 
+  const loginThroughGoogle = async () => {
+    const response = await fetch("/google-login-proxy");
+    const data = await response.json();
+    console.log(data);
+    navigate(data.url);
+    // window.open(data.url, "_blank", "width=600,height=600");
+
+  };
+
+
+//   const loginThroughGoogle = async () => {
+//     try {
+//         const response = await fetch("/googlelogin", {
+//             method: 'GET',
+
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             }
+//         });
+//         if (response.ok) {
+//             // Redirect the user to the authorization URL returned by the backend
+//             const { url } = await response.json();
+//             window.location.href = url;
+//         } else {
+//             throw new Error('Failed to initiate Google login');
+//         }
+//     } catch (error) {
+//         console.error('Error logging in through Google:', error);
+//     }
+// };
+
+
 
 
 
@@ -92,7 +129,7 @@ function LoginFormModal() {
   return (
     <div className="log-wrap">
       <img
-        src="https://cdn.discordapp.com/attachments/1138525166754877607/1139564738385281105/logo.png"
+        src="https://cdn.discordapp.com/attachments/1138525166754877607/1139564738385281105/logo.png?ex=65fd945d&is=65eb1f5d&hm=cb61dcddb00af6dd6cc21a3b87953711586f3d49c77b706a15e93619a4b87178&"
         alt="Itsy"
         id="navigation-title-img"
       />
@@ -155,6 +192,9 @@ function LoginFormModal() {
             buttonText="Sign Up"
             modalComponent={<SignupFormModal />}
           />
+        </div>
+        <div className="google-login" onClick={loginThroughGoogle} >
+          <img className="google-auth-img" src='https://cdn.discordapp.com/attachments/1138525166754877607/1215697414070083604/google-signin-button-1024x260.png?ex=65fdb172&is=65eb3c72&hm=d6f3deb79f98298b5c6145a9163820cf6079449cb09c9a27b6fcfed39a480490&' alt='google sign in' />
         </div>
       </form>
     </div>
