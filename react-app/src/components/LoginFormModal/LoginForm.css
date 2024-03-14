@@ -66,3 +66,8 @@
   opacity: 1;
   margin-right: 0;
 }
+.google-auth-img{
+  width:70%;
+  height: 80%;
+  cursor: pointer;
+}
