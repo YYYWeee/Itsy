@@ -260,7 +260,10 @@ def callback():
         db.session.commit()
         login_user(user)
 
-    return redirect('http://localhost:3000/listings')
+    if os.environ.get('FLASK_ENV') == 'production':
+        return redirect('https://itsy.onrender.com/listings')
+    else:
+        return redirect('http://localhost:3000/listings')
 
 
 # @app.route("/callback")
