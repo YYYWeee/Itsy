@@ -41,11 +41,17 @@ app.secret_key = os.environ.get('client_secret')
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_OAUTH_CLIENT_ID')
-client_secrets_file = os.path.join(
-    pathlib.Path(__file__).parent, "client_secret.json")
 
+# client_secrets_file = os.path.join(
+#     pathlib.Path(__file__).parent, "client_secret.json")
 
-print("secret: ", client_secrets_file)
+if os.environ.get('FLASK_ENV') == 'production':
+    client_secrets_file = '/etc/secrets/client_secret.json'
+else:
+    client_secrets_file = '/etc/secrets/client_secret.json'
+    client_secrets_file = os.path.join(
+        pathlib.Path(__file__).parent, "client_secret.json")
+
 
 if os.environ.get('FLASK_ENV') == 'production':
     redirectUri = "https://itsy.onrender.com/callback"
@@ -60,7 +66,7 @@ flow = Flow.from_client_secrets_file(
             "https://www.googleapis.com/auth/userinfo.email", "openid"],
     # here we are specifing what do we get after the authorization
     # redirect_uri="http://localhost:5000/callback"
-    redirect_uri = redirectUri
+    redirect_uri=redirectUri
 
 )
 # if os.environ.get('FLASK_ENV') == 'production':
@@ -212,10 +218,8 @@ def login():
     return redirect(authorization_url)
 
 
-
 @app.route("/callback")
 def callback():
-
 
     flow.fetch_token(authorization_response=request.url)
 
@@ -259,13 +263,8 @@ def callback():
     return redirect('http://localhost:3000/listings')
 
 
-
 # @app.route("/callback")
 # def oauth_callback():
-
-
-
-
 
 
 @app.route("/logout")
