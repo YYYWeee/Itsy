@@ -66,6 +66,9 @@ Check out a live version of Itsy [here](https://itsy.onrender.com/)
 
 ![2023-08-16 22 51 15](https://github.com/YYYWeee/Itsy/assets/63111667/b50a270d-9bff-48e1-bff1-5517f36d428d)
 
+## Google Oauth2 Authorization
+
+![2024-03-18 10 58 43](https://github.com/YYYWeee/Itsy/assets/63111667/5340937a-f035-4118-b39b-098425d60e74)
 
 ## Product detail page
 ![2023-08-16 22 53 40](https://github.com/YYYWeee/Itsy/assets/63111667/d023fd73-40e1-42ad-b6f1-77ba57ab0a3f)
