@@ -129,7 +129,7 @@ function LoginFormModal() {
   return (
     <div className="log-wrap">
       <img
-        src="https://cdn.discordapp.com/attachments/1138525166754877607/1139564738385281105/logo.png?ex=65fd945d&is=65eb1f5d&hm=cb61dcddb00af6dd6cc21a3b87953711586f3d49c77b706a15e93619a4b87178&"
+        src="https://projectpin.s3.amazonaws.com/e8a3ee1d37284526baea27cb9f7d1078.png"
         alt="Itsy"
         id="navigation-title-img"
       />
@@ -194,7 +194,7 @@ function LoginFormModal() {
           />
         </div>
         <div className="google-login" onClick={loginThroughGoogle} >
-          <img className="google-auth-img" src='https://cdn.discordapp.com/attachments/1138525166754877607/1215697414070083604/google-signin-button-1024x260.png?ex=65fdb172&is=65eb3c72&hm=d6f3deb79f98298b5c6145a9163820cf6079449cb09c9a27b6fcfed39a480490&' alt='google sign in' />
+          <img className="google-auth-img" src='https://projectpin.s3.amazonaws.com/1c1f6ddaf6d740b2bbc4bb57d9d2c9ea.png' alt='google sign in' />
         </div>
       </form>
     </div>
