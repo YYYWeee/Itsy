@@ -86,7 +86,7 @@ function SignupFormModal() {
 	return (
     <div className="sign-wrap">
       <img
-        src="https://cdn.discordapp.com/attachments/1138525166754877607/1139564738385281105/logo.png"
+        src="https://projectpin.s3.amazonaws.com/e8a3ee1d37284526baea27cb9f7d1078.png"
         alt="Itsy"
         id="navigation-title-img"
       />
