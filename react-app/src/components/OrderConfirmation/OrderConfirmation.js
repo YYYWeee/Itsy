@@ -30,7 +30,7 @@ function OrderConfirmation() {
     <>
       <div className="order-confirmation-page">
 
-        <img className="greenCheckMark" src='https://cdn.discordapp.com/attachments/1138525166754877607/1148702064042573824/greencheck.png' />
+        <img className="greenCheckMark" src='https://projectpin.s3.amazonaws.com/91145f6c556d48f9893b3aa5151a7df2.png' />
         <h1 className="title-order-confirm">Thank you! Your order is confirmed.</h1>
         <div className="sub-title-order-confirm">You'll receive a confirmation email with your order number shortly.</div>
         <div className="order-info-box">

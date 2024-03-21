@@ -111,10 +111,9 @@ function NavBarLeftComponent({ user }) {
       <div className="header-left-container">
         <button onClick={handleClick} className="logo cursor">
           <img
-            // src="https://media.discordapp.net/attachments/1138525166754877607/1139564738385281105/logo.png?width=952&height=994"
-            // src="https://projectpin.s3.amazonaws.com/logo.png"
-            src='https://cdn.discordapp.com/attachments/1138525166754877607/1139564738385281105/logo.png?ex=65fd945d&is=65eb1f5d&hm=cb61dcddb00af6dd6cc21a3b87953711586f3d49c77b706a15e93619a4b87178&'
-            // src='https://i.etsystatic.com/27194634/r/il/dd3a20/5015009724/il_794xN.5015009724_m1n9.jpg'
+
+            src='https://projectpin.s3.amazonaws.com/e8a3ee1d37284526baea27cb9f7d1078.png'
+
             alt="Itsy"
             id="navigation-title-img1"
           />
@@ -182,20 +181,7 @@ function NavBarLeftComponent({ user }) {
           </form>
         </div>
       </div>
-      {/* )  */}
-      {/* : (
 
-        <div className="header-left-container">
-          <button onClick={handleClickLanding} className="logo cursor">
-            <img
-              src="https://media.discordapp.net/attachments/1138525166754877607/1139564738385281105/logo.png?width=952&height=994"
-              alt="Itsy"
-              id="navigation-title-img1"
-            />
-          </button>
-
-        </div>
-      )} */}
     </>
   );
 }
