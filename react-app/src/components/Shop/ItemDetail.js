@@ -32,6 +32,14 @@ function ItemDetail() {
 
   const [showMore, setShowMore] = useState(false);
 
+  const [[x, y], setXY] = useState([0, 0]);
+  const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
+  const [showMagnifier, setShowMagnifier] = useState(false);
+  const magnifierHeight = 100;
+  const magnifieWidth = 100;
+  const zoomLevel = 1.5;
+
+
   const toggleModal = () => {
     // console.log('Toggle modal clicked');
     setModal(!modal);
@@ -77,6 +85,33 @@ function ItemDetail() {
     return <PageNotFound />
   }
 
+  const handleMouseMove = (e) => {
+    const elem = e.currentTarget;
+    const { top, left } = elem.getBoundingClientRect();
+
+    // calculate cursor position on the image
+    const x = e.pageX - left - window.scrollX;
+    const y = e.pageY - top - window.scrollY;
+    console.log('x,y', [x, y])
+
+    setXY([x, y]);
+
+
+  };
+
+  const handleMouseEnter = (e) => {
+    const elem = e.currentTarget;
+    const { width, height } = elem.getBoundingClientRect();
+    setSize([width, height]);
+    setShowMagnifier(true);
+
+  };
+
+  const handleMouseLeave = (e) => {
+    // close magnifier
+    setShowMagnifier(false);
+
+  };
 
   return (
     <>
@@ -98,7 +133,44 @@ function ItemDetail() {
             </div>
             <div className="item-main-image">
               {/* <img className='main-img' id='imageBox' src={targetItem.img_1} alt='product image' /> */}
-              <img className='main-img' id='imageBox' src={bigImg} alt='product image' />
+              <img className='main-img' id='imageBox' src={bigImg} alt='product image'
+                onMouseMove={handleMouseMove}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave} />
+
+
+              <div
+                style={{
+                  display: showMagnifier ? "" : "none",
+                  position: "absolute",
+
+                  // prevent maginier blocks the mousemove event of img
+                  pointerEvents: "none",
+                  // set size of magnifier
+                  height: `${magnifierHeight}px`,
+                  width: `${magnifieWidth}px`,
+                  // move element center to cursor pos
+                  top: `${y - magnifierHeight / 2}px`,
+                  left: `${x - magnifieWidth / 2}px`,
+
+
+                  opacity: "1", // reduce opacity so you can verify position
+                  border: "1px solid lightgray",
+                  backgroundColor: "white",
+                  backgroundImage: `url('${bigImg}')`,   // src={bigImg}
+                  backgroundRepeat: "no-repeat",
+
+                  //calculate zoomed image size
+                  backgroundSize: `${imgWidth * zoomLevel}px ${imgHeight * zoomLevel}px`,
+
+                  //calculete position of zoomed image.
+                  backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`, // `-${(offsetX - paddingX) * ratioX}px`
+                  backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`
+                  // imageMagnifyContainer.style.backgroundPosition = `-${(offsetX - paddingX) * ratioX}px -${(offsetY - paddingY) * ratioY}px`;
+                }}
+              ></div>
+
+
             </div>
           </div>
 
@@ -149,7 +221,7 @@ function ItemDetail() {
 
         </div>
       )}
-      {isLoading && <Spinner/>}
+      {isLoading && <Spinner />}
       {/* } */}
     </>
   )
