@@ -71,8 +71,8 @@ Check out a live version of Itsy [here](https://itsy.onrender.com/)
 
 ![2024-03-18 10 58 43](https://github.com/YYYWeee/Itsy/assets/63111667/5340937a-f035-4118-b39b-098425d60e74)
 
-## Product detail page
-![2023-08-16 22 53 40](https://github.com/YYYWeee/Itsy/assets/63111667/d023fd73-40e1-42ad-b6f1-77ba57ab0a3f)
+## Product detail page (with Image Magnifier)
+![2024-04-01 11 52 53](https://github.com/YYYWeee/Itsy/assets/63111667/b6897bf7-7d0f-4c95-9f4c-b85b5dc5ff4b)
 
 ## Shop Create page
 
