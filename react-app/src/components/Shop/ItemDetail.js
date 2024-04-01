@@ -131,7 +131,8 @@ function ItemDetail() {
                 <img className='small-img' src={targetItem.img_3} alt='product image' onClick={() => setBigImg(targetItem.img_3)} />
               </div>
             </div>
-            <div className="item-main-image">
+            <div className="item-main-image"  style={{
+        position: "relative"}}>
               {/* <img className='main-img' id='imageBox' src={targetItem.img_1} alt='product image' /> */}
               <img className='main-img' id='imageBox' src={bigImg} alt='product image'
                 onMouseMove={handleMouseMove}
