@@ -16,6 +16,7 @@ from .api.item_routes import item_routes
 from .api.cart_routes import cart_routes
 from .api.order_routes import order_routes
 from .api.category_routes import category_routes
+from .api.like_routes import like_routes
 
 
 from google.auth.transport.requests import Request
@@ -107,6 +108,7 @@ app.register_blueprint(item_routes, url_prefix='/api/items')
 app.register_blueprint(cart_routes, url_prefix='/api/carts')
 app.register_blueprint(order_routes, url_prefix='/api/orders')
 app.register_blueprint(category_routes, url_prefix='/api/categories')
+app.register_blueprint(like_routes, url_prefix='/api/lokes')
 
 
 db.init_app(app)

@@ -19,6 +19,9 @@ export const loadAllItemsAction = (items) => ({
 
 
 
+
+
+
 /** Thunk: */
 export const fetchOneItemThunk = (itemId) => async (dispatch) => {
   const res = await fetch(`/api/items/${itemId}`);
@@ -71,6 +74,12 @@ export const fetchSearchItemsThunk = (keyword) => async (dispatch) => {
   }
 
 }
+
+
+
+
+
+
 
 
 /** Reducer: */
