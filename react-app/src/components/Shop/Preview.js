@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./Preview.css";
 
+import Heart from "../Heart"
+
 function Preview({ item }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -11,13 +13,19 @@ function Preview({ item }) {
   const [leftOpacity, setLeftOpacity] = useState(0);
   const [rightOpacity, setRightOpacity] = useState(0);
 
+  const [showHeart, setShowHeart] = useState(false)
+
+
   const showButtons = () => {
     setLeftOpacity(0.8);
     setRightOpacity(0.8);
+    setShowHeart(true);
+
   };
   const hideButtons = () => {
     setLeftOpacity(0);
     setRightOpacity(0);
+    setShowHeart(false)
   };
 
   const pageLeft = (e) => {
@@ -63,6 +71,11 @@ function Preview({ item }) {
         src={item[`img_${page}`]}
         onClick={() => history.push(`/listings/${item.id}`)}
       />
+
+      {
+        showHeart &&
+        <Heart itemId={item.id} />
+      }
     </div>
   );
 }
