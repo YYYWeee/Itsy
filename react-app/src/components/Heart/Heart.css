@@ -1,25 +1,19 @@
-.heart {
-  position: absolute;
-  top: 20px;
-  right: 8px;
-  opacity: 0;
-  width: 28px;
-  height: 28px;
-  font-size: 24px;
-  border-radius: 50%;
-  border: 1px solid rgb(0, 0, 0, 0.2);
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-}
-
-.appear {
-  opacity: 1;
-  top: 6px;
-}
 
 .heart:hover {
   box-shadow: 0 0 4px 2px rgb(0, 0, 0, 0.1);
+}
+
+.heartIcon{
+  display: flex;
+  position: relative;
+  z-index: 4;
+  align-items: center;
+  bottom: 150px;
+  left: 150px;
+  background-color: white;
+  padding: 5px;
+  width: fit-content;
+  border-radius: 45px;
+  max-height: 35px;
+
 }

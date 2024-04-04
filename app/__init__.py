@@ -108,7 +108,7 @@ app.register_blueprint(item_routes, url_prefix='/api/items')
 app.register_blueprint(cart_routes, url_prefix='/api/carts')
 app.register_blueprint(order_routes, url_prefix='/api/orders')
 app.register_blueprint(category_routes, url_prefix='/api/categories')
-app.register_blueprint(like_routes, url_prefix='/api/lokes')
+app.register_blueprint(like_routes, url_prefix='/api/likes')
 
 
 db.init_app(app)
