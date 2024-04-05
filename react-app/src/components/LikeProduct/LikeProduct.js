@@ -39,12 +39,6 @@ function LikeProduct() {
               return (
                 <>
                   <div className="single-product-container" key={item.id}>
-                    {/* <img
-                    className="preview-image cursor"
-                    src={item.img_1}
-                    alt={item.img_1}
-                    onClick={() => history.push(`/listings/${item.id}`)}
-                  /> */}
                     <Preview item={item} />
                     <div className="price"><span>${item.price}</span></div>
                   </div>

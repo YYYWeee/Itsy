@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { fetchAllFavoriteItemsThunk } from "../../store/likes";
 import "./Preview.css";
 
 import Heart from "../Heart"
@@ -14,6 +14,17 @@ function Preview({ item }) {
   const [rightOpacity, setRightOpacity] = useState(0);
 
   const [showHeart, setShowHeart] = useState(false)
+
+
+
+  let items = Object.values(
+    useSelector((state) => (state.likes.allfavItems ? state.likes.allfavItems : {}))
+  );
+
+  // useEffect(() => {
+  //   const res = dispatch(fetchAllFavoriteItemsThunk());
+
+  // }, [dispatch])
 
 
   const showButtons = () => {
