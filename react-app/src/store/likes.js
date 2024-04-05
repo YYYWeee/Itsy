@@ -16,7 +16,7 @@ const removeItemFromLikes = itemId => ({
   itemId
 })
 
-export const loadFavProducts = (items) => ({
+export const loadAllFavoriteItemsAction = (items) => ({
   type: LOAD_FAVORITE_PRODUCTS,
   items,
 });
@@ -51,10 +51,21 @@ export const removeLikeItem = itemId => async dispatch => {
   return false
 }
 
+export const fetchAllFavoriteItemsThunk = () => async (dispatch) => {
+  const res = await fetch("/api/likes/favorites");
+  if (res.ok) {
+    const { items } = await res.json();
+    dispatch(loadAllFavoriteItemsAction(items));
+  } else {
+    const errors = await res.json();
+    return errors;
+  }
+};
+
 
 
 /** Reducer: */
-const initialState = { favItems: {} };
+const initialState = { favItems: {}, allfavItems: {} };
 
 const likesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -71,10 +82,17 @@ const likesReducer = (state = initialState, action) => {
       return { ...state, favItems: { ...removeLike } }
 
     case LOAD_FAVORITE_PRODUCTS:
+      const favitemsState = {};
+      action.items.forEach((item) => {
+        favitemsState[item.id] = item;
+      });
       return {
         ...state,
-        favItems: action.items,
+        favItems: {},
+        allfavItems: favitemsState,
       };
+
+
 
 
 

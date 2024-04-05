@@ -93,9 +93,9 @@ function ProfileButton({ user }) {
           <div className="linkedin" onClick={handleLinkedinClick}>
             <i className="fa-brands fa-linkedin fa-xl"></i>
           </div>
-          {/* <div className="favorite hover-text" onClick={() => alert("Feature coming soon!")}>
-            <i classNamse="fa-regular fa-heart"><span className="tooltip-text" id="bottom">Favorites</span></i>
-          </div> */}
+          <div className="favorite hover-text" onClick={() =>history.push(`/favorite`)}>
+            <i className="fa-regular fa-heart"><span className="tooltip-text" id="bottom">Favorites</span></i>
+          </div>
           <div className='market hover-text' onClick={() => history.push(`/shop`)}>
             <i className="fa-solid fa-shop" onClick={() => history.push(`/shop`)}><span className="tooltip-text" id="bottom">Shop Manager</span></i>
           </div>

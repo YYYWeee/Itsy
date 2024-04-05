@@ -17,6 +17,7 @@ like_routes = Blueprint('likes', __name__)
 # *************************************************************************#
 
 @like_routes.route('/<int:item_id>', methods=['POST', 'DELETE'])
+@login_required
 def like_item(item_id):
   try:
         liked_item = Favorite.query.filter(Favorite.user_id == current_user.id, Favorite.product_id == item_id).first()
@@ -37,3 +38,21 @@ def like_item(item_id):
 
   except:
         return {'error': 'something went wrong'}, 500
+
+# *************************************************************************#
+@like_routes.route('/favorites')
+@login_required
+def load_all_like_item():
+    subquery = (
+        db.session.query(Favorite.product_id)
+        .filter(Favorite.user_id == current_user.id)
+        .subquery()
+    )
+    favorited_items = (
+        Product.query
+        .filter(Product.id.in_(subquery))
+        .all()
+    )
+
+    return {'items': [item.to_dict() for item in favorited_items]}
+    # items: need to be consistent in  Action Creators
