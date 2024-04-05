@@ -22,7 +22,7 @@ function LikeProduct() {
 
   useEffect(() => {
     dispatch(fetchAllFavoriteItemsThunk()).then(() => setIsLoading(false))
-  }, [dispatch]);
+  }, [dispatch,items]);
 
   if (!items.length) return null;
 
