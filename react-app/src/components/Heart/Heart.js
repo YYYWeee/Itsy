@@ -23,7 +23,9 @@ function Heart({ itemId }) {
   );
 
   const isItemInFavItems = Object.values(allFavitems).some(item => item.id === itemId);
-  console.log('NOWWWWWWW', isItemInFavItems)
+  // const [isLiked, setIsLiked] = useState(false);
+
+
 
 
 
@@ -33,7 +35,16 @@ function Heart({ itemId }) {
   const handleHeart = async () => {
     // const res = favItems2[itemId] ? dispatch(removeLikeItem(itemId)) : dispatch(likeItem(itemId))
     const res = isItemInFavItems ? dispatch(removeLikeItem(itemId)) : dispatch(likeItem(itemId))
+    // if (isItemInFavItems){
+    //   dispatch(removeLikeItem(itemId))
+    //   setIsLiked(false)
+    // }
+    // else{
+    //   dispatch(likeItem(itemId))
+    //   setIsLiked(true)
+    // }
   }
+
 
   useEffect(() => {
     dispatch(fetchAllFavoriteItemsThunk())
@@ -41,10 +52,10 @@ function Heart({ itemId }) {
   }, [dispatch, itemId]);
 
   return (
-    <>{sessionUser && (
+    <>{sessionUser  && (
       <div className='heartIcon' onClick={handleHeart}>
         {(!!sessionUser && isItemInFavItems) ? <i style={{ color: 'red' }} className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}
-        {/* {(!!sessionUser && favItems2[itemId]) ? <i style={{ color: 'red' }} className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>} */}
+
       </div>
     )}
     </>
