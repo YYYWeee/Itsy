@@ -21,6 +21,7 @@ import OrderConfirmation from "./components/OrderConfirmation/OrderConfirmation"
 import PageNotFound from "./components/PageNotFound/PageNotFound"
 import Category from "./components/Category/Category"
 import Search from "./components/Search/Search"
+import LikeProduct from  "./components/LikeProduct/LikeProduct"
 
 import Footer from "./components/Footer";
 
@@ -89,6 +90,10 @@ function App() {
 
           <Route exact path="/orders">
             <OrderHistory />
+          </Route>
+
+          <Route exact path="/favorite">
+            <LikeProduct />
           </Route>
           {/* <Route exact path="/checkout/completed">
             <NewestOrderInfo />
