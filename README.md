@@ -87,6 +87,8 @@ Check out a live version of Itsy [here](https://itsy.onrender.com/)
 
 ![2023-09-11 09 34 24](https://github.com/YYYWeee/Itsy/assets/63111667/c623845b-3e01-434c-803b-46136e8ce9b2)
 
+## Favorite an Item
+![2024-04-08 12 39 31](https://github.com/YYYWeee/Itsy/assets/63111667/f6bdf463-d160-414d-b57b-0b419ed8db83)
 
 
 ## Features
