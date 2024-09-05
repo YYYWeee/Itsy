@@ -78,9 +78,39 @@ function LandingPage() {
               </li>
 
             </ul>
-
-
           </div>
+          <div className="sp-two">
+            <div>
+              <h1 style={{ fontSize: "40px", margin: "0px" }} >Itsy is supporting<br></br>
+                independent creators</h1>
+              <h2 style={{ fontSize: "20px" }} >A community doing good</h2>
+              <p style={{ margin: "0px" }}>There's no Itsy warehouse - just millions of people selling the things they love.</p>
+
+              <button className ='shopbutton'
+                onClick={() => history.push(`/listings`)}
+              >
+                Shop
+                <i className="fa fa-caret-right" aria-hidden="true"></i>
+              </button>
+            </div>
+            <img src="https://i.etsystatic.com/inv/37f0ed/6194196042/inv_fullxfull.6194196042_hm1teyp7.jpg?version=0" width="850" height="450"></img>
+          </div>
+          <div className="sp-three" style={{ backgroundColor: "rgb(254, 241, 238)" }}>
+            <img style={{ padding: "10px", }} src="https://i.etsystatic.com/6524482/r/il/dccc8a/6207250508/il_794xN.6207250508_ti2q.jpg" width="750" height="550"></img>
+            <div>
+              <h1 style={{ fontSize: "40px", margin: "0px" }} >Grab your Halloween <br></br>
+                essentials</h1>
+              <p style={{ fontSize: "16px" }} >Shop gifts perfect for the occasion!</p>
+
+              <button className="shopbutton"
+                onClick={() => history.push(`/listings`)}
+              >
+                Shop
+                <i className="fa fa-caret-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
         </div>
       )}
       {isLoading && <Spinner />}
