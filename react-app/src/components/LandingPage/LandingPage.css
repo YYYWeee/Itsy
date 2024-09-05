@@ -137,6 +137,24 @@
 }
 
 
-.home-page-container{
+/* .home-page-container{
   max-height: 1000px;
+} */
+
+
+.sp-two, .sp-three {
+  display: flex;
+  padding: 5%;
+  gap: 4.5%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+/* .sp-three {
+  min-width: 4500px;
+} */
+
+.shopbutton{
+  margin-top: 10px;
+
 }
